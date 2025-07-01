@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Mohit&#39;s Page</title>
-    <link>https://example.com/</link>
+    <link>https://mohit-k-s.github.io/</link>
     <description>Recent content on Mohit&#39;s Page</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
@@ -10,12 +10,12 @@
     <webMaster>mohit.bash@gmail.com (Mohit Kumar Singh)</webMaster>
     <copyright>Mohit Kumar Singh</copyright>
     <lastBuildDate>Sun, 15 Jun 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://example.com/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://mohit-k-s.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Creativity</title>
-      <link>https://example.com/blog/creativity/</link>
+      <link>https://mohit-k-s.github.io/blog/creativity/</link>
       <pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar Singh)</author>
-      <guid>https://example.com/blog/creativity/</guid>
+      <guid>https://mohit-k-s.github.io/blog/creativity/</guid>
       <description>&lt;p&gt;Yesterday, I made my first post—and I promised myself I’d continue writing, just like I used to back in 10th grade. There’s something deeply fulfilling about writing. I’ve missed that feeling for a long time, and now I’m trying to find my way back to it. So here I am. We’d start with what starts things.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Creativity (noun): the use of imagination or original ideas to create something&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;Creativity, as we all know, is one of the fundamental pillars on which the entire arc of human evolution rests.&#xA;If not for original ideas, we’d still be hunting for food and hiding from the cold.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>Yesterday, I made my first post—and I promised myself I’d continue writing, just like I used to back in 10th grade. There’s something deeply fulfilling about writing. I’ve missed that feeling for a long time, and now I’m trying to find my way back to it. So here I am. We’d start with what starts things.</p>
 <blockquote>
