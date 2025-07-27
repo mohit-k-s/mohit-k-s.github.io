@@ -2,39 +2,39 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:50643/</loc>
+    <loc>https://mohit-k-s.github.io/</loc>
     <lastmod>2025-07-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:50643/blog/</loc>
+    <loc>https://mohit-k-s.github.io/blog/</loc>
     <lastmod>2025-07-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:50643/tags/ai/</loc>
+    <loc>https://mohit-k-s.github.io/tags/ai/</loc>
     <lastmod>2025-07-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:50643/tags/codeanalysis/</loc>
+    <loc>https://mohit-k-s.github.io/tags/codeanalysis/</loc>
     <lastmod>2025-07-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:50643/blog/git_impact/</loc>
+    <loc>https://mohit-k-s.github.io/blog/git_impact/</loc>
     <lastmod>2025-07-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:50643/tags/gitdiff/</loc>
+    <loc>https://mohit-k-s.github.io/tags/gitdiff/</loc>
     <lastmod>2025-07-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:50643/tags/llm/</loc>
+    <loc>https://mohit-k-s.github.io/tags/llm/</loc>
     <lastmod>2025-07-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:50643/tags/staticanalysis/</loc>
+    <loc>https://mohit-k-s.github.io/tags/staticanalysis/</loc>
     <lastmod>2025-07-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:50643/tags/</loc>
+    <loc>https://mohit-k-s.github.io/tags/</loc>
     <lastmod>2025-07-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:50643/blog/creativity/</loc>
+    <loc>https://mohit-k-s.github.io/blog/creativity/</loc>
     <lastmod>2025-06-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:50643/tags/thoughts/</loc>
+    <loc>https://mohit-k-s.github.io/tags/thoughts/</loc>
     <lastmod>2025-06-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:50643/categories/</loc>
+    <loc>https://mohit-k-s.github.io/categories/</loc>
   </url>
 </urlset>

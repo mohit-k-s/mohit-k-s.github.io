@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>StaticAnalysis on Mohit&#39;s Page</title>
-    <link>http://localhost:50643/tags/staticanalysis/</link>
+    <link>https://mohit-k-s.github.io/tags/staticanalysis/</link>
     <description>Recent content in StaticAnalysis on Mohit&#39;s Page</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
@@ -10,12 +10,12 @@
     <webMaster>mohit.bash@gmail.com (Mohit Kumar Singh)</webMaster>
     <copyright>Mohit Kumar Singh</copyright>
     <lastBuildDate>Fri, 25 Jul 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:50643/tags/staticanalysis/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://mohit-k-s.github.io/tags/staticanalysis/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>From Static Analysis to AI: My Journey Building a Git Diff Impact Analyzer</title>
-      <link>http://localhost:50643/blog/git_impact/</link>
+      <link>https://mohit-k-s.github.io/blog/git_impact/</link>
       <pubDate>Fri, 25 Jul 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar Singh)</author>
-      <guid>http://localhost:50643/blog/git_impact/</guid>
+      <guid>https://mohit-k-s.github.io/blog/git_impact/</guid>
       <description>&lt;h2 id=&#34;you-changed-a-line-what-did-you-break&#34;&gt;You Changed a Line. What Did You Break?&lt;/h2&gt;&#xA;&lt;p&gt;You push a change. CI passes. Days later, production breaks. Why?&lt;br&gt;&#xA;Because that &amp;ldquo;simple&amp;rdquo; change rippled into places you didn&amp;rsquo;t know existed.&lt;/p&gt;&#xA;&lt;p&gt;I got tired of tools telling me &lt;em&gt;what changed&lt;/em&gt;, but never &lt;em&gt;what it meant&lt;/em&gt;.&lt;br&gt;&#xA;So I built a system that answers the real question:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;&amp;ldquo;What changed—and why does it matter?&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;This post is about how I moved beyond syntax-based static analysis and into &lt;strong&gt;semantic impact analysis using LLMs&lt;/strong&gt;.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<h2 id="you-changed-a-line-what-did-you-break">You Changed a Line. What Did You Break?</h2>
 <p>You push a change. CI passes. Days later, production breaks. Why?<br>
@@ -214,17 +214,7 @@ So I built a system that answers the real question:</p>
 ✅ Specific testing: &#34;Test login with expired tokens&#34;
 ✅ Deployment guidance: &#34;Deploy during low-traffic hours&#34;
 ✅ Business context: &#34;Improves security but may cause temporary logouts&#34;
-✅ Developers actually use and trust the analysis</code></pre><h2 id="integration-making-it-practical">Integration: Making It Practical</h2>
-<p>The best analysis tool is useless if it&rsquo;s not integrated into your workflow. I built multiple integration points:</p>
-<h3 id="pre-commit-hooks">Pre-commit Hooks</h3>
-<p>Quick traditional analysis for immediate feedback before commits.</p>
-<h3 id="github-actions">GitHub Actions</h3>
-<p>Comprehensive AI analysis on pull requests with results posted as comments.</p>
-<h3 id="vs-code-tasks">VS Code Tasks</h3>
-<p>One-click analysis directly in the editor.</p>
-<h3 id="cli-commands">CLI Commands</h3>
-<p>Flexible command-line interface for any workflow.</p>
-<h2 id="lessons-learned-when-ai-wins-and-when-it-doesnt">Lessons Learned: When AI Wins and When It Doesn&rsquo;t</h2>
+✅ Developers actually use and trust the analysis</code></pre><h2 id="lessons-learned-when-ai-wins-and-when-it-doesnt">Lessons Learned: When AI Wins and When It Doesn&rsquo;t</h2>
 <p>After months of using both approaches, here are my key insights:</p>
 <h3 id="ai-is-superior-for">AI is Superior For:</h3>
 <ul>
