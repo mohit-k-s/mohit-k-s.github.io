@@ -9,8 +9,51 @@
     <managingEditor>mohit.bash@gmail.com (Mohit Kumar Singh)</managingEditor>
     <webMaster>mohit.bash@gmail.com (Mohit Kumar Singh)</webMaster>
     <copyright>Mohit Kumar Singh</copyright>
-    <lastBuildDate>Sun, 27 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 28 Jul 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://mohit-k-s.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building an AI Companion</title>
+      <link>https://mohit-k-s.github.io/blog/companion_app/01/</link>
+      <pubDate>Mon, 28 Jul 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar Singh)</author>
+      <guid>https://mohit-k-s.github.io/blog/companion_app/01/</guid>
+      <description>&lt;p&gt;Inspired by the movie &amp;ldquo;Her&amp;rdquo;, I&amp;rsquo;m building an AI companion with a beautiful 3D sphere interface and pure voice interaction. No words on screen - just visual conversation with AI.&lt;/p&gt;&#xA;&lt;h2 id=&#34;-where-i-am-now&#34;&gt;🎯 Where I Am Now&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Core Experience Working:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;✅ 3D sphere that responds to conversation states&lt;/li&gt;&#xA;&lt;li&gt;✅ Voice recognition and AI responses (Google Gemini)&lt;/li&gt;&#xA;&lt;li&gt;✅ Smooth, meditation-like transitions&lt;/li&gt;&#xA;&lt;li&gt;✅ Press spacebar to talk, AI responds naturally&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;-the-visual-magic&#34;&gt;🎨 The Visual Magic&lt;/h2&gt;&#xA;&lt;p&gt;The sphere morphs through four states:&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>Inspired by the movie &ldquo;Her&rdquo;, I&rsquo;m building an AI companion with a beautiful 3D sphere interface and pure voice interaction. No words on screen - just visual conversation with AI.</p>
+<h2 id="-where-i-am-now">🎯 Where I Am Now</h2>
+<p><strong>Core Experience Working:</strong></p>
+<ul>
+<li>✅ 3D sphere that responds to conversation states</li>
+<li>✅ Voice recognition and AI responses (Google Gemini)</li>
+<li>✅ Smooth, meditation-like transitions</li>
+<li>✅ Press spacebar to talk, AI responds naturally</li>
+</ul>
+<h2 id="-the-visual-magic">🎨 The Visual Magic</h2>
+<p>The sphere morphs through four states:</p>
+<ul>
+<li><strong>Idle</strong>: Gentle breathing, peaceful colors</li>
+<li><strong>Listening</strong>: Green tones, focused attention</li>
+<li><strong>Thinking</strong>: Blue contemplation, slow rotation</li>
+<li><strong>Speaking</strong>: Warm amber, gentle waves</li>
+</ul>
+<p><strong>Recent Update:</strong> Made all animations super gentle and soothing - like meditation rather than sci-fi action.</p>
+<h2 id="-tech-stack">🛠️ Tech Stack</h2>
+<ul>
+<li><strong>Frontend</strong>: TypeScript + Three.js + GSAP</li>
+<li><strong>Voice</strong>: Web Speech API (browser native)</li>
+<li><strong>AI</strong>: Google Gemini API</li>
+<li><strong>Particles &amp; Lighting</strong>: Custom WebGL effects</li>
+</ul>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/mTYFCS6z_WI?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+<h2 id="-the-vision">🎬 The Vision</h2>
+<p>Just like in &ldquo;Her&rdquo; - pure conversation with AI through beautiful visuals. No UI clutter, just you and the AI companion.</p>
+<p><img src="her_movie.jpg" alt="Movie"></p>
+<h2 id="-next-steps">🚀 Next Steps</h2>
+<p>The core is working as expected. The app is still WIP - as soon as it&rsquo;s ready I&rsquo;ll share it here!</p>
+<p><em>Press spacebar, speak naturally, watch the sphere respond. It&rsquo;s surprisingly intimate.</em></p>
+]]></content:encoded>
+    </item>
     <item>
       <title>From Static Analysis to AI: My Journey Building a Git Diff Impact Analyzer</title>
       <link>https://mohit-k-s.github.io/blog/git_impact/</link>
