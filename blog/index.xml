@@ -32,14 +32,46 @@
 
 
 
-<pre tabindex="0"><code>SELECT orders.id FROM order WHERE orders IN ($1, $2)</code></pre><p>Turns out they didn&rsquo;t expect multiple values and the use case only expected one entry in array , which of course will work fine. But the language in code was something that did expect array.</p>
-<p>What was not clear to me is who is to blame? Anyways I just wanted to share this with you all.</p>
-<p>Lesson to be learned:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="ln">1</span><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">orders</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="err">$</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">$</span><span class="mi">2</span><span class="p">)</span></span></span></code></pre></div><p>Turns out they didn&rsquo;t expect multiple values and the use case only expected one entry in array , which of course will work fine. But the language in code was something that did expect array.</p>
+<p>What was not clear to me is who is to blame?</p>
+<p>Lessons learned:</p>
 <ul>
 <li>If your query supports only one value, enforce it.</li>
 <li>If your query supports multiple values, use the right operator.</li>
 <li>And most importantly: test what you write, especially with different shapes of input.</li>
 </ul>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Distributed Systems Lingo</title>
+      <link>https://mohit-k-s.github.io/blog/2025/distributed_systems_lingo/</link>
+      <pubDate>Tue, 29 Jul 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
+      <guid>https://mohit-k-s.github.io/blog/2025/distributed_systems_lingo/</guid>
+      <description>&lt;h1 id=&#34;common-distributed-systems-lingo&#34;&gt;Common Distributed Systems Lingo&lt;/h1&gt;&#xA;&lt;p&gt;There are a few terms that keep popping up when you work with distributed systems. They&amp;rsquo;re often thrown around casually, and it’s easy to nod along without fully understanding them. I’m collecting those here with simple definitions and examples. This list will evolve as I keep learning.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;fencing-token&#34;&gt;Fencing Token&lt;/h2&gt;&#xA;&lt;p&gt;I was reading &lt;a href=&#34;https://avi.im/blag/2024/s3-log/#:~:text=a%20concept%20of-,fencing%20tokens.,-I%E2%80%99ve%20left%20this&#34;&gt;V&amp;rsquo;s blog&lt;/a&gt; and he mentioned fencing token. This word was introduced in Martin&amp;rsquo;s blog &lt;a href=&#34;https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;A &lt;strong&gt;fencing token&lt;/strong&gt; is a number (usually monotonically increasing) that helps prevent &lt;strong&gt;split-brain writes&lt;/strong&gt; or &lt;strong&gt;duplicate actions&lt;/strong&gt; in distributed systems.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<h1 id="common-distributed-systems-lingo">Common Distributed Systems Lingo</h1>
+<p>There are a few terms that keep popping up when you work with distributed systems. They&rsquo;re often thrown around casually, and it’s easy to nod along without fully understanding them. I’m collecting those here with simple definitions and examples. This list will evolve as I keep learning.</p>
+<hr>
+<h2 id="fencing-token">Fencing Token</h2>
+<p>I was reading <a href="https://avi.im/blag/2024/s3-log/#:~:text=a%20concept%20of-,fencing%20tokens.,-I%E2%80%99ve%20left%20this">V&rsquo;s blog</a> and he mentioned fencing token. This word was introduced in Martin&rsquo;s blog <a href="https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html">here</a>.</p>
+<p>A <strong>fencing token</strong> is a number (usually monotonically increasing) that helps prevent <strong>split-brain writes</strong> or <strong>duplicate actions</strong> in distributed systems.</p>
+<p>It’s commonly used in <strong>distributed locks</strong>. Here&rsquo;s why:</p>
+<p>Let’s say two nodes both believe they hold a lock (due to clock drift or network delays). Without fencing, both might write to a shared resource. With fencing, each action is tagged with a <strong>token</strong> (say, 41 and 42). The system can reject the one with the lower token, assuming it’s stale.</p>
+<blockquote>
+<p><strong>Only the action with the highest fencing token is considered valid.</strong></p></blockquote>
+<p>This way, even if the lock coordination fails, the system can still reject outdated operations.</p>
+<hr>
+<h2 id="network-partition">Network Partition</h2>
+<p>A <strong>network partition</strong> is when a group of nodes in a distributed system can no longer talk to another group — not because the nodes have failed, but because something in the network is blocking communication between them.</p>
+<p>Think of it as the system getting split into isolated islands.</p>
+<blockquote>
+<p><strong>Note:</strong> A partition is about communication failure, not node failure.</p></blockquote>
+<h3 id="examples">Examples:</h3>
+<ul>
+<li>A node can talk to nodes A and B, but not to node C. That’s a network partition.</li>
+<li>Someone misconfigures firewall rules between two subnets. That’s a network partition.</li>
+<li>NACLs (Network Access Control Lists) are misconfigured to block traffic between nodes.</li>
+</ul>
+<hr>
 ]]></content:encoded>
     </item>
     <item>

@@ -60,7 +60,7 @@
 <meta itemprop="name" content="Test what you write">
 <meta itemprop="description" content="Another day another bug"><meta itemprop="datePublished" content="2025-07-30T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2025-07-30T00:00:00+00:00" />
-<meta itemprop="wordCount" content="224">
+<meta itemprop="wordCount" content="212">
 
 <meta itemprop="image" content="https://mohit-k-s.github.io/images/social_card_bg_hu_12a757c1aae0604b.webp"/>
 
@@ -127,9 +127,9 @@
 
 
 
-<pre tabindex="0"><code>SELECT orders.id FROM order WHERE orders IN ($1, $2)</code></pre><p>Turns out they didn&rsquo;t expect multiple values and the use case only expected one entry in array , which of course will work fine. But the language in code was something that did expect array.</p>
-<p>What was not clear to me is who is to blame? Anyways I just wanted to share this with you all.</p>
-<p>Lesson to be learned:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="ln">1</span><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">orders</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="err">$</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">$</span><span class="mi">2</span><span class="p">)</span></span></span></code></pre></div><p>Turns out they didn&rsquo;t expect multiple values and the use case only expected one entry in array , which of course will work fine. But the language in code was something that did expect array.</p>
+<p>What was not clear to me is who is to blame?</p>
+<p>Lessons learned:</p>
 <ul>
 <li>If your query supports only one value, enforce it.</li>
 <li>If your query supports multiple values, use the right operator.</li>
