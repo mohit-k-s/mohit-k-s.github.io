@@ -48,10 +48,9 @@
 
 <h2 id="-the-vision">🎬 The Vision</h2>
 <p>Just like in &ldquo;Her&rdquo; - pure conversation with AI through beautiful visuals. No UI clutter, just you and the AI companion.</p>
-<p><img src="her_movie.jpg" alt="Movie"></p>
+<p><img src="../her_movie.jpg" alt="Movie"></p>
 <h2 id="-next-steps">🚀 Next Steps</h2>
 <p>The core is working as expected. The app is still WIP - as soon as it&rsquo;s ready I&rsquo;ll share it here!</p>
-<p><em>Press spacebar, speak naturally, watch the sphere respond. It&rsquo;s surprisingly intimate.</em></p>
 ]]></content:encoded>
     </item>
   </channel>

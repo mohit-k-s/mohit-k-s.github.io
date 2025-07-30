@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://mohit-k-s.github.io/static/images/favicon.png" />
+<title>Test what you write | Mohit&#39;s Page</title>
+<meta name="title" content="Test what you write" />
+<meta name="description" content="Another day another bug" />
+<meta name="author" content="Mohit Kumar" />
+<meta name="keywords" content="Postgres,Testing," />
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta property="og:title" content="Test what you write" />
+<meta property="og:description" content="Another day another bug" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://mohit-k-s.github.io/blog/test_what_you_write/" />
+
+<meta property="og:image" content="https://mohit-k-s.github.io/images/social_card_bg_hu_ef506c3485ae2bda.webp"/><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2025-07-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2025-07-30T00:00:00+00:00" /><meta property="og:site_name" content="Mohit&#39;s Page" />
+
+
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://mohit-k-s.github.io/images/social_card_bg_hu_ef506c3485ae2bda.webp"/>
+<meta name="twitter:title" content="Test what you write"/>
+<meta name="twitter:description" content="Another day another bug"/>
+<meta name="twitter:site" content="@shkcvd"/>
+
+
+
+<meta itemprop="name" content="Test what you write">
+<meta itemprop="description" content="Another day another bug"><meta itemprop="datePublished" content="2025-07-30T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2025-07-30T00:00:00+00:00" />
+<meta itemprop="wordCount" content="224">
+
+<meta itemprop="image" content="https://mohit-k-s.github.io/images/social_card_bg_hu_ef506c3485ae2bda.webp"/>
+
+
+<meta itemprop="keywords" content="Postgres,Testing," />
+
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  
+  <link href="/original.min.css" rel="stylesheet">
+
+  
+    
+    <link href="/syntax.min.css" rel="stylesheet">
+  
+
+  
+
+  
+</head>
+
+<body>
+  <header><a class="skip-link" href="#main-content">Skip to main content</a>
+
+<a href="/" class="title"><h1>Mohit&#39;s Page</h1></a>
+<nav>
+  <a href="/">Home</a>
+
+  <a href="/blog/">Blog</a>
+
+<a href='https://mohit-k-s.github.io/index.xml'>RSS</a>
+
+
+
+
+
+
+
+</nav>
+</header>
+  <main id="main-content">
+
+<h1>Test what you write</h1>
+<p class="byline">
+  <time datetime='2025-07-30' pubdate>
+    2025-07-30
+  </time>
+  · Mohit Kumar
+</p>
+
+<content>
+  <p>Yesterday , I noticed this weird error in logs.</p>
+
+
+
+
+
+<pre tabindex="0"><code>2025-07-30 10:00:00.000 UTC [1] LOG:  operator does not exist: uuid = record at character 50
+2025-07-30 10:00:00.000 UTC [1] LOG:  statement: SELECT (orders.id) FROM order WHERE orders = ($1, $2)</code></pre><p>It was immediately clear this was a bug—the query attempts to compare a column to a record, which is not valid syntax in Postgres using the <code>=</code> operator.</p>
+<p>When I brought it up with the developers and QA responsible for the feature, they insisted it had been tested and was working as expected.</p>
+<p>This prompted me to take a closer look. My assumption was that the intent here was to check whether <code>orders</code> matched <em>any</em> of the values, which would require using the <code>IN</code> operator, like:</p>
+
+
+
+
+
+<pre tabindex="0"><code>SELECT orders.id FROM order WHERE orders IN ($1, $2)</code></pre><p>Turns out they didn&rsquo;t expect multiple values and the use case only expected one entry in array , which of course will work fine. But the language in code was something that did expect array.</p>
+<p>What was not clear to me is who is to blame? Anyways I just wanted to share this with you all.</p>
+<p>Lesson to be learned:</p>
+<ul>
+<li>If your query supports only one value, enforce it.</li>
+<li>If your query supports multiple values, use the right operator.</li>
+<li>And most importantly: test what you write, especially with different shapes of input.</li>
+</ul>
+
+</content>
+<p>
+  
+    <a class="blog-tags" href="/tags/postgres/">#postgres</a>
+  
+    <a class="blog-tags" href="/tags/testing/">#testing</a>
+  
+</p>
+
+
+  <p>
+    <a href='mailto:mohit.bash@gmail.com?subject=Reply%20to%20"Test%20what%20you%20write"'>
+      Reply to this post by email ↪
+    </a>
+  </p>
+
+
+
+  </main>
+  <footer><small>
+  Mohit Kumar Singh | Made with <a href="https://github.com/clente/hugo-bearcub">Bear Cub</a>
+</small></footer>
+
+    
+</body>
+
+</html>
