@@ -6,16 +6,16 @@
     <description>Recent content on Mohit&#39;s Page</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <managingEditor>mohit.bash@gmail.com (Mohit Kumar Singh)</managingEditor>
-    <webMaster>mohit.bash@gmail.com (Mohit Kumar Singh)</webMaster>
-    <copyright>Mohit Kumar Singh</copyright>
+    <managingEditor>mohit.bash@gmail.com (Mohit Kumar)</managingEditor>
+    <webMaster>mohit.bash@gmail.com (Mohit Kumar)</webMaster>
+    <copyright>Mohit Kumar</copyright>
     <lastBuildDate>Wed, 30 Jul 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://mohit-k-s.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Test what you write</title>
-      <link>https://mohit-k-s.github.io/blog/test_what_you_write/</link>
-      <pubDate>Wed, 30 Jul 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar Singh)</author>
-      <guid>https://mohit-k-s.github.io/blog/test_what_you_write/</guid>
+      <link>https://mohit-k-s.github.io/blog/2025/test_what_you_write/</link>
+      <pubDate>Wed, 30 Jul 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
+      <guid>https://mohit-k-s.github.io/blog/2025/test_what_you_write/</guid>
       <description>&lt;p&gt;Yesterday , I noticed this weird error in logs.&lt;/p&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;2025-07-30 10:00:00.000 UTC [1] LOG:  operator does not exist: uuid = record at character 50&#xA;2025-07-30 10:00:00.000 UTC [1] LOG:  statement: SELECT (orders.id) FROM order WHERE orders = ($1, $2)&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;It was immediately clear this was a bug—the query attempts to compare a column to a record, which is not valid syntax in Postgres using the &lt;code&gt;=&lt;/code&gt; operator.&lt;/p&gt;&#xA;&lt;p&gt;When I brought it up with the developers and QA responsible for the feature, they insisted it had been tested and was working as expected.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>Yesterday , I noticed this weird error in logs.</p>
 
@@ -44,9 +44,9 @@
     </item>
     <item>
       <title>Building an AI Companion</title>
-      <link>https://mohit-k-s.github.io/blog/companion_app/01/</link>
-      <pubDate>Mon, 28 Jul 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar Singh)</author>
-      <guid>https://mohit-k-s.github.io/blog/companion_app/01/</guid>
+      <link>https://mohit-k-s.github.io/blog/2025/companion_app/01/</link>
+      <pubDate>Mon, 28 Jul 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
+      <guid>https://mohit-k-s.github.io/blog/2025/companion_app/01/</guid>
       <description>&lt;p&gt;Inspired by the movie &amp;ldquo;Her&amp;rdquo;, I&amp;rsquo;m building an AI companion with a beautiful 3D sphere interface and pure voice interaction. No words on screen - just visual conversation with AI.&lt;/p&gt;&#xA;&lt;h2 id=&#34;-where-i-am-now&#34;&gt;🎯 Where I Am Now&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Core Experience Working:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;✅ 3D sphere that responds to conversation states&lt;/li&gt;&#xA;&lt;li&gt;✅ Voice recognition and AI responses (Google Gemini)&lt;/li&gt;&#xA;&lt;li&gt;✅ Smooth, meditation-like transitions&lt;/li&gt;&#xA;&lt;li&gt;✅ Press spacebar to talk, AI responds naturally&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;-the-visual-magic&#34;&gt;🎨 The Visual Magic&lt;/h2&gt;&#xA;&lt;p&gt;The sphere morphs through four states:&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>Inspired by the movie &ldquo;Her&rdquo;, I&rsquo;m building an AI companion with a beautiful 3D sphere interface and pure voice interaction. No words on screen - just visual conversation with AI.</p>
 <h2 id="-where-i-am-now">🎯 Where I Am Now</h2>
@@ -86,9 +86,9 @@
     </item>
     <item>
       <title>From Static Analysis to AI: My Journey Building a Git Diff Impact Analyzer</title>
-      <link>https://mohit-k-s.github.io/blog/git_impact/</link>
-      <pubDate>Sun, 27 Jul 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar Singh)</author>
-      <guid>https://mohit-k-s.github.io/blog/git_impact/</guid>
+      <link>https://mohit-k-s.github.io/blog/2025/git_impact/</link>
+      <pubDate>Sun, 27 Jul 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
+      <guid>https://mohit-k-s.github.io/blog/2025/git_impact/</guid>
       <description>&lt;h2 id=&#34;you-changed-a-line-what-did-you-break&#34;&gt;You Changed a Line. What Did You Break?&lt;/h2&gt;&#xA;&lt;p&gt;You push a change. CI passes. Days later, production breaks. Why?&lt;br&gt;&#xA;Because that &amp;ldquo;simple&amp;rdquo; change rippled into places you didn&amp;rsquo;t know existed.&lt;/p&gt;&#xA;&lt;p&gt;I got tired of tools telling me &lt;em&gt;what changed&lt;/em&gt;, but never &lt;em&gt;what it meant&lt;/em&gt;.&lt;br&gt;&#xA;So I built a system that answers the real question:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;&amp;ldquo;What changed—and why does it matter?&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;This post is about how I moved beyond syntax-based static analysis and into &lt;strong&gt;semantic impact analysis using LLMs&lt;/strong&gt;.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<h2 id="you-changed-a-line-what-did-you-break">You Changed a Line. What Did You Break?</h2>
 <p>You push a change. CI passes. Days later, production breaks. Why?<br>
@@ -365,9 +365,9 @@ Changes       Files/Imports       Token Batches     LLM Calls    Report</code></
     </item>
     <item>
       <title>Creativity</title>
-      <link>https://mohit-k-s.github.io/blog/creativity/</link>
-      <pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar Singh)</author>
-      <guid>https://mohit-k-s.github.io/blog/creativity/</guid>
+      <link>https://mohit-k-s.github.io/blog/2025/creativity/</link>
+      <pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
+      <guid>https://mohit-k-s.github.io/blog/2025/creativity/</guid>
       <description>&lt;p&gt;Yesterday, I made my first post—and I promised myself I’d continue writing, just like I used to back in 10th grade. There’s something deeply fulfilling about writing. I’ve missed that feeling for a long time, and now I’m trying to find my way back to it. So here I am. We’d start with what starts things.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Creativity (noun): the use of imagination or original ideas to create something&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;Creativity, as we all know, is one of the fundamental pillars on which the entire arc of human evolution rests.&#xA;If not for original ideas, we’d still be hunting for food and hiding from the cold.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>Yesterday, I made my first post—and I promised myself I’d continue writing, just like I used to back in 10th grade. There’s something deeply fulfilling about writing. I’ve missed that feeling for a long time, and now I’m trying to find my way back to it. So here I am. We’d start with what starts things.</p>
 <blockquote>
