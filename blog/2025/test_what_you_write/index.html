@@ -119,7 +119,7 @@
 
 
 <pre tabindex="0"><code>2025-07-30 10:00:00.000 UTC [1] LOG:  operator does not exist: uuid = record at character 50
-2025-07-30 10:00:00.000 UTC [1] LOG:  statement: SELECT (orders.id) FROM order WHERE orders = ($1, $2)</code></pre><p>It was immediately clear this was a bug—the query attempts to compare a column to a record, which is not valid syntax in Postgres using the <code>=</code> operator.</p>
+2025-07-30 10:00:00.000 UTC [1] LOG:  statement: SELECT (orders.id) FROM order WHERE orders = ($1, $2)</code></pre><p>It was immediately clear this was a bug, the query attempts to compare a column to a record, which is not valid syntax in Postgres using the <code>=</code> operator.</p>
 <p>When I brought it up with the developers and QA responsible for the feature, they insisted it had been tested and was working as expected.</p>
 <p>This prompted me to take a closer look. My assumption was that the intent here was to check whether <code>orders</code> matched <em>any</em> of the values, which would require using the <code>IN</code> operator, like:</p>
 

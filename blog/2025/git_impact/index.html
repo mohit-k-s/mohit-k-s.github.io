@@ -118,7 +118,7 @@ Because that &ldquo;simple&rdquo; change rippled into places you didn&rsquo;t kn
 <p>I got tired of tools telling me <em>what changed</em>, but never <em>what it meant</em>.<br>
 So I built a system that answers the real question:</p>
 <blockquote>
-<p><strong>&ldquo;What changed—and why does it matter?&rdquo;</strong></p></blockquote>
+<p><strong>&ldquo;What changed and why does it matter?&rdquo;</strong></p></blockquote>
 <p>This post is about how I moved beyond syntax-based static analysis and into <strong>semantic impact analysis using LLMs</strong>.</p>
 <hr>
 <h1 id="part-1-the-traditional-approach">Part 1: The Traditional Approach</h1>
@@ -153,7 +153,7 @@ So I built a system that answers the real question:</p>
 </ul>
 <p>This was a shift from &ldquo;what is connected?&rdquo; to <strong>&ldquo;why does this change matter?&rdquo;</strong></p>
 <h2 id="building-the-ai-powered-analyzer">Building the AI-Powered Analyzer</h2>
-<p>I scrapped the AST parsing and built a much simpler—but more powerful—pipeline:</p>
+<p>I scrapped the AST parsing and built a much simpler but more powerful pipeline:</p>
 <h3 id="the-4-step-ai-pipeline">The 4-Step AI Pipeline</h3>
 <ol>
 <li><strong>🔍 Extract the Git Diff</strong></li>
@@ -370,7 +370,7 @@ Changes       Files/Imports       Token Batches     LLM Calls    Report</code></
 <li><strong>Choose the right tool</strong> for each situation (traditional, cloud AI, local AI)</li>
 <li><strong>Actually trust and use</strong> the analysis results</li>
 </ul>
-<p>The era of AI-powered development tools is here. Traditional static analysis isn&rsquo;t dead—it still has its place for speed-critical use cases. But for understanding the true impact of code changes, AI is simply superior.</p>
+<p>The era of AI-powered development tools is here. Traditional static analysis isn&rsquo;t dead, it still has its place for speed-critical use cases. But for understanding the true impact of code changes, AI is simply superior.</p>
 <p>If you&rsquo;re still relying on manual code review and intuition to understand change impact, you&rsquo;re missing out on a transformative approach that can make your development process safer, faster, and more intelligent.</p>
 <h2 id="whats-next">What&rsquo;s Next?</h2>
 <p>I&rsquo;m continuing to refine this approach with:</p>
