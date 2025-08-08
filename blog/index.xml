@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Blog on Mohit&#39;s Page</title>
-    <link>https://mohit-k-s.github.io/blog/</link>
+    <link>http://localhost:1313/blog/</link>
     <description>Recent content in Blog on Mohit&#39;s Page</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
@@ -10,15 +10,15 @@
     <webMaster>mohit.bash@gmail.com (Mohit Kumar)</webMaster>
     <copyright>Mohit Kumar</copyright>
     <lastBuildDate>Fri, 01 Aug 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://mohit-k-s.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tea Breaks are best</title>
-      <link>https://mohit-k-s.github.io/blog/2025/work/tea_breaks/</link>
+      <link>http://localhost:1313/blog/2025/work/tea_breaks/</link>
       <pubDate>Fri, 01 Aug 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
-      <guid>https://mohit-k-s.github.io/blog/2025/work/tea_breaks/</guid>
-      <description>&lt;p&gt;I haven’t worked a lot of jobs. Haven’t had too many coworkers either. Some were good, some forgettable, some… just there.&lt;/p&gt;&#xA;&lt;p&gt;But every now and then, someone stands out. Not because of their resume or technical chops (though that helps), but because of who they are — how they carry themselves, how they make you want to be better.&lt;/p&gt;&#xA;&lt;p&gt;At my current job, I had someone like that. Yesterday was his last day in the company.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/blog/2025/work/tea_breaks/</guid>
+      <description>&lt;p&gt;I haven’t worked a lot of jobs. Haven’t had too many coworkers either. Some were good, some forgettable, some… just there.&lt;/p&gt;&#xA;&lt;p&gt;But every now and then, someone stands out. Not because of their resume or technical chops (though that helps), but because of who they are, how they carry themselves, and how they make you want to be better.&lt;/p&gt;&#xA;&lt;p&gt;At my current job, I had someone like that. Yesterday was his last day in the company.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>I haven’t worked a lot of jobs. Haven’t had too many coworkers either. Some were good, some forgettable, some… just there.</p>
-<p>But every now and then, someone stands out. Not because of their resume or technical chops (though that helps), but because of who they are — how they carry themselves, how they make you want to be better.</p>
+<p>But every now and then, someone stands out. Not because of their resume or technical chops (though that helps), but because of who they are, how they carry themselves, and how they make you want to be better.</p>
 <p>At my current job, I had someone like that. Yesterday was his last day in the company.</p>
 <p>He joined as an IC from a pretty amazing org, and I connected with him almost instantly. Here’s what I learned from him:</p>
 <ul>
@@ -28,13 +28,13 @@
 <li>You can be a little weird</li>
 <li>Explore the unknown and don&rsquo;t be afraid to fail (You might be wrong, but that&rsquo;s okay)</li>
 </ul>
-<p>He believed that culture matters more than whatever metrics get flashed in monthly review calls. I second that.</p>
+<p>He believes that culture matters more than whatever metrics get flashed in monthly review calls. I second that.</p>
 <p>If you think about it , you’ll realize that what matters is the people and the vision. Not headcount. Not burn numbers. Great companies aren’t great because they’re big. They’re great because they have the right people doing meaningful work.</p>
 <p>Of course, office politics ruin everything. And they’re inevitable when non-technical folks run the show. But you can choose not to be part of it.</p>
 <hr>
 <h3 id="silicon-valley">Silicon Valley</h3>
-<p>We talked a lot about Silicon Valley — the show. I’ve watched it countless times. It’s probably the best representation of this industry we work in.</p>
-<p>Everything starts with an idea. Then power, metrics, and VC expectations creep in. But it’s the journey that matters. Richard didn’t take that 10 mn dollars offer — not because he’s an idiot (well, &ldquo;RIGBY&rdquo; but he does have serious issues) — but because he believed in something.</p>
+<p>We talked a lot about Silicon Valley(TV show). I’ve watched it countless times. It’s probably the best representation of this industry we work in.</p>
+<p>Everything starts with an idea. Then power, metrics, and VC expectations creep in. But it’s the journey that matters. Richard didn’t take that 10 mn dollars offer not because he’s an idiot (well, &ldquo;RIGBY&rdquo; but he does have serious issues) but because he believed in something.</p>
 <p>That still counts for something. I might nerd out about this show at length in some other post.</p>
 <hr>
 <h3 id="tea-breaks">Tea Breaks</h3>
@@ -44,9 +44,9 @@
 <p>I was like &ldquo;why ? I am not a tea person&rdquo; but then I thought about it and I was like &ldquo;why not ?&rdquo;</p>
 <p>So we went to the tea shop. It wasn’t fancy, but it was great. We talked about TV shows, philosophy, random tech, and even weirder things. I remember him asking me:<br>
 <em>“Do you know how a helicopter flies? What’s so special about the blades?”</em></p>
-<p>One of the recurring themes was how we’re made to feel like we’re not good enough — and how that feeds the rat race.
+<p>One of the recurring themes was how society makes us Indians to feel like we’re not good enough and how that feeds the rat race.
 It made me think things and finally come to realise that I’m part of that too. I didn’t choose this field because I loved it as a kid. I’m not the coder who started at 12.</p>
-<p>And always the converation ended with this quote</p>
+<p>And always the conversation ended with this quote</p>
 <blockquote>
 <p>You can just do things.</p></blockquote>
 <p>Well it will be difficult though, but sure we can do it.</p>
@@ -59,10 +59,10 @@ He sent me this in the teams chat , classic right ?</p>
     </item>
     <item>
       <title>Test what you write</title>
-      <link>https://mohit-k-s.github.io/blog/2025/test_what_you_write/</link>
+      <link>http://localhost:1313/blog/2025/test_what_you_write/</link>
       <pubDate>Wed, 30 Jul 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
-      <guid>https://mohit-k-s.github.io/blog/2025/test_what_you_write/</guid>
-      <description>&lt;p&gt;Yesterday , I noticed this weird error in logs.&lt;/p&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;2025-07-30 10:00:00.000 UTC [1] LOG:  operator does not exist: uuid = record at character 50&#xA;2025-07-30 10:00:00.000 UTC [1] LOG:  statement: SELECT (orders.id) FROM order WHERE orders = ($1, $2)&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;It was immediately clear this was a bug—the query attempts to compare a column to a record, which is not valid syntax in Postgres using the &lt;code&gt;=&lt;/code&gt; operator.&lt;/p&gt;&#xA;&lt;p&gt;When I brought it up with the developers and QA responsible for the feature, they insisted it had been tested and was working as expected.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/blog/2025/test_what_you_write/</guid>
+      <description>&lt;p&gt;Yesterday , I noticed this weird error in logs.&lt;/p&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;2025-07-30 10:00:00.000 UTC [1] LOG:  operator does not exist: uuid = record at character 50&#xA;2025-07-30 10:00:00.000 UTC [1] LOG:  statement: SELECT (orders.id) FROM order WHERE orders = ($1, $2)&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;It was immediately clear this was a bug the query attempts to compare a column to a record, which is not valid syntax in Postgres using the &lt;code&gt;=&lt;/code&gt; operator.&lt;/p&gt;&#xA;&lt;p&gt;When I brought it up with the developers and QA responsible for the feature, they insisted it had been tested and was working as expected.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>Yesterday , I noticed this weird error in logs.</p>
 
 
@@ -70,7 +70,7 @@ He sent me this in the teams chat , classic right ?</p>
 
 
 <pre tabindex="0"><code>2025-07-30 10:00:00.000 UTC [1] LOG:  operator does not exist: uuid = record at character 50
-2025-07-30 10:00:00.000 UTC [1] LOG:  statement: SELECT (orders.id) FROM order WHERE orders = ($1, $2)</code></pre><p>It was immediately clear this was a bug—the query attempts to compare a column to a record, which is not valid syntax in Postgres using the <code>=</code> operator.</p>
+2025-07-30 10:00:00.000 UTC [1] LOG:  statement: SELECT (orders.id) FROM order WHERE orders = ($1, $2)</code></pre><p>It was immediately clear this was a bug the query attempts to compare a column to a record, which is not valid syntax in Postgres using the <code>=</code> operator.</p>
 <p>When I brought it up with the developers and QA responsible for the feature, they insisted it had been tested and was working as expected.</p>
 <p>This prompted me to take a closer look. My assumption was that the intent here was to check whether <code>orders</code> matched <em>any</em> of the values, which would require using the <code>IN</code> operator, like:</p>
 
@@ -78,7 +78,7 @@ He sent me this in the teams chat , classic right ?</p>
 
 
 
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="ln">1</span><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">orders</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="err">$</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">$</span><span class="mi">2</span><span class="p">)</span></span></span></code></pre></div><p>Turns out they didn&rsquo;t expect multiple values and the use case only expected one entry in array , which of course will work fine. But the language in code was something that did expect array.</p>
+<pre tabindex="0"><code>SELECT orders.id FROM order WHERE orders IN ($1, $2)</code></pre><p>Turns out they didn&rsquo;t expect multiple values and the use case only expected one entry in array , which of course will work fine. But the language in code was something that did expect array.</p>
 <p>What was not clear to me is who is to blame?</p>
 <p>Lessons learned:</p>
 <ul>
@@ -90,9 +90,9 @@ He sent me this in the teams chat , classic right ?</p>
     </item>
     <item>
       <title>Distributed Systems Lingo</title>
-      <link>https://mohit-k-s.github.io/blog/2025/distributed_systems_lingo/</link>
+      <link>http://localhost:1313/blog/2025/distributed_systems_lingo/</link>
       <pubDate>Tue, 29 Jul 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
-      <guid>https://mohit-k-s.github.io/blog/2025/distributed_systems_lingo/</guid>
+      <guid>http://localhost:1313/blog/2025/distributed_systems_lingo/</guid>
       <description>&lt;h1 id=&#34;common-distributed-systems-lingo&#34;&gt;Common Distributed Systems Lingo&lt;/h1&gt;&#xA;&lt;p&gt;There are a few terms that keep popping up when you work with distributed systems. They&amp;rsquo;re often thrown around casually, and it’s easy to nod along without fully understanding them. I’m collecting those here with simple definitions and examples. This list will evolve as I keep learning.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;fencing-token&#34;&gt;Fencing Token&lt;/h2&gt;&#xA;&lt;p&gt;I was reading &lt;a href=&#34;https://avi.im/blag/2024/s3-log/#:~:text=a%20concept%20of-,fencing%20tokens.,-I%E2%80%99ve%20left%20this&#34;&gt;V&amp;rsquo;s blog&lt;/a&gt; and he mentioned fencing token. This word was introduced in Martin&amp;rsquo;s blog &lt;a href=&#34;https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;A &lt;strong&gt;fencing token&lt;/strong&gt; is a number (usually monotonically increasing) that helps prevent &lt;strong&gt;split-brain writes&lt;/strong&gt; or &lt;strong&gt;duplicate actions&lt;/strong&gt; in distributed systems.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<h1 id="common-distributed-systems-lingo">Common Distributed Systems Lingo</h1>
 <p>There are a few terms that keep popping up when you work with distributed systems. They&rsquo;re often thrown around casually, and it’s easy to nod along without fully understanding them. I’m collecting those here with simple definitions and examples. This list will evolve as I keep learning.</p>
@@ -122,9 +122,9 @@ He sent me this in the teams chat , classic right ?</p>
     </item>
     <item>
       <title>Building an AI Companion</title>
-      <link>https://mohit-k-s.github.io/blog/2025/companion_app/01/</link>
+      <link>http://localhost:1313/blog/2025/companion_app/01/</link>
       <pubDate>Mon, 28 Jul 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
-      <guid>https://mohit-k-s.github.io/blog/2025/companion_app/01/</guid>
+      <guid>http://localhost:1313/blog/2025/companion_app/01/</guid>
       <description>&lt;p&gt;Inspired by the movie &amp;ldquo;Her&amp;rdquo;, I&amp;rsquo;m building an AI companion with a beautiful 3D sphere interface and pure voice interaction. No words on screen - just visual conversation with AI.&lt;/p&gt;&#xA;&lt;h2 id=&#34;-where-i-am-now&#34;&gt;🎯 Where I Am Now&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Core Experience Working:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;✅ 3D sphere that responds to conversation states&lt;/li&gt;&#xA;&lt;li&gt;✅ Voice recognition and AI responses (Google Gemini)&lt;/li&gt;&#xA;&lt;li&gt;✅ Smooth, meditation-like transitions&lt;/li&gt;&#xA;&lt;li&gt;✅ Press spacebar to talk, AI responds naturally&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;-the-visual-magic&#34;&gt;🎨 The Visual Magic&lt;/h2&gt;&#xA;&lt;p&gt;The sphere morphs through four states:&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>Inspired by the movie &ldquo;Her&rdquo;, I&rsquo;m building an AI companion with a beautiful 3D sphere interface and pure voice interaction. No words on screen - just visual conversation with AI.</p>
 <h2 id="-where-i-am-now">🎯 Where I Am Now</h2>
@@ -164,17 +164,17 @@ He sent me this in the teams chat , classic right ?</p>
     </item>
     <item>
       <title>From Static Analysis to AI: My Journey Building a Git Diff Impact Analyzer</title>
-      <link>https://mohit-k-s.github.io/blog/2025/git_impact/</link>
+      <link>http://localhost:1313/blog/2025/git_impact/</link>
       <pubDate>Sun, 27 Jul 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
-      <guid>https://mohit-k-s.github.io/blog/2025/git_impact/</guid>
-      <description>&lt;h2 id=&#34;you-changed-a-line-what-did-you-break&#34;&gt;You Changed a Line. What Did You Break?&lt;/h2&gt;&#xA;&lt;p&gt;You push a change. CI passes. Days later, production breaks. Why?&lt;br&gt;&#xA;Because that &amp;ldquo;simple&amp;rdquo; change rippled into places you didn&amp;rsquo;t know existed.&lt;/p&gt;&#xA;&lt;p&gt;I got tired of tools telling me &lt;em&gt;what changed&lt;/em&gt;, but never &lt;em&gt;what it meant&lt;/em&gt;.&lt;br&gt;&#xA;So I built a system that answers the real question:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;&amp;ldquo;What changed—and why does it matter?&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;This post is about how I moved beyond syntax-based static analysis and into &lt;strong&gt;semantic impact analysis using LLMs&lt;/strong&gt;.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/blog/2025/git_impact/</guid>
+      <description>&lt;h2 id=&#34;you-changed-a-line-what-did-you-break&#34;&gt;You Changed a Line. What Did You Break?&lt;/h2&gt;&#xA;&lt;p&gt;You push a change. CI passes. Days later, production breaks. Why?&lt;br&gt;&#xA;Because that &amp;ldquo;simple&amp;rdquo; change rippled into places you didn&amp;rsquo;t know existed.&lt;/p&gt;&#xA;&lt;p&gt;I got tired of tools telling me &lt;em&gt;what changed&lt;/em&gt;, but never &lt;em&gt;what it meant&lt;/em&gt;.&lt;br&gt;&#xA;So I built a system that answers the real question:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;&amp;ldquo;What changed and why does it matter?&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;This post is about how I moved beyond syntax-based static analysis and into &lt;strong&gt;semantic impact analysis using LLMs&lt;/strong&gt;.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<h2 id="you-changed-a-line-what-did-you-break">You Changed a Line. What Did You Break?</h2>
 <p>You push a change. CI passes. Days later, production breaks. Why?<br>
 Because that &ldquo;simple&rdquo; change rippled into places you didn&rsquo;t know existed.</p>
 <p>I got tired of tools telling me <em>what changed</em>, but never <em>what it meant</em>.<br>
 So I built a system that answers the real question:</p>
 <blockquote>
-<p><strong>&ldquo;What changed—and why does it matter?&rdquo;</strong></p></blockquote>
+<p><strong>&ldquo;What changed and why does it matter?&rdquo;</strong></p></blockquote>
 <p>This post is about how I moved beyond syntax-based static analysis and into <strong>semantic impact analysis using LLMs</strong>.</p>
 <hr>
 <h1 id="part-1-the-traditional-approach">Part 1: The Traditional Approach</h1>
@@ -209,7 +209,7 @@ So I built a system that answers the real question:</p>
 </ul>
 <p>This was a shift from &ldquo;what is connected?&rdquo; to <strong>&ldquo;why does this change matter?&rdquo;</strong></p>
 <h2 id="building-the-ai-powered-analyzer">Building the AI-Powered Analyzer</h2>
-<p>I scrapped the AST parsing and built a much simpler—but more powerful—pipeline:</p>
+<p>I scrapped the AST parsing and built a much simpler but more powerful pipeline:</p>
 <h3 id="the-4-step-ai-pipeline">The 4-Step AI Pipeline</h3>
 <ol>
 <li><strong>🔍 Extract the Git Diff</strong></li>
@@ -426,7 +426,7 @@ Changes       Files/Imports       Token Batches     LLM Calls    Report</code></
 <li><strong>Choose the right tool</strong> for each situation (traditional, cloud AI, local AI)</li>
 <li><strong>Actually trust and use</strong> the analysis results</li>
 </ul>
-<p>The era of AI-powered development tools is here. Traditional static analysis isn&rsquo;t dead—it still has its place for speed-critical use cases. But for understanding the true impact of code changes, AI is simply superior.</p>
+<p>The era of AI-powered development tools is here. Traditional static analysis isn&rsquo;t dead,it still has its place for speed-critical use cases. But for understanding the true impact of code changes, AI is simply superior.</p>
 <p>If you&rsquo;re still relying on manual code review and intuition to understand change impact, you&rsquo;re missing out on a transformative approach that can make your development process safer, faster, and more intelligent.</p>
 <h2 id="whats-next">What&rsquo;s Next?</h2>
 <p>I&rsquo;m continuing to refine this approach with:</p>
@@ -443,11 +443,11 @@ Changes       Files/Imports       Token Batches     LLM Calls    Report</code></
     </item>
     <item>
       <title>Creativity</title>
-      <link>https://mohit-k-s.github.io/blog/2025/creativity/</link>
+      <link>http://localhost:1313/blog/2025/creativity/</link>
       <pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
-      <guid>https://mohit-k-s.github.io/blog/2025/creativity/</guid>
-      <description>&lt;p&gt;Yesterday, I made my first post—and I promised myself I’d continue writing, just like I used to back in 10th grade. There’s something deeply fulfilling about writing. I’ve missed that feeling for a long time, and now I’m trying to find my way back to it. So here I am. We’d start with what starts things.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Creativity (noun): the use of imagination or original ideas to create something&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;Creativity, as we all know, is one of the fundamental pillars on which the entire arc of human evolution rests.&#xA;If not for original ideas, we’d still be hunting for food and hiding from the cold.&lt;/p&gt;</description>
-      <content:encoded><![CDATA[<p>Yesterday, I made my first post—and I promised myself I’d continue writing, just like I used to back in 10th grade. There’s something deeply fulfilling about writing. I’ve missed that feeling for a long time, and now I’m trying to find my way back to it. So here I am. We’d start with what starts things.</p>
+      <guid>http://localhost:1313/blog/2025/creativity/</guid>
+      <description>&lt;p&gt;Yesterday, I made my first post and I promised myself I’d continue writing, just like I used to back in 10th grade. There’s something deeply fulfilling about writing. I’ve missed that feeling for a long time, and now I’m trying to find my way back to it. So here I am. We’d start with what starts things.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Creativity (noun): the use of imagination or original ideas to create something&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;Creativity, as we all know, is one of the fundamental pillars on which the entire arc of human evolution rests.&#xA;If not for original ideas, we’d still be hunting for food and hiding from the cold.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>Yesterday, I made my first post and I promised myself I’d continue writing, just like I used to back in 10th grade. There’s something deeply fulfilling about writing. I’ve missed that feeling for a long time, and now I’m trying to find my way back to it. So here I am. We’d start with what starts things.</p>
 <blockquote>
 <p>Creativity (noun): the use of imagination or original ideas to create something</p></blockquote>
 <p>Creativity, as we all know, is one of the fundamental pillars on which the entire arc of human evolution rests.
@@ -458,29 +458,29 @@ This new “thing” doesn’t have to be grand. It can be a poem, a cooling mac
 It’s invention born not only from inspiration, but from constraint.</p>
 <p>When was the last time you created something ? When was the last time you sat down and just gave your best to do something by yourself , with just what you know. There’s something about that feeling, right?</p>
 <p>That quiet intensity. That sense of this is my work.</p>
-<p>Of course, people take help—and that’s not wrong. We’re not meant to be experts at everything.
-But still—there’s a certain joy, a deep satisfaction, in being completely immersed in the one thing you love.
+<p>Of course, people take help and that’s not wrong. We’re not meant to be experts at everything.
+But still there’s a certain joy, a deep satisfaction, in being completely immersed in the one thing you love.
 To create something original.</p>
 <p>I enjoy writing and you might enjoy knitting, that last piece in which you made a cool pattern surely is the word of mouth.</p>
 <p>Why ?
-Creating is often linked to immediate benefits—for society, and for yourself.
+Creating is often linked to immediate benefits for society, and for yourself.
 Make something useful, and the world might reward you with recognition, money, maybe even status.</p>
 <p>That’s fine. There’s no shame in it. But pause for a moment.
 Ask yourself: Do you create to live, or live to create?</p>
-<p>There’s something quietly romantic—almost defiant—about calling yourself an original.
+<p>There’s something quietly romantic almost defiant about calling yourself an original.
 About making something not because it’s useful, but because it had to be made.
 Not for profit, not for praise. Just for the act. For the joy.</p>
-<p>No judgment, though. I respect all creators—the practical, the poetic, the ones who ship, and the ones who scribble on napkins and never show a soul.</p>
+<p>No judgment, though. I respect all creators the practical, the poetic, the ones who ship, and the ones who scribble on napkins and never show a soul.</p>
 <p>But if you’re someone who feels that strange pull to make things that don’t quite have a reason yet, keep going.
 That’s the kind of creation that changes things.</p>
 <p>How ?
-The why is simple—it’s the spark that gets you going. But it’s not enough. To actually create something, you have to put in the hours. The people you admire weren’t creators from the start—they were learners. That’s the part people often skip. You have to be willing to learn, to fail, and to repeat the process over and over again. Obsess over it.</p>
-<p>Create with so much intensity that it borders on madness—because the truth is, creativity isn’t a lightning strike.</p>
-<p>In this era of knowledge, everything is within reach. Imagine Newton—the greatest of all time—having access to the tools and information we have today. The possibilities would’ve been endless. But here’s the thing: you also live in this era. You, too, can do what you dream of. It’s just not going to happen overnight. Real creation takes time.</p>
-<p>And it will demand things from you that most people aren’t willing to give up—comfort, distraction, certainty. I know that’s debatable, but it’s often the trade for creating something truly great. History is full of that proof. The people who changed things didn’t always live balanced lives—but they lived driven ones. If you’re willing to pay that price, even in small doses, the doors are wide open.</p>
-<p>But does that mean you can’t call small wins a win? Not at all. That’s the best part. In the art of creation, everything new is new. Every small step forward counts. A sentence written, a sketch finished, a bug finally fixed—they all matter. You don’t need to change the world to call yourself a creator. You just need to keep creating.</p>
+The why is simple it’s the spark that gets you going. But it’s not enough. To actually create something, you have to put in the hours. The people you admire weren’t creators from the start they were learners. That’s the part people often skip. You have to be willing to learn, to fail, and to repeat the process over and over again. Obsess over it.</p>
+<p>Create with so much intensity that it borders on madness because the truth is, creativity isn’t a lightning strike.</p>
+<p>In this era of knowledge, everything is within reach. Imagine Newton the greatest of all time having access to the tools and information we have today. The possibilities would’ve been endless. But here’s the thing: you also live in this era. You, too, can do what you dream of. It’s just not going to happen overnight. Real creation takes time.</p>
+<p>And it will demand things from you that most people aren’t willing to give up comfort, distraction, certainty. I know that’s debatable, but it’s often the trade for creating something truly great. History is full of that proof. The people who changed things didn’t always live balanced lives but they lived driven ones. If you’re willing to pay that price, even in small doses, the doors are wide open.</p>
+<p>But does that mean you can’t call small wins a win? Not at all. That’s the best part. In the art of creation, everything new is new. Every small step forward counts. A sentence written, a sketch finished, a bug finally fixed they all matter. You don’t need to change the world to call yourself a creator. You just need to keep creating.</p>
 <p>What ?
-This one’s simple—it can be anything. Anything that already exists and just needs a little polishing, or something that doesn’t exist yet at all. It could be a new music piece, a sketch, a blog post, an app , or even your next dish.</p>
+This one’s simple it can be anything. Anything that already exists and just needs a little polishing, or something that doesn’t exist yet at all. It could be a new music piece, a sketch, a blog post, an app , or even your next dish.</p>
 <p>The “what” of creation isn’t fixed. That’s the beauty of it. There are a thousand answers, and they’re all valid. What matters is that you decide to make something.
 </p>
 ]]></content:encoded>

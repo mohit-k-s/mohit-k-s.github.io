@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Thoughts on Mohit&#39;s Page</title>
-    <link>https://mohit-k-s.github.io/tags/thoughts/</link>
+    <link>http://localhost:1313/tags/thoughts/</link>
     <description>Recent content in Thoughts on Mohit&#39;s Page</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
@@ -10,15 +10,15 @@
     <webMaster>mohit.bash@gmail.com (Mohit Kumar)</webMaster>
     <copyright>Mohit Kumar</copyright>
     <lastBuildDate>Fri, 01 Aug 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://mohit-k-s.github.io/tags/thoughts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/thoughts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tea Breaks are best</title>
-      <link>https://mohit-k-s.github.io/blog/2025/work/tea_breaks/</link>
+      <link>http://localhost:1313/blog/2025/work/tea_breaks/</link>
       <pubDate>Fri, 01 Aug 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
-      <guid>https://mohit-k-s.github.io/blog/2025/work/tea_breaks/</guid>
-      <description>&lt;p&gt;I haven’t worked a lot of jobs. Haven’t had too many coworkers either. Some were good, some forgettable, some… just there.&lt;/p&gt;&#xA;&lt;p&gt;But every now and then, someone stands out. Not because of their resume or technical chops (though that helps), but because of who they are — how they carry themselves, how they make you want to be better.&lt;/p&gt;&#xA;&lt;p&gt;At my current job, I had someone like that. Yesterday was his last day in the company.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/blog/2025/work/tea_breaks/</guid>
+      <description>&lt;p&gt;I haven’t worked a lot of jobs. Haven’t had too many coworkers either. Some were good, some forgettable, some… just there.&lt;/p&gt;&#xA;&lt;p&gt;But every now and then, someone stands out. Not because of their resume or technical chops (though that helps), but because of who they are, how they carry themselves, and how they make you want to be better.&lt;/p&gt;&#xA;&lt;p&gt;At my current job, I had someone like that. Yesterday was his last day in the company.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>I haven’t worked a lot of jobs. Haven’t had too many coworkers either. Some were good, some forgettable, some… just there.</p>
-<p>But every now and then, someone stands out. Not because of their resume or technical chops (though that helps), but because of who they are — how they carry themselves, how they make you want to be better.</p>
+<p>But every now and then, someone stands out. Not because of their resume or technical chops (though that helps), but because of who they are, how they carry themselves, and how they make you want to be better.</p>
 <p>At my current job, I had someone like that. Yesterday was his last day in the company.</p>
 <p>He joined as an IC from a pretty amazing org, and I connected with him almost instantly. Here’s what I learned from him:</p>
 <ul>
@@ -28,13 +28,13 @@
 <li>You can be a little weird</li>
 <li>Explore the unknown and don&rsquo;t be afraid to fail (You might be wrong, but that&rsquo;s okay)</li>
 </ul>
-<p>He believed that culture matters more than whatever metrics get flashed in monthly review calls. I second that.</p>
+<p>He believes that culture matters more than whatever metrics get flashed in monthly review calls. I second that.</p>
 <p>If you think about it , you’ll realize that what matters is the people and the vision. Not headcount. Not burn numbers. Great companies aren’t great because they’re big. They’re great because they have the right people doing meaningful work.</p>
 <p>Of course, office politics ruin everything. And they’re inevitable when non-technical folks run the show. But you can choose not to be part of it.</p>
 <hr>
 <h3 id="silicon-valley">Silicon Valley</h3>
-<p>We talked a lot about Silicon Valley — the show. I’ve watched it countless times. It’s probably the best representation of this industry we work in.</p>
-<p>Everything starts with an idea. Then power, metrics, and VC expectations creep in. But it’s the journey that matters. Richard didn’t take that 10 mn dollars offer — not because he’s an idiot (well, &ldquo;RIGBY&rdquo; but he does have serious issues) — but because he believed in something.</p>
+<p>We talked a lot about Silicon Valley(TV show). I’ve watched it countless times. It’s probably the best representation of this industry we work in.</p>
+<p>Everything starts with an idea. Then power, metrics, and VC expectations creep in. But it’s the journey that matters. Richard didn’t take that 10 mn dollars offer not because he’s an idiot (well, &ldquo;RIGBY&rdquo; but he does have serious issues) but because he believed in something.</p>
 <p>That still counts for something. I might nerd out about this show at length in some other post.</p>
 <hr>
 <h3 id="tea-breaks">Tea Breaks</h3>
@@ -44,9 +44,9 @@
 <p>I was like &ldquo;why ? I am not a tea person&rdquo; but then I thought about it and I was like &ldquo;why not ?&rdquo;</p>
 <p>So we went to the tea shop. It wasn’t fancy, but it was great. We talked about TV shows, philosophy, random tech, and even weirder things. I remember him asking me:<br>
 <em>“Do you know how a helicopter flies? What’s so special about the blades?”</em></p>
-<p>One of the recurring themes was how we’re made to feel like we’re not good enough — and how that feeds the rat race.
+<p>One of the recurring themes was how society makes us Indians to feel like we’re not good enough and how that feeds the rat race.
 It made me think things and finally come to realise that I’m part of that too. I didn’t choose this field because I loved it as a kid. I’m not the coder who started at 12.</p>
-<p>And always the converation ended with this quote</p>
+<p>And always the conversation ended with this quote</p>
 <blockquote>
 <p>You can just do things.</p></blockquote>
 <p>Well it will be difficult though, but sure we can do it.</p>
@@ -59,11 +59,11 @@ He sent me this in the teams chat , classic right ?</p>
     </item>
     <item>
       <title>Creativity</title>
-      <link>https://mohit-k-s.github.io/blog/2025/creativity/</link>
+      <link>http://localhost:1313/blog/2025/creativity/</link>
       <pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
-      <guid>https://mohit-k-s.github.io/blog/2025/creativity/</guid>
-      <description>&lt;p&gt;Yesterday, I made my first post—and I promised myself I’d continue writing, just like I used to back in 10th grade. There’s something deeply fulfilling about writing. I’ve missed that feeling for a long time, and now I’m trying to find my way back to it. So here I am. We’d start with what starts things.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Creativity (noun): the use of imagination or original ideas to create something&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;Creativity, as we all know, is one of the fundamental pillars on which the entire arc of human evolution rests.&#xA;If not for original ideas, we’d still be hunting for food and hiding from the cold.&lt;/p&gt;</description>
-      <content:encoded><![CDATA[<p>Yesterday, I made my first post—and I promised myself I’d continue writing, just like I used to back in 10th grade. There’s something deeply fulfilling about writing. I’ve missed that feeling for a long time, and now I’m trying to find my way back to it. So here I am. We’d start with what starts things.</p>
+      <guid>http://localhost:1313/blog/2025/creativity/</guid>
+      <description>&lt;p&gt;Yesterday, I made my first post and I promised myself I’d continue writing, just like I used to back in 10th grade. There’s something deeply fulfilling about writing. I’ve missed that feeling for a long time, and now I’m trying to find my way back to it. So here I am. We’d start with what starts things.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Creativity (noun): the use of imagination or original ideas to create something&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;Creativity, as we all know, is one of the fundamental pillars on which the entire arc of human evolution rests.&#xA;If not for original ideas, we’d still be hunting for food and hiding from the cold.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>Yesterday, I made my first post and I promised myself I’d continue writing, just like I used to back in 10th grade. There’s something deeply fulfilling about writing. I’ve missed that feeling for a long time, and now I’m trying to find my way back to it. So here I am. We’d start with what starts things.</p>
 <blockquote>
 <p>Creativity (noun): the use of imagination or original ideas to create something</p></blockquote>
 <p>Creativity, as we all know, is one of the fundamental pillars on which the entire arc of human evolution rests.
@@ -74,29 +74,29 @@ This new “thing” doesn’t have to be grand. It can be a poem, a cooling mac
 It’s invention born not only from inspiration, but from constraint.</p>
 <p>When was the last time you created something ? When was the last time you sat down and just gave your best to do something by yourself , with just what you know. There’s something about that feeling, right?</p>
 <p>That quiet intensity. That sense of this is my work.</p>
-<p>Of course, people take help—and that’s not wrong. We’re not meant to be experts at everything.
-But still—there’s a certain joy, a deep satisfaction, in being completely immersed in the one thing you love.
+<p>Of course, people take help and that’s not wrong. We’re not meant to be experts at everything.
+But still there’s a certain joy, a deep satisfaction, in being completely immersed in the one thing you love.
 To create something original.</p>
 <p>I enjoy writing and you might enjoy knitting, that last piece in which you made a cool pattern surely is the word of mouth.</p>
 <p>Why ?
-Creating is often linked to immediate benefits—for society, and for yourself.
+Creating is often linked to immediate benefits for society, and for yourself.
 Make something useful, and the world might reward you with recognition, money, maybe even status.</p>
 <p>That’s fine. There’s no shame in it. But pause for a moment.
 Ask yourself: Do you create to live, or live to create?</p>
-<p>There’s something quietly romantic—almost defiant—about calling yourself an original.
+<p>There’s something quietly romantic almost defiant about calling yourself an original.
 About making something not because it’s useful, but because it had to be made.
 Not for profit, not for praise. Just for the act. For the joy.</p>
-<p>No judgment, though. I respect all creators—the practical, the poetic, the ones who ship, and the ones who scribble on napkins and never show a soul.</p>
+<p>No judgment, though. I respect all creators the practical, the poetic, the ones who ship, and the ones who scribble on napkins and never show a soul.</p>
 <p>But if you’re someone who feels that strange pull to make things that don’t quite have a reason yet, keep going.
 That’s the kind of creation that changes things.</p>
 <p>How ?
-The why is simple—it’s the spark that gets you going. But it’s not enough. To actually create something, you have to put in the hours. The people you admire weren’t creators from the start—they were learners. That’s the part people often skip. You have to be willing to learn, to fail, and to repeat the process over and over again. Obsess over it.</p>
-<p>Create with so much intensity that it borders on madness—because the truth is, creativity isn’t a lightning strike.</p>
-<p>In this era of knowledge, everything is within reach. Imagine Newton—the greatest of all time—having access to the tools and information we have today. The possibilities would’ve been endless. But here’s the thing: you also live in this era. You, too, can do what you dream of. It’s just not going to happen overnight. Real creation takes time.</p>
-<p>And it will demand things from you that most people aren’t willing to give up—comfort, distraction, certainty. I know that’s debatable, but it’s often the trade for creating something truly great. History is full of that proof. The people who changed things didn’t always live balanced lives—but they lived driven ones. If you’re willing to pay that price, even in small doses, the doors are wide open.</p>
-<p>But does that mean you can’t call small wins a win? Not at all. That’s the best part. In the art of creation, everything new is new. Every small step forward counts. A sentence written, a sketch finished, a bug finally fixed—they all matter. You don’t need to change the world to call yourself a creator. You just need to keep creating.</p>
+The why is simple it’s the spark that gets you going. But it’s not enough. To actually create something, you have to put in the hours. The people you admire weren’t creators from the start they were learners. That’s the part people often skip. You have to be willing to learn, to fail, and to repeat the process over and over again. Obsess over it.</p>
+<p>Create with so much intensity that it borders on madness because the truth is, creativity isn’t a lightning strike.</p>
+<p>In this era of knowledge, everything is within reach. Imagine Newton the greatest of all time having access to the tools and information we have today. The possibilities would’ve been endless. But here’s the thing: you also live in this era. You, too, can do what you dream of. It’s just not going to happen overnight. Real creation takes time.</p>
+<p>And it will demand things from you that most people aren’t willing to give up comfort, distraction, certainty. I know that’s debatable, but it’s often the trade for creating something truly great. History is full of that proof. The people who changed things didn’t always live balanced lives but they lived driven ones. If you’re willing to pay that price, even in small doses, the doors are wide open.</p>
+<p>But does that mean you can’t call small wins a win? Not at all. That’s the best part. In the art of creation, everything new is new. Every small step forward counts. A sentence written, a sketch finished, a bug finally fixed they all matter. You don’t need to change the world to call yourself a creator. You just need to keep creating.</p>
 <p>What ?
-This one’s simple—it can be anything. Anything that already exists and just needs a little polishing, or something that doesn’t exist yet at all. It could be a new music piece, a sketch, a blog post, an app , or even your next dish.</p>
+This one’s simple it can be anything. Anything that already exists and just needs a little polishing, or something that doesn’t exist yet at all. It could be a new music piece, a sketch, a blog post, an app , or even your next dish.</p>
 <p>The “what” of creation isn’t fixed. That’s the beauty of it. There are a thousand answers, and they’re all valid. What matters is that you decide to make something.
 </p>
 ]]></content:encoded>
