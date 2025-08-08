@@ -2,66 +2,66 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://mohit-k-s.github.io/</loc>
     <lastmod>2025-08-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/</loc>
+    <loc>https://mohit-k-s.github.io/blog/</loc>
     <lastmod>2025-08-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://mohit-k-s.github.io/tags/</loc>
     <lastmod>2025-08-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/2025/work/tea_breaks/</loc>
+    <loc>https://mohit-k-s.github.io/blog/2025/work/tea_breaks/</loc>
     <lastmod>2025-08-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/thoughts/</loc>
+    <loc>https://mohit-k-s.github.io/tags/thoughts/</loc>
     <lastmod>2025-08-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/postgres/</loc>
+    <loc>https://mohit-k-s.github.io/tags/postgres/</loc>
     <lastmod>2025-07-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/2025/test_what_you_write/</loc>
+    <loc>https://mohit-k-s.github.io/blog/2025/test_what_you_write/</loc>
     <lastmod>2025-07-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/testing/</loc>
+    <loc>https://mohit-k-s.github.io/tags/testing/</loc>
     <lastmod>2025-07-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/distributed-systems/</loc>
+    <loc>https://mohit-k-s.github.io/blog/2025/distributed_systems_lingo/</loc>
     <lastmod>2025-07-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/2025/distributed_systems_lingo/</loc>
+    <loc>https://mohit-k-s.github.io/tags/distributed-systems/</loc>
     <lastmod>2025-07-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/ai/</loc>
+    <loc>https://mohit-k-s.github.io/tags/ai/</loc>
     <lastmod>2025-07-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/2025/companion_app/01/</loc>
+    <loc>https://mohit-k-s.github.io/blog/2025/companion_app/01/</loc>
     <lastmod>2025-07-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/three.js/</loc>
+    <loc>https://mohit-k-s.github.io/tags/three.js/</loc>
     <lastmod>2025-07-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/webspeech-api/</loc>
+    <loc>https://mohit-k-s.github.io/tags/webspeech-api/</loc>
     <lastmod>2025-07-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/codeanalysis/</loc>
+    <loc>https://mohit-k-s.github.io/tags/codeanalysis/</loc>
     <lastmod>2025-07-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/2025/git_impact/</loc>
+    <loc>https://mohit-k-s.github.io/blog/2025/git_impact/</loc>
     <lastmod>2025-07-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/gitdiff/</loc>
+    <loc>https://mohit-k-s.github.io/tags/gitdiff/</loc>
     <lastmod>2025-07-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/llm/</loc>
+    <loc>https://mohit-k-s.github.io/tags/llm/</loc>
     <lastmod>2025-07-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/staticanalysis/</loc>
+    <loc>https://mohit-k-s.github.io/tags/staticanalysis/</loc>
     <lastmod>2025-07-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/2025/creativity/</loc>
+    <loc>https://mohit-k-s.github.io/blog/2025/creativity/</loc>
     <lastmod>2025-06-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://mohit-k-s.github.io/categories/</loc>
   </url>
 </urlset>

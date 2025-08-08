@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Testing on Mohit&#39;s Page</title>
-    <link>http://localhost:1313/tags/testing/</link>
+    <link>https://mohit-k-s.github.io/tags/testing/</link>
     <description>Recent content in Testing on Mohit&#39;s Page</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
@@ -10,12 +10,12 @@
     <webMaster>mohit.bash@gmail.com (Mohit Kumar)</webMaster>
     <copyright>Mohit Kumar</copyright>
     <lastBuildDate>Wed, 30 Jul 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/testing/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://mohit-k-s.github.io/tags/testing/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Test what you write</title>
-      <link>http://localhost:1313/blog/2025/test_what_you_write/</link>
+      <link>https://mohit-k-s.github.io/blog/2025/test_what_you_write/</link>
       <pubDate>Wed, 30 Jul 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
-      <guid>http://localhost:1313/blog/2025/test_what_you_write/</guid>
+      <guid>https://mohit-k-s.github.io/blog/2025/test_what_you_write/</guid>
       <description>&lt;p&gt;Yesterday , I noticed this weird error in logs.&lt;/p&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;2025-07-30 10:00:00.000 UTC [1] LOG:  operator does not exist: uuid = record at character 50&#xA;2025-07-30 10:00:00.000 UTC [1] LOG:  statement: SELECT (orders.id) FROM order WHERE orders = ($1, $2)&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;It was immediately clear this was a bug the query attempts to compare a column to a record, which is not valid syntax in Postgres using the &lt;code&gt;=&lt;/code&gt; operator.&lt;/p&gt;&#xA;&lt;p&gt;When I brought it up with the developers and QA responsible for the feature, they insisted it had been tested and was working as expected.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>Yesterday , I noticed this weird error in logs.</p>
 

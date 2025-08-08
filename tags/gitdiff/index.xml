@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>GitDiff on Mohit&#39;s Page</title>
-    <link>http://localhost:1313/tags/gitdiff/</link>
+    <link>https://mohit-k-s.github.io/tags/gitdiff/</link>
     <description>Recent content in GitDiff on Mohit&#39;s Page</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
@@ -10,12 +10,12 @@
     <webMaster>mohit.bash@gmail.com (Mohit Kumar)</webMaster>
     <copyright>Mohit Kumar</copyright>
     <lastBuildDate>Sun, 27 Jul 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/gitdiff/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://mohit-k-s.github.io/tags/gitdiff/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>From Static Analysis to AI: My Journey Building a Git Diff Impact Analyzer</title>
-      <link>http://localhost:1313/blog/2025/git_impact/</link>
+      <link>https://mohit-k-s.github.io/blog/2025/git_impact/</link>
       <pubDate>Sun, 27 Jul 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
-      <guid>http://localhost:1313/blog/2025/git_impact/</guid>
+      <guid>https://mohit-k-s.github.io/blog/2025/git_impact/</guid>
       <description>&lt;h2 id=&#34;you-changed-a-line-what-did-you-break&#34;&gt;You Changed a Line. What Did You Break?&lt;/h2&gt;&#xA;&lt;p&gt;You push a change. CI passes. Days later, production breaks. Why?&lt;br&gt;&#xA;Because that &amp;ldquo;simple&amp;rdquo; change rippled into places you didn&amp;rsquo;t know existed.&lt;/p&gt;&#xA;&lt;p&gt;I got tired of tools telling me &lt;em&gt;what changed&lt;/em&gt;, but never &lt;em&gt;what it meant&lt;/em&gt;.&lt;br&gt;&#xA;So I built a system that answers the real question:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;&amp;ldquo;What changed and why does it matter?&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;This post is about how I moved beyond syntax-based static analysis and into &lt;strong&gt;semantic impact analysis using LLMs&lt;/strong&gt;.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<h2 id="you-changed-a-line-what-did-you-break">You Changed a Line. What Did You Break?</h2>
 <p>You push a change. CI passes. Days later, production breaks. Why?<br>
