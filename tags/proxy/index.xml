@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Proxy on Mohit&#39;s Page</title>
+    <link>https://mohit-k-s.github.io/tags/proxy/</link>
+    <description>Recent content in Proxy on Mohit&#39;s Page</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <managingEditor>mohit.bash@gmail.com (Mohit Kumar)</managingEditor>
+    <webMaster>mohit.bash@gmail.com (Mohit Kumar)</webMaster>
+    <copyright>Mohit Kumar</copyright>
+    <lastBuildDate>Fri, 08 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mohit-k-s.github.io/tags/proxy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python&#39;s Native Proxy Pattern</title>
+      <link>https://mohit-k-s.github.io/blog/2025/method_interceptor/</link>
+      <pubDate>Fri, 08 Aug 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
+      <guid>https://mohit-k-s.github.io/blog/2025/method_interceptor/</guid>
+      <description>&lt;p&gt;While making &lt;a href=&#34;https://github.com/mohit-k-s/cwgrep&#34;&gt;cwgrep&lt;/a&gt;, I wanted to log every AWS call the tool made without wrapping each method manually.&lt;/p&gt;&#xA;&lt;p&gt;Turns out, Python lets you do that cleanly.&lt;/p&gt;&#xA;&lt;h2 id=&#34;__getattr__&#34;&gt;__getattr__&lt;/h2&gt;&#xA;&lt;p&gt;This is a Python dunder method that’s only called when:&#xA;The attribute named name is not found in the usual places (&lt;strong&gt;__dict__&lt;/strong&gt;, class, etc.).&#xA;So if self.describe_log_groups doesn’t exist on the AWSInterceptor instance, Python calls &lt;strong&gt;__getattr__&lt;/strong&gt;(&amp;lsquo;describe_log_groups&amp;rsquo;).&#xA;This lets you act as a transparent proxy, forwarding unknown method accesses to the real client.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>While making <a href="https://github.com/mohit-k-s/cwgrep">cwgrep</a>, I wanted to log every AWS call the tool made without wrapping each method manually.</p>
+<p>Turns out, Python lets you do that cleanly.</p>
+<h2 id="__getattr__">__getattr__</h2>
+<p>This is a Python dunder method that’s only called when:
+The attribute named name is not found in the usual places (<strong>__dict__</strong>, class, etc.).
+So if self.describe_log_groups doesn’t exist on the AWSInterceptor instance, Python calls <strong>__getattr__</strong>(&lsquo;describe_log_groups&rsquo;).
+This lets you act as a transparent proxy, forwarding unknown method accesses to the real client.</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kn">import</span> <span class="nn">time</span> 
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="kn">import</span> <span class="nn">functools</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="n">SENSITIVE_KEYS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;password&#34;</span><span class="p">,</span> <span class="s2">&#34;secret&#34;</span><span class="p">,</span> <span class="s2">&#34;token&#34;</span><span class="p">,</span> <span class="s2">&#34;key&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="k">def</span> <span class="nf">sanitize</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    <span class="k">def</span> <span class="nf">_sanitize</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">            <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="s2">&#34;***&#34;</span> <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">SENSITIVE_KEYS</span> <span class="k">else</span> <span class="n">_sanitize</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">            <span class="k">return</span> <span class="sa">f</span><span class="s2">&#34;[</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="si">}</span><span class="s2"> items]&#34;</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">        <span class="k">return</span> <span class="n">obj</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">    <span class="k">return</span> <span class="n">_sanitize</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">
+</span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="k">class</span> <span class="nc">AWSInterceptor</span><span class="p">:</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
+</span></span><span class="line"><span class="ln">18</span><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">logger</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl">
+</span></span><span class="line"><span class="ln">20</span><span class="cl">    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+</span></span><span class="line"><span class="ln">21</span><span class="cl">        <span class="n">method</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">22</span><span class="cl">        <span class="k">if</span> <span class="ow">not</span> <span class="n">callable</span><span class="p">(</span><span class="n">method</span><span class="p">):</span>
+</span></span><span class="line"><span class="ln">23</span><span class="cl">            <span class="k">return</span> <span class="n">method</span>
+</span></span><span class="line"><span class="ln">24</span><span class="cl">
+</span></span><span class="line"><span class="ln">25</span><span class="cl">        <span class="nd">@functools.wraps</span><span class="p">(</span><span class="n">method</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">26</span><span class="cl">        <span class="k">def</span> <span class="nf">wrapped</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span></span><span class="line"><span class="ln">27</span><span class="cl">            <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">28</span><span class="cl">            <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="ln">29</span><span class="cl">                <span class="n">result</span> <span class="o">=</span> <span class="n">method</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">30</span><span class="cl">                <span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+</span></span><span class="line"><span class="ln">31</span><span class="cl">                <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">log_call</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">success</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">sanitize</span><span class="p">(</span><span class="n">kwargs</span><span class="p">))</span>
+</span></span><span class="line"><span class="ln">32</span><span class="cl">                <span class="k">return</span> <span class="n">result</span>
+</span></span><span class="line"><span class="ln">33</span><span class="cl">            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="ln">34</span><span class="cl">                <span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+</span></span><span class="line"><span class="ln">35</span><span class="cl">                <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">log_call</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">success</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">params</span><span class="o">=</span><span class="n">sanitize</span><span class="p">(</span><span class="n">kwargs</span><span class="p">))</span>
+</span></span><span class="line"><span class="ln">36</span><span class="cl">                <span class="k">raise</span>
+</span></span><span class="line"><span class="ln">37</span><span class="cl">
+</span></span><span class="line"><span class="ln">38</span><span class="cl">        <span class="k">return</span> <span class="n">wrapped</span></span></span></code></pre></div><p>Notice the weird decorator ?</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln">1</span><span class="cl">        <span class="nd">@functools.wraps</span><span class="p">(</span><span class="n">method</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">        <span class="k">def</span> <span class="nf">wrapped</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span></span></span></code></pre></div><p>This is classic decorator technique, but applied dynamically.
+It preserves metadata like __name__, __doc__, and signature, so logs and debuggers still refer to the original method, not wrapped.</p>
+<p>Now i only had to do</p>
+
+
+
+
+
+<pre tabindex="0"><code>real_client = boto3.client(&#34;logs&#34;)
+proxy = AWSInterceptor(real_client, logger)
+proxy.describe_log_groups()</code></pre><p>That’s it. Every call now logs itself, automatically. No noise.</p>
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>
