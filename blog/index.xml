@@ -83,7 +83,7 @@ It preserves metadata like __name__, __doc__, and signature, so logs and debugge
 
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">real_client</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s2">&#34;logs&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">proxy</span> <span class="o">=</span> <span class="n">AWSInterceptor</span><span class="p">(</span><span class="n">real_client</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="n">proxy</span><span class="o">.</span><span class="n">describe_log_groups</span><span class="p">()</span></span></span></code></pre></div><p>That’s it. Every call now logs itself, automatically. No noise.</p>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="n">proxy</span><span class="o">.</span><span class="n">describe_log_groups</span><span class="p">()</span></span></span></code></pre></div><p>That’s it.</p>
 ]]></content:encoded>
     </item>
     <item>
@@ -520,8 +520,8 @@ Changes       Files/Imports       Token Batches     LLM Calls    Report</code></
       <link>https://mohit-k-s.github.io/blog/2025/creativity/</link>
       <pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
       <guid>https://mohit-k-s.github.io/blog/2025/creativity/</guid>
-      <description>&lt;p&gt;Yesterday, I made my first post and I promised myself I’d continue writing, just like I used to back in 10th grade. There’s something deeply fulfilling about writing. I’ve missed that feeling for a long time, and now I’m trying to find my way back to it. So here I am. We’d start with what starts things.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Creativity (noun): the use of imagination or original ideas to create something&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;Creativity, as we all know, is one of the fundamental pillars on which the entire arc of human evolution rests.&#xA;If not for original ideas, we’d still be hunting for food and hiding from the cold.&lt;/p&gt;</description>
-      <content:encoded><![CDATA[<p>Yesterday, I made my first post and I promised myself I’d continue writing, just like I used to back in 10th grade. There’s something deeply fulfilling about writing. I’ve missed that feeling for a long time, and now I’m trying to find my way back to it. So here I am. We’d start with what starts things.</p>
+      <description>&lt;p&gt;Yesterday, I made my first substack post and I promised myself I’d continue writing, just like I used to back in 10th grade. There’s something deeply fulfilling about writing. I’ve missed that feeling for a long time, and now I’m trying to find my way back to it. So here I am. We’d start with what starts things.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Creativity (noun): the use of imagination or original ideas to create something&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>Yesterday, I made my first substack post and I promised myself I’d continue writing, just like I used to back in 10th grade. There’s something deeply fulfilling about writing. I’ve missed that feeling for a long time, and now I’m trying to find my way back to it. So here I am. We’d start with what starts things.</p>
 <blockquote>
 <p>Creativity (noun): the use of imagination or original ideas to create something</p></blockquote>
 <p>Creativity, as we all know, is one of the fundamental pillars on which the entire arc of human evolution rests.

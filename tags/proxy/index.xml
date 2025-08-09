@@ -83,7 +83,7 @@ It preserves metadata like __name__, __doc__, and signature, so logs and debugge
 
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">real_client</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s2">&#34;logs&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">proxy</span> <span class="o">=</span> <span class="n">AWSInterceptor</span><span class="p">(</span><span class="n">real_client</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="n">proxy</span><span class="o">.</span><span class="n">describe_log_groups</span><span class="p">()</span></span></span></code></pre></div><p>That’s it. Every call now logs itself, automatically. No noise.</p>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="n">proxy</span><span class="o">.</span><span class="n">describe_log_groups</span><span class="p">()</span></span></span></code></pre></div><p>That’s it.</p>
 ]]></content:encoded>
     </item>
   </channel>
