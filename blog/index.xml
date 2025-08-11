@@ -46,7 +46,7 @@ But it fails with an interesting error:</p>
 
  1: 0x104301560 node::NodePlatform::GetStackTracePrinter()::$_0::__invoke() [/Users/mohit/.nvm/versions/node/v20.19.0/bin/node]
   ...</code></pre><p>What’s that number <em>169220804</em>?</p>
-<p>You might think: “Maybe if I just create an array of length <em>169220803</em>, it’ll work?”</p>
+<p>You might think: “Maybe if I just create an array of length <em>169220803</em>, it’ll work?” Nope !</p>
 <p>Each node version ships with a particular v8, here is my config</p>
 
 
