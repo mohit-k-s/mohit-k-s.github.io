@@ -1,22 +1,82 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Blog on Mohit&#39;s Page</title>
+    <title>blog on Mohit&#39;s Page</title>
     <link>https://mohit-k-s.github.io/blog/</link>
-    <description>Recent content in Blog on Mohit&#39;s Page</description>
+    <description>Recent content in blog on Mohit&#39;s Page</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <managingEditor>mohit.bash@gmail.com (Mohit Kumar)</managingEditor>
-    <webMaster>mohit.bash@gmail.com (Mohit Kumar)</webMaster>
     <copyright>Mohit Kumar</copyright>
-    <lastBuildDate>Sun, 10 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 21 Aug 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://mohit-k-s.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building Meteo</title>
+      <link>https://mohit-k-s.github.io/blog/2025/meteo/</link>
+      <pubDate>Thu, 21 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://mohit-k-s.github.io/blog/2025/meteo/</guid>
+      <description>&lt;p&gt;When you hear &amp;ldquo;Meteo,&amp;rdquo; you might think weather app. But no Meteo is my solution to a very specific problem: navigating Delhi&amp;rsquo;s metro system without constantly doing ..&lt;/p&gt;&#xA;&lt;img src=&#34;../images/i-cant-hear-you-yes.gif&#34; alt=&#34;Can&#39;t hear you over the metro noise&#34; width=&#34;200&#34; loading=&#39;lazy&#39; /&gt;&#xA;&lt;p&gt;Well use &lt;em&gt;&lt;strong&gt;google maps&lt;/strong&gt;&lt;/em&gt; ?&#xA;Yes of course i can. But for some reason that is not the goto for everyone.&lt;/p&gt;&#xA;&lt;p&gt;I built this metro navigation app for myself. The design isn&amp;rsquo;t perfect (yet), but it works. Here&amp;rsquo;s how I put it together.&#xA;One might ask , why ? To that i have no answer as i just thought that this can be cool !&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>When you hear &ldquo;Meteo,&rdquo; you might think weather app. But no Meteo is my solution to a very specific problem: navigating Delhi&rsquo;s metro system without constantly doing ..</p>
+<img src="../images/i-cant-hear-you-yes.gif" alt="Can't hear you over the metro noise" width="200" loading='lazy' />
+<p>Well use <em><strong>google maps</strong></em> ?
+Yes of course i can. But for some reason that is not the goto for everyone.</p>
+<p>I built this metro navigation app for myself. The design isn&rsquo;t perfect (yet), but it works. Here&rsquo;s how I put it together.
+One might ask , why ? To that i have no answer as i just thought that this can be cool !</p>
+<div class="iframe-container">
+<iframe src="https://meteo-v1.vercel.app/" title="Meteo" loading="lazy" ></iframe>
+</div>
+<h2 id="the-data-challenge">The Data Challenge</h2>
+<p>Building any transit app starts with data—lots of it. I needed:</p>
+<ul>
+<li>All metro stations with accurate coordinates</li>
+<li>Line connections and routes</li>
+<li>Station elevations (for that authentic metro map feel)</li>
+</ul>
+<h3 id="station-data-collection">Station Data Collection</h3>
+<p>I started with the official DMRC website, manually extracting all lines and stations. Getting coordinates was trickier. My first attempt used <a href="https://operations.osmfoundation.org/policies/nominatim/">Nominatim</a>, OpenStreetMap&rsquo;s geocoding service, but the results were disappointing—many stations were missing or had wildly inaccurate locations.</p>
+<p>Plan B: Google Maps API. More reliable, but required careful rate limiting and cost management.</p>
+<p>The final dataset lives in <a href="https://github.com/mohit-k-s/meteo/blob/main/public/dmrc.json">dmrc.json</a> on GitHub. It includes:</p>
+<ul>
+<li>250+ metro stations</li>
+<li>Coordinate data for each station</li>
+<li>Line connections and transfers</li>
+<li>(Mostly fictional) elevation data</li>
+</ul>
+<h3 id="the-elevation-problem">The Elevation Problem</h3>
+<p>Metro maps show elevation changes, but this data isn&rsquo;t publicly available. My current solution? I generated random elevations that look reasonable. Not ideal, but functional.</p>
+<p>Future plan: Use OCR on official metro elevation maps to extract real data.</p>
+<h2 id="route-planning-algorithm">Route Planning Algorithm</h2>
+<p>The core routing uses a simple depth-first search (DFS) to find paths between stations. Delhi Metro&rsquo;s network guarantees connectivity—you can get from any station to any other station, even if it requires multiple transfers.</p>
+<p>The algorithm could be optimized with Dijkstra&rsquo;s for shortest paths, but DFS works fine for this use case.</p>
+<h2 id="frontend-implementation">Frontend Implementation</h2>
+<p>I used Leaflet.js for the interactive map—it&rsquo;s lightweight and handles the station plotting beautifully. The UI is minimal by design:</p>
+<ul>
+<li>Search for start/end stations</li>
+<li>Visual route display on the map</li>
+<li>Step-by-step directions</li>
+<li>Transfer information</li>
+</ul>
+<p>The interface needs work. I know it&rsquo;s not intuitive, but hey:</p>
+<img src="../images/honest_works.jpg" alt="It ain't much, but it's honest work" width="300"/>
+<h2 id="deployment">Deployment</h2>
+<p>Vercel made deployment trivial. Push to GitHub, automatic builds, global CDN—done. The app loads fast and handles the interactive map without issues.</p>
+<h2 id="lessons-learned">Lessons Learned</h2>
+<ol>
+<li><strong>Start with data</strong>: Good data is harder to find than you think</li>
+<li><strong>Simple algorithms work</strong>: DFS solved the routing problem perfectly</li>
+<li><strong>Open source everything</strong>: Someone else might find this useful</li>
+</ol>
+<p>The code is on <a href="https://github.com/mohit-k-s/meteo">GitHub</a> <br>
+The website is live, <a href="https://meteo-v1.vercel.app/">Meteo</a></p>
+<hr>
+<p><em>Building tools for problems you actually have is the best kind of side project. Even if the UI looks like it was designed in 2005.</em></p>
+]]></content:encoded>
+    </item>
     <item>
       <title>169220804: Yet Another Magic Number</title>
       <link>https://mohit-k-s.github.io/blog/2025/js/arrays/</link>
-      <pubDate>Sun, 10 Aug 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
+      <pubDate>Sun, 10 Aug 2025 00:00:00 +0000</pubDate>
       <guid>https://mohit-k-s.github.io/blog/2025/js/arrays/</guid>
-      <description>&lt;p&gt;I was poking around with Node.js arrays, trying to see how far I could push them&#xA;Here’s the simple code I ran:&lt;/p&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt; &#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;let&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;1e9&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;at&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;push&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This is just a standard array, and of course it fails — there’s no way my system has ~7.5 GB available just for this process.&#xA;But it fails with an interesting error:&lt;/p&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-log&#34; data-lang=&#34;log&#34;&gt;#&#xA;# Fatal error in , line 0&#xA;# Fatal JavaScript invalid size error 169220804 (see crbug.com/1201626)&#xA;#&#xA;#&#xA;#&#xA;#FailureMessage Object: 0x16bc59878&#xA;----- Native stack trace -----&#xA;&#xA; 1: 0x104301560 node::NodePlatform::GetStackTracePrinter()::$_0::__invoke() [/Users/mohit/.nvm/versions/node/v20.19.0/bin/node]&#xA;  ...&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;What’s that number &lt;em&gt;169220804&lt;/em&gt;?&lt;/p&gt;</description>
+      <description>&lt;p&gt;I was poking around with Node.js arrays, trying to see how far I could push them&#xA;Here’s the simple code I ran:&lt;/p&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt; &#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;let&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;1e9&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;at&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;push&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This is just a standard array, and of course it fails — there’s no way my system has ~7.5 GB available just for this process.&#xA;But it fails with an interesting error:&lt;/p&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-log&#34; data-lang=&#34;log&#34;&gt;#&#xA;# Fatal error in , line 0&#xA;# Fatal JavaScript invalid size error 169220804 (see crbug.com/1201626)&#xA;#&#xA;#&#xA;#&#xA;#FailureMessage Object: 0x16bc59878&#xA;----- Native stack trace -----&#xA;&#xA; 1: 0x104301560 node::NodePlatform::GetStackTracePrinter()::$_0::__invoke() [/Users/mohit/.nvm/versions/node/v20.19.0/bin/node]&#xA;  ...&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;What’s that number &lt;em&gt;169220804&lt;/em&gt;?&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>I was poking around with Node.js arrays, trying to see how far I could push them
 Here’s the simple code I ran:</p>
 
@@ -24,11 +84,11 @@ Here’s the simple code I ran:</p>
 
 
 
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="ln">1</span><span class="cl"><span class="kr">const</span> <span class="nx">at</span> <span class="o">=</span> <span class="p">[]</span> 
-</span></span><span class="line"><span class="ln">2</span><span class="cl">
-</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span><span class="mi">0</span> <span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mf">1e9</span> <span class="p">;</span> <span class="o">++</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">    <span class="nx">at</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="p">}</span></span></span></code></pre></div><p>This is just a standard array, and of course it fails — there’s no way my system has ~7.5 GB available just for this process.
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">at</span> <span class="o">=</span> <span class="p">[]</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span><span class="mi">0</span> <span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mf">1e9</span> <span class="p">;</span> <span class="o">++</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">at</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div><p>This is just a standard array, and of course it fails — there’s no way my system has ~7.5 GB available just for this process.
 But it fails with an interesting error:</p>
 
 
@@ -53,12 +113,12 @@ But it fails with an interesting error:</p>
 
 
 
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">➜ node -p process.versions
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="o">{</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">  node: <span class="s1">&#39;20.19.0&#39;</span>,
-</span></span><span class="line"><span class="ln">4</span><span class="cl">  v8: <span class="s1">&#39;11.3.244.8-node.26&#39;</span>,
-</span></span><span class="line"><span class="ln">5</span><span class="cl">  ...
-</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="o">}</span></span></span></code></pre></div><p>So, I checked that branch of the V8 source.
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">➜ node -p process.versions
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">  node: <span class="s1">&#39;20.19.0&#39;</span>,
+</span></span><span class="line"><span class="cl">  v8: <span class="s1">&#39;11.3.244.8-node.26&#39;</span>,
+</span></span><span class="line"><span class="cl">  ...
+</span></span><span class="line"><span class="cl"><span class="o">}</span></span></span></code></pre></div><p>So, I checked that branch of the V8 source.
 kMaxSize is defined <a href="https://chromium.googlesource.com/v8/v8/&#43;/refs/heads/11.3.244/src/objects/fixed-array.h#91">here</a>.</p>
 <p>That’s the max size in bytes, but the max number of elements comes from <a href="https://chromium.googlesource.com/v8/v8/&#43;/refs/heads/11.3.244/src/objects/fixed-array.h#207">kMaxLength</a> which works out to <em>134,217,728</em> elements.</p>
 <p>So in theory, creating an array of that length is fine.
@@ -70,12 +130,12 @@ But my program is using .push().</p>
 
 
 
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="ln">1</span><span class="cl">  <span class="c1">// file src/builtins/growable-fixed-array-gen.cc
-</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1"></span>  <span class="c1">// Growth rate is analog to JSObject::NewElementsCapacity:
-</span></span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="c1"></span>  <span class="c1">// new_capacity = (current_capacity + (current_capacity &gt;&gt; 1)) + 16.
-</span></span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="c1"></span>  <span class="k">const</span> <span class="n">TNode</span><span class="o">&lt;</span><span class="n">IntPtrT</span><span class="o">&gt;</span> <span class="n">new_capacity</span> <span class="o">=</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl">      <span class="n">IntPtrAdd</span><span class="p">(</span><span class="n">IntPtrAdd</span><span class="p">(</span><span class="n">current_capacity</span><span class="p">,</span> <span class="n">WordShr</span><span class="p">(</span><span class="n">current_capacity</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>
-</span></span><span class="line"><span class="ln">6</span><span class="cl">                <span class="n">IntPtrConstant</span><span class="p">(</span><span class="mi">16</span><span class="p">));</span></span></span></code></pre></div><h2 id="finding-the-actual-limit">Finding the actual limit</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">  <span class="c1">// file src/builtins/growable-fixed-array-gen.cc
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// Growth rate is analog to JSObject::NewElementsCapacity:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// new_capacity = (current_capacity + (current_capacity &gt;&gt; 1)) + 16.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">const</span> <span class="n">TNode</span><span class="o">&lt;</span><span class="n">IntPtrT</span><span class="o">&gt;</span> <span class="n">new_capacity</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">      <span class="n">IntPtrAdd</span><span class="p">(</span><span class="n">IntPtrAdd</span><span class="p">(</span><span class="n">current_capacity</span><span class="p">,</span> <span class="n">WordShr</span><span class="p">(</span><span class="n">current_capacity</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">                <span class="n">IntPtrConstant</span><span class="p">(</span><span class="mi">16</span><span class="p">));</span></span></span></code></pre></div><h2 id="finding-the-actual-limit">Finding the actual limit</h2>
 <p>At first , I didn&rsquo;t know the above formula and just wanted to find the point at which i start seeing these errors so , I wrote a quick binary search to find the exact point where the above error appears.</p>
 <p>The magic number turned out to be <em>112,813,859</em> elements.</p>
 <p>If we plug that into the growth formula:</p>
@@ -84,9 +144,9 @@ But my program is using .push().</p>
 
 
 
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="ln">1</span><span class="cl"><span class="nx">new_capacity</span> <span class="o">=</span> <span class="mi">112_813_859</span> <span class="o">+</span> <span class="nx">floor</span><span class="p">(</span><span class="mi">112_813_859</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">16</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">             <span class="o">=</span> <span class="mi">112_813_859</span> <span class="o">+</span> <span class="mi">56_406_929</span> <span class="o">+</span> <span class="mi">16</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">             <span class="o">=</span> <span class="mi">169_220_804</span></span></span></code></pre></div><p>Ahh, that exact same number.
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">new_capacity</span> <span class="o">=</span> <span class="mi">112_813_859</span> <span class="o">+</span> <span class="nx">floor</span><span class="p">(</span><span class="mi">112_813_859</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">16</span>
+</span></span><span class="line"><span class="cl">             <span class="o">=</span> <span class="mi">112_813_859</span> <span class="o">+</span> <span class="mi">56_406_929</span> <span class="o">+</span> <span class="mi">16</span>
+</span></span><span class="line"><span class="cl">             <span class="o">=</span> <span class="mi">169_220_804</span></span></span></code></pre></div><p>Ahh, that exact same number.
 It all makes sense now. <br>
 I tried running this in later node versions , the program always breaks at that limit.</p>
 <h2 id="takeaways">Takeaways</h2>
@@ -106,7 +166,7 @@ I tried running this in later node versions , the program always breaks at that 
     <item>
       <title>Python&#39;s Native Proxy Pattern</title>
       <link>https://mohit-k-s.github.io/blog/2025/method_interceptor/</link>
-      <pubDate>Fri, 08 Aug 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
+      <pubDate>Fri, 08 Aug 2025 00:00:00 +0000</pubDate>
       <guid>https://mohit-k-s.github.io/blog/2025/method_interceptor/</guid>
       <description>&lt;p&gt;While making &lt;a href=&#34;https://github.com/mohit-k-s/cwgrep&#34;&gt;cwgrep&lt;/a&gt;, I wanted to log every AWS call the tool made without wrapping each method manually.&lt;/p&gt;&#xA;&lt;p&gt;Turns out, Python lets you do that cleanly.&lt;/p&gt;&#xA;&lt;h2 id=&#34;__getattr__&#34;&gt;__getattr__&lt;/h2&gt;&#xA;&lt;p&gt;This is a Python dunder method that’s only called when:&#xA;The attribute named name is not found in the usual places (&lt;strong&gt;__dict__&lt;/strong&gt;, class, etc.).&#xA;So if self.describe_log_groups doesn’t exist on the AWSInterceptor instance, Python calls &lt;strong&gt;__getattr__&lt;/strong&gt;(&amp;lsquo;describe_log_groups&amp;rsquo;).&#xA;This lets you act as a transparent proxy, forwarding unknown method accesses to the real client.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>While making <a href="https://github.com/mohit-k-s/cwgrep">cwgrep</a>, I wanted to log every AWS call the tool made without wrapping each method manually.</p>
@@ -121,51 +181,51 @@ This lets you act as a transparent proxy, forwarding unknown method accesses to 
 
 
 
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kn">import</span> <span class="nn">time</span> 
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="kn">import</span> <span class="nn">functools</span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="n">SENSITIVE_KEYS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;password&#34;</span><span class="p">,</span> <span class="s2">&#34;secret&#34;</span><span class="p">,</span> <span class="s2">&#34;token&#34;</span><span class="p">,</span> <span class="s2">&#34;key&#34;</span><span class="p">}</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="k">def</span> <span class="nf">sanitize</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    <span class="k">def</span> <span class="nf">_sanitize</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">            <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="s2">&#34;***&#34;</span> <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">SENSITIVE_KEYS</span> <span class="k">else</span> <span class="n">_sanitize</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl">        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl">            <span class="k">return</span> <span class="sa">f</span><span class="s2">&#34;[</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="si">}</span><span class="s2"> items]&#34;</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl">        <span class="k">return</span> <span class="n">obj</span>
-</span></span><span class="line"><span class="ln">13</span><span class="cl">    <span class="k">return</span> <span class="n">_sanitize</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">14</span><span class="cl">
-</span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="k">class</span> <span class="nc">AWSInterceptor</span><span class="p">:</span>
-</span></span><span class="line"><span class="ln">16</span><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
-</span></span><span class="line"><span class="ln">17</span><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
-</span></span><span class="line"><span class="ln">18</span><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">logger</span>
-</span></span><span class="line"><span class="ln">19</span><span class="cl">
-</span></span><span class="line"><span class="ln">20</span><span class="cl">    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-</span></span><span class="line"><span class="ln">21</span><span class="cl">        <span class="n">method</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">22</span><span class="cl">        <span class="k">if</span> <span class="ow">not</span> <span class="n">callable</span><span class="p">(</span><span class="n">method</span><span class="p">):</span>
-</span></span><span class="line"><span class="ln">23</span><span class="cl">            <span class="k">return</span> <span class="n">method</span>
-</span></span><span class="line"><span class="ln">24</span><span class="cl">
-</span></span><span class="line"><span class="ln">25</span><span class="cl">        <span class="nd">@functools.wraps</span><span class="p">(</span><span class="n">method</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">26</span><span class="cl">        <span class="k">def</span> <span class="nf">wrapped</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span></span><span class="line"><span class="ln">27</span><span class="cl">            <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-</span></span><span class="line"><span class="ln">28</span><span class="cl">            <span class="k">try</span><span class="p">:</span>
-</span></span><span class="line"><span class="ln">29</span><span class="cl">                <span class="n">result</span> <span class="o">=</span> <span class="n">method</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">30</span><span class="cl">                <span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
-</span></span><span class="line"><span class="ln">31</span><span class="cl">                <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">log_call</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">success</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">sanitize</span><span class="p">(</span><span class="n">kwargs</span><span class="p">))</span>
-</span></span><span class="line"><span class="ln">32</span><span class="cl">                <span class="k">return</span> <span class="n">result</span>
-</span></span><span class="line"><span class="ln">33</span><span class="cl">            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-</span></span><span class="line"><span class="ln">34</span><span class="cl">                <span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
-</span></span><span class="line"><span class="ln">35</span><span class="cl">                <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">log_call</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">success</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">params</span><span class="o">=</span><span class="n">sanitize</span><span class="p">(</span><span class="n">kwargs</span><span class="p">))</span>
-</span></span><span class="line"><span class="ln">36</span><span class="cl">                <span class="k">raise</span>
-</span></span><span class="line"><span class="ln">37</span><span class="cl">
-</span></span><span class="line"><span class="ln">38</span><span class="cl">        <span class="k">return</span> <span class="n">wrapped</span></span></span></code></pre></div><p>Notice the weird decorator ?</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">time</span> 
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">functools</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">SENSITIVE_KEYS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;password&#34;</span><span class="p">,</span> <span class="s2">&#34;secret&#34;</span><span class="p">,</span> <span class="s2">&#34;token&#34;</span><span class="p">,</span> <span class="s2">&#34;key&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">sanitize</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">_sanitize</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="s2">&#34;***&#34;</span> <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">SENSITIVE_KEYS</span> <span class="k">else</span> <span class="n">_sanitize</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="sa">f</span><span class="s2">&#34;[</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="si">}</span><span class="s2"> items]&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">obj</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">_sanitize</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">AWSInterceptor</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">logger</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">method</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="ow">not</span> <span class="n">callable</span><span class="p">(</span><span class="n">method</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">method</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nd">@functools.wraps</span><span class="p">(</span><span class="n">method</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">def</span> <span class="nf">wrapped</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">result</span> <span class="o">=</span> <span class="n">method</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+</span></span><span class="line"><span class="cl">                <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">log_call</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">success</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">sanitize</span><span class="p">(</span><span class="n">kwargs</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="n">result</span>
+</span></span><span class="line"><span class="cl">            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+</span></span><span class="line"><span class="cl">                <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">log_call</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">success</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">params</span><span class="o">=</span><span class="n">sanitize</span><span class="p">(</span><span class="n">kwargs</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                <span class="k">raise</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">wrapped</span></span></span></code></pre></div><p>Notice the weird decorator ?</p>
 
 
 
 
 
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln">1</span><span class="cl">        <span class="nd">@functools.wraps</span><span class="p">(</span><span class="n">method</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">        <span class="k">def</span> <span class="nf">wrapped</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span></span></span></code></pre></div><p>This is classic decorator technique, but applied dynamically.
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">        <span class="nd">@functools.wraps</span><span class="p">(</span><span class="n">method</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">def</span> <span class="nf">wrapped</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span></span></span></code></pre></div><p>This is classic decorator technique, but applied dynamically.
 It preserves metadata like __name__, __doc__, and signature, so logs and debuggers still refer to the original method, not wrapped.</p>
 <p>Now i only had to do</p>
 
@@ -173,15 +233,15 @@ It preserves metadata like __name__, __doc__, and signature, so logs and debugge
 
 
 
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">real_client</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s2">&#34;logs&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">proxy</span> <span class="o">=</span> <span class="n">AWSInterceptor</span><span class="p">(</span><span class="n">real_client</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="n">proxy</span><span class="o">.</span><span class="n">describe_log_groups</span><span class="p">()</span></span></span></code></pre></div><p>That’s it.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">real_client</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s2">&#34;logs&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">proxy</span> <span class="o">=</span> <span class="n">AWSInterceptor</span><span class="p">(</span><span class="n">real_client</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">proxy</span><span class="o">.</span><span class="n">describe_log_groups</span><span class="p">()</span></span></span></code></pre></div><p>That’s it.</p>
 ]]></content:encoded>
     </item>
     <item>
       <title>Tea Breaks are best</title>
       <link>https://mohit-k-s.github.io/blog/2025/work/tea_breaks/</link>
-      <pubDate>Fri, 01 Aug 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
+      <pubDate>Fri, 01 Aug 2025 00:00:00 +0000</pubDate>
       <guid>https://mohit-k-s.github.io/blog/2025/work/tea_breaks/</guid>
       <description>&lt;p&gt;I haven’t worked a lot of jobs. Haven’t had too many coworkers either. Some were good, some forgettable, some… just there.&lt;/p&gt;&#xA;&lt;p&gt;But every now and then, someone stands out. Not because of their resume or technical chops (though that helps), but because of who they are, how they carry themselves, and how they make you want to be better.&lt;/p&gt;&#xA;&lt;p&gt;At my current job, I had someone like that. Yesterday was his last day in the company.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>I haven’t worked a lot of jobs. Haven’t had too many coworkers either. Some were good, some forgettable, some… just there.</p>
@@ -227,7 +287,7 @@ He sent me this in the teams chat , classic right ?</p>
     <item>
       <title>Test what you write</title>
       <link>https://mohit-k-s.github.io/blog/2025/test_what_you_write/</link>
-      <pubDate>Wed, 30 Jul 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
+      <pubDate>Wed, 30 Jul 2025 00:00:00 +0000</pubDate>
       <guid>https://mohit-k-s.github.io/blog/2025/test_what_you_write/</guid>
       <description>&lt;p&gt;Yesterday , I noticed this weird error in logs.&lt;/p&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;2025-07-30 10:00:00.000 UTC [1] LOG:  operator does not exist: uuid = record at character 50&#xA;2025-07-30 10:00:00.000 UTC [1] LOG:  statement: SELECT (orders.id) FROM order WHERE orders = ($1, $2)&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;It was immediately clear this was a bug the query attempts to compare a column to a record, which is not valid syntax in Postgres using the &lt;code&gt;=&lt;/code&gt; operator.&lt;/p&gt;&#xA;&lt;p&gt;When I brought it up with the developers and QA responsible for the feature, they insisted it had been tested and was working as expected.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>Yesterday , I noticed this weird error in logs.</p>
@@ -258,7 +318,7 @@ He sent me this in the teams chat , classic right ?</p>
     <item>
       <title>Commmon Distributed Systems Lingo</title>
       <link>https://mohit-k-s.github.io/blog/2025/distributed_systems_lingo/</link>
-      <pubDate>Tue, 29 Jul 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
+      <pubDate>Tue, 29 Jul 2025 00:00:00 +0000</pubDate>
       <guid>https://mohit-k-s.github.io/blog/2025/distributed_systems_lingo/</guid>
       <description>&lt;p&gt;There are a few terms that keep popping up when you work with distributed systems. They&amp;rsquo;re often thrown around casually, and it’s easy to nod along without fully understanding them. I’m collecting those here with simple definitions and examples. This list will evolve as I keep learning.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;fencing-token&#34;&gt;Fencing Token&lt;/h2&gt;&#xA;&lt;p&gt;I was reading &lt;a href=&#34;https://avi.im/blag/2024/s3-log/#:~:text=a%20concept%20of-,fencing%20tokens.,-I%E2%80%99ve%20left%20this&#34;&gt;V&amp;rsquo;s blog&lt;/a&gt; and he mentioned fencing token. This word was introduced in Martin&amp;rsquo;s blog &lt;a href=&#34;https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;A &lt;strong&gt;fencing token&lt;/strong&gt; is a number (usually monotonically increasing) that helps prevent &lt;strong&gt;split-brain writes&lt;/strong&gt; or &lt;strong&gt;duplicate actions&lt;/strong&gt; in distributed systems.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>There are a few terms that keep popping up when you work with distributed systems. They&rsquo;re often thrown around casually, and it’s easy to nod along without fully understanding them. I’m collecting those here with simple definitions and examples. This list will evolve as I keep learning.</p>
@@ -287,51 +347,9 @@ He sent me this in the teams chat , classic right ?</p>
 ]]></content:encoded>
     </item>
     <item>
-      <title>Building an AI Companion</title>
-      <link>https://mohit-k-s.github.io/blog/2025/companion_app/01/</link>
-      <pubDate>Mon, 28 Jul 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
-      <guid>https://mohit-k-s.github.io/blog/2025/companion_app/01/</guid>
-      <description>&lt;p&gt;Inspired by the movie &amp;ldquo;Her&amp;rdquo;, I&amp;rsquo;m building an AI companion with a beautiful 3D sphere interface and pure voice interaction. No words on screen - just visual conversation with AI.&lt;/p&gt;&#xA;&lt;h2 id=&#34;-where-i-am-now&#34;&gt;🎯 Where I Am Now&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Core Experience Working:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;✅ 3D sphere that responds to conversation states&lt;/li&gt;&#xA;&lt;li&gt;✅ Voice recognition and AI responses (Google Gemini)&lt;/li&gt;&#xA;&lt;li&gt;✅ Smooth, meditation-like transitions&lt;/li&gt;&#xA;&lt;li&gt;✅ Press spacebar to talk, AI responds naturally&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;-the-visual-magic&#34;&gt;🎨 The Visual Magic&lt;/h2&gt;&#xA;&lt;p&gt;The sphere morphs through four states:&lt;/p&gt;</description>
-      <content:encoded><![CDATA[<p>Inspired by the movie &ldquo;Her&rdquo;, I&rsquo;m building an AI companion with a beautiful 3D sphere interface and pure voice interaction. No words on screen - just visual conversation with AI.</p>
-<h2 id="-where-i-am-now">🎯 Where I Am Now</h2>
-<p><strong>Core Experience Working:</strong></p>
-<ul>
-<li>✅ 3D sphere that responds to conversation states</li>
-<li>✅ Voice recognition and AI responses (Google Gemini)</li>
-<li>✅ Smooth, meditation-like transitions</li>
-<li>✅ Press spacebar to talk, AI responds naturally</li>
-</ul>
-<h2 id="-the-visual-magic">🎨 The Visual Magic</h2>
-<p>The sphere morphs through four states:</p>
-<ul>
-<li><strong>Idle</strong>: Gentle breathing, peaceful colors</li>
-<li><strong>Listening</strong>: Green tones, focused attention</li>
-<li><strong>Thinking</strong>: Blue contemplation, slow rotation</li>
-<li><strong>Speaking</strong>: Warm amber, gentle waves</li>
-</ul>
-<p><strong>Recent Update:</strong> Made all animations super gentle and soothing - like meditation rather than sci-fi action.</p>
-<h2 id="-tech-stack">🛠️ Tech Stack</h2>
-<ul>
-<li><strong>Frontend</strong>: TypeScript + Three.js + GSAP</li>
-<li><strong>Voice</strong>: Web Speech API (browser native)</li>
-<li><strong>AI</strong>: Google Gemini API</li>
-<li><strong>Particles &amp; Lighting</strong>: Custom WebGL effects</li>
-</ul>
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/mTYFCS6z_WI?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
-    </div>
-
-<h2 id="-the-vision">🎬 The Vision</h2>
-<p>Just like in &ldquo;Her&rdquo; - pure conversation with AI through beautiful visuals. No UI clutter, just you and the AI companion.</p>
-<p><img src="../her_movie.jpg" alt="Movie"></p>
-<h2 id="-next-steps">🚀 Next Steps</h2>
-<p>The core is working as expected. The app is still WIP - as soon as it&rsquo;s ready I&rsquo;ll share it here!</p>
-]]></content:encoded>
-    </item>
-    <item>
       <title>From Static Analysis to AI: My Journey Building a Git Diff Impact Analyzer</title>
       <link>https://mohit-k-s.github.io/blog/2025/git_impact/</link>
-      <pubDate>Sun, 27 Jul 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
+      <pubDate>Sun, 27 Jul 2025 00:00:00 +0000</pubDate>
       <guid>https://mohit-k-s.github.io/blog/2025/git_impact/</guid>
       <description>&lt;h2 id=&#34;you-changed-a-line-what-did-you-break&#34;&gt;You Changed a Line. What Did You Break?&lt;/h2&gt;&#xA;&lt;p&gt;You push a change. CI passes. Days later, production breaks. Why?&lt;br&gt;&#xA;Because that &amp;ldquo;simple&amp;rdquo; change rippled into places you didn&amp;rsquo;t know existed.&lt;/p&gt;&#xA;&lt;p&gt;I got tired of tools telling me &lt;em&gt;what changed&lt;/em&gt;, but never &lt;em&gt;what it meant&lt;/em&gt;.&lt;br&gt;&#xA;So I built a system that answers the real question:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;&amp;ldquo;What changed and why does it matter?&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;This post is about how I moved beyond syntax-based static analysis and into &lt;strong&gt;semantic impact analysis using LLMs&lt;/strong&gt;.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<h2 id="you-changed-a-line-what-did-you-break">You Changed a Line. What Did You Break?</h2>
@@ -389,25 +407,25 @@ So I built a system that answers the real question:</p>
 
 
 
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl">  <span class="nt">&#34;impactedFiles&#34;</span><span class="p">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="s2">&#34;handlers/user-service.js&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="s2">&#34;frontend/components/UserList.js&#34;</span><span class="p">,</span> 
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="s2">&#34;lib/cache.js&#34;</span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">  <span class="p">],</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">  <span class="nt">&#34;riskLevel&#34;</span><span class="p">:</span> <span class="s2">&#34;medium&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">  <span class="nt">&#34;testingRecommendations&#34;</span><span class="p">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    <span class="s2">&#34;Test user retrieval endpoints&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="s2">&#34;Verify inactive users are filtered correctly&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="s2">&#34;Check cache invalidation behavior&#34;</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl">  <span class="p">],</span>
-</span></span><span class="line"><span class="ln">13</span><span class="cl">  <span class="nt">&#34;deploymentNotes&#34;</span><span class="p">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="ln">14</span><span class="cl">    <span class="s2">&#34;Monitor user API response times&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">15</span><span class="cl">    <span class="s2">&#34;Watch for database query performance issues&#34;</span>
-</span></span><span class="line"><span class="ln">16</span><span class="cl">  <span class="p">],</span>
-</span></span><span class="line"><span class="ln">17</span><span class="cl">  <span class="nt">&#34;confidence&#34;</span><span class="p">:</span> <span class="mf">0.87</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">18</span><span class="cl">  <span class="nt">&#34;explanation&#34;</span><span class="p">:</span> <span class="s2">&#34;Adding WHERE active = 1 filters inactive users, which affects the user service and downstream components that display user lists...&#34;</span>
-</span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="p">}</span></span></span></code></pre></div><h2 id="the-challenge-scaling-ai-analysis">The Challenge: Scaling AI Analysis</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;impactedFiles&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;handlers/user-service.js&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;frontend/components/UserList.js&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;lib/cache.js&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;riskLevel&#34;</span><span class="p">:</span> <span class="s2">&#34;medium&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;testingRecommendations&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Test user retrieval endpoints&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Verify inactive users are filtered correctly&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Check cache invalidation behavior&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;deploymentNotes&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Monitor user API response times&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Watch for database query performance issues&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;confidence&#34;</span><span class="p">:</span> <span class="mf">0.87</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;explanation&#34;</span><span class="p">:</span> <span class="s2">&#34;Adding WHERE active = 1 filters inactive users, which affects the user service and downstream components that display user lists...&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div><h2 id="the-challenge-scaling-ai-analysis">The Challenge: Scaling AI Analysis</h2>
 <p>The obvious limitation with AI analysis is context windows. Large codebases can&rsquo;t fit in a single prompt, and even if they could, the analysis quality degrades significantly with massive context.</p>
 <p>My solution was <strong>intelligent batching</strong>:</p>
 <ul>
@@ -610,7 +628,7 @@ Changes       Files/Imports       Token Batches     LLM Calls    Report</code></
     <item>
       <title>Creativity</title>
       <link>https://mohit-k-s.github.io/blog/2025/creativity/</link>
-      <pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
+      <pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate>
       <guid>https://mohit-k-s.github.io/blog/2025/creativity/</guid>
       <description>&lt;p&gt;Yesterday, I made my first substack post and I promised myself I’d continue writing, just like I used to back in 10th grade. There’s something deeply fulfilling about writing. I’ve missed that feeling for a long time, and now I’m trying to find my way back to it. So here I am. We’d start with what starts things.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Creativity (noun): the use of imagination or original ideas to create something&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>Yesterday, I made my first substack post and I promised myself I’d continue writing, just like I used to back in 10th grade. There’s something deeply fulfilling about writing. I’ve missed that feeling for a long time, and now I’m trying to find my way back to it. So here I am. We’d start with what starts things.</p>

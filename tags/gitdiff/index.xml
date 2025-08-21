@@ -6,15 +6,13 @@
     <description>Recent content in GitDiff on Mohit&#39;s Page</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <managingEditor>mohit.bash@gmail.com (Mohit Kumar)</managingEditor>
-    <webMaster>mohit.bash@gmail.com (Mohit Kumar)</webMaster>
     <copyright>Mohit Kumar</copyright>
     <lastBuildDate>Sun, 27 Jul 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://mohit-k-s.github.io/tags/gitdiff/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>From Static Analysis to AI: My Journey Building a Git Diff Impact Analyzer</title>
       <link>https://mohit-k-s.github.io/blog/2025/git_impact/</link>
-      <pubDate>Sun, 27 Jul 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
+      <pubDate>Sun, 27 Jul 2025 00:00:00 +0000</pubDate>
       <guid>https://mohit-k-s.github.io/blog/2025/git_impact/</guid>
       <description>&lt;h2 id=&#34;you-changed-a-line-what-did-you-break&#34;&gt;You Changed a Line. What Did You Break?&lt;/h2&gt;&#xA;&lt;p&gt;You push a change. CI passes. Days later, production breaks. Why?&lt;br&gt;&#xA;Because that &amp;ldquo;simple&amp;rdquo; change rippled into places you didn&amp;rsquo;t know existed.&lt;/p&gt;&#xA;&lt;p&gt;I got tired of tools telling me &lt;em&gt;what changed&lt;/em&gt;, but never &lt;em&gt;what it meant&lt;/em&gt;.&lt;br&gt;&#xA;So I built a system that answers the real question:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;&amp;ldquo;What changed and why does it matter?&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;This post is about how I moved beyond syntax-based static analysis and into &lt;strong&gt;semantic impact analysis using LLMs&lt;/strong&gt;.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<h2 id="you-changed-a-line-what-did-you-break">You Changed a Line. What Did You Break?</h2>
@@ -72,25 +70,25 @@ So I built a system that answers the real question:</p>
 
 
 
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl">  <span class="nt">&#34;impactedFiles&#34;</span><span class="p">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="s2">&#34;handlers/user-service.js&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="s2">&#34;frontend/components/UserList.js&#34;</span><span class="p">,</span> 
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="s2">&#34;lib/cache.js&#34;</span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">  <span class="p">],</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">  <span class="nt">&#34;riskLevel&#34;</span><span class="p">:</span> <span class="s2">&#34;medium&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">  <span class="nt">&#34;testingRecommendations&#34;</span><span class="p">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    <span class="s2">&#34;Test user retrieval endpoints&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="s2">&#34;Verify inactive users are filtered correctly&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="s2">&#34;Check cache invalidation behavior&#34;</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl">  <span class="p">],</span>
-</span></span><span class="line"><span class="ln">13</span><span class="cl">  <span class="nt">&#34;deploymentNotes&#34;</span><span class="p">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="ln">14</span><span class="cl">    <span class="s2">&#34;Monitor user API response times&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">15</span><span class="cl">    <span class="s2">&#34;Watch for database query performance issues&#34;</span>
-</span></span><span class="line"><span class="ln">16</span><span class="cl">  <span class="p">],</span>
-</span></span><span class="line"><span class="ln">17</span><span class="cl">  <span class="nt">&#34;confidence&#34;</span><span class="p">:</span> <span class="mf">0.87</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">18</span><span class="cl">  <span class="nt">&#34;explanation&#34;</span><span class="p">:</span> <span class="s2">&#34;Adding WHERE active = 1 filters inactive users, which affects the user service and downstream components that display user lists...&#34;</span>
-</span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="p">}</span></span></span></code></pre></div><h2 id="the-challenge-scaling-ai-analysis">The Challenge: Scaling AI Analysis</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;impactedFiles&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;handlers/user-service.js&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;frontend/components/UserList.js&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;lib/cache.js&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;riskLevel&#34;</span><span class="p">:</span> <span class="s2">&#34;medium&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;testingRecommendations&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Test user retrieval endpoints&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Verify inactive users are filtered correctly&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Check cache invalidation behavior&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;deploymentNotes&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Monitor user API response times&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Watch for database query performance issues&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;confidence&#34;</span><span class="p">:</span> <span class="mf">0.87</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;explanation&#34;</span><span class="p">:</span> <span class="s2">&#34;Adding WHERE active = 1 filters inactive users, which affects the user service and downstream components that display user lists...&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div><h2 id="the-challenge-scaling-ai-analysis">The Challenge: Scaling AI Analysis</h2>
 <p>The obvious limitation with AI analysis is context windows. Large codebases can&rsquo;t fit in a single prompt, and even if they could, the analysis quality degrades significantly with massive context.</p>
 <p>My solution was <strong>intelligent batching</strong>:</p>
 <ul>

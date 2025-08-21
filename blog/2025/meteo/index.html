@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Meteo | Mohit&#39;s Page</title>
+    <meta name="description" content="Mohit&#39;s Page">
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    
+    <link rel="stylesheet" href="https://mohit-k-s.github.io/custom.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="terminal-prompt">
+            
+            <div class="prompt">mohit@localhost:~$ show /blog/2025/meteo/</div>
+            
+        </div>
+        
+        <nav class="blog-nav">
+            <a href="/" class="nav-button">~</a>
+            <a href="/blog" class="nav-button">~/blog</a>
+        </nav>
+        
+    </header>
+
+    <main>
+        
+
+<h1>Building Meteo</h1>
+<p class="byline">
+  <time datetime='2025-08-21' pubdate>
+    2025-08-21
+  </time>
+  
+</p>
+
+<content>
+  <p>When you hear &ldquo;Meteo,&rdquo; you might think weather app. But no Meteo is my solution to a very specific problem: navigating Delhi&rsquo;s metro system without constantly doing ..</p>
+<img src="../images/i-cant-hear-you-yes.gif" alt="Can't hear you over the metro noise" width="200" loading='lazy' />
+<p>Well use <em><strong>google maps</strong></em> ?
+Yes of course i can. But for some reason that is not the goto for everyone.</p>
+<p>I built this metro navigation app for myself. The design isn&rsquo;t perfect (yet), but it works. Here&rsquo;s how I put it together.
+One might ask , why ? To that i have no answer as i just thought that this can be cool !</p>
+<div class="iframe-container">
+<iframe src="https://meteo-v1.vercel.app/" title="Meteo" loading="lazy" ></iframe>
+</div>
+<h2 id="the-data-challenge">The Data Challenge</h2>
+<p>Building any transit app starts with data—lots of it. I needed:</p>
+<ul>
+<li>All metro stations with accurate coordinates</li>
+<li>Line connections and routes</li>
+<li>Station elevations (for that authentic metro map feel)</li>
+</ul>
+<h3 id="station-data-collection">Station Data Collection</h3>
+<p>I started with the official DMRC website, manually extracting all lines and stations. Getting coordinates was trickier. My first attempt used <a href="https://operations.osmfoundation.org/policies/nominatim/">Nominatim</a>, OpenStreetMap&rsquo;s geocoding service, but the results were disappointing—many stations were missing or had wildly inaccurate locations.</p>
+<p>Plan B: Google Maps API. More reliable, but required careful rate limiting and cost management.</p>
+<p>The final dataset lives in <a href="https://github.com/mohit-k-s/meteo/blob/main/public/dmrc.json">dmrc.json</a> on GitHub. It includes:</p>
+<ul>
+<li>250+ metro stations</li>
+<li>Coordinate data for each station</li>
+<li>Line connections and transfers</li>
+<li>(Mostly fictional) elevation data</li>
+</ul>
+<h3 id="the-elevation-problem">The Elevation Problem</h3>
+<p>Metro maps show elevation changes, but this data isn&rsquo;t publicly available. My current solution? I generated random elevations that look reasonable. Not ideal, but functional.</p>
+<p>Future plan: Use OCR on official metro elevation maps to extract real data.</p>
+<h2 id="route-planning-algorithm">Route Planning Algorithm</h2>
+<p>The core routing uses a simple depth-first search (DFS) to find paths between stations. Delhi Metro&rsquo;s network guarantees connectivity—you can get from any station to any other station, even if it requires multiple transfers.</p>
+<p>The algorithm could be optimized with Dijkstra&rsquo;s for shortest paths, but DFS works fine for this use case.</p>
+<h2 id="frontend-implementation">Frontend Implementation</h2>
+<p>I used Leaflet.js for the interactive map—it&rsquo;s lightweight and handles the station plotting beautifully. The UI is minimal by design:</p>
+<ul>
+<li>Search for start/end stations</li>
+<li>Visual route display on the map</li>
+<li>Step-by-step directions</li>
+<li>Transfer information</li>
+</ul>
+<p>The interface needs work. I know it&rsquo;s not intuitive, but hey:</p>
+<img src="../images/honest_works.jpg" alt="It ain't much, but it's honest work" width="300"/>
+<h2 id="deployment">Deployment</h2>
+<p>Vercel made deployment trivial. Push to GitHub, automatic builds, global CDN—done. The app loads fast and handles the interactive map without issues.</p>
+<h2 id="lessons-learned">Lessons Learned</h2>
+<ol>
+<li><strong>Start with data</strong>: Good data is harder to find than you think</li>
+<li><strong>Simple algorithms work</strong>: DFS solved the routing problem perfectly</li>
+<li><strong>Open source everything</strong>: Someone else might find this useful</li>
+</ol>
+<p>The code is on <a href="https://github.com/mohit-k-s/meteo">GitHub</a> <br>
+The website is live, <a href="https://meteo-v1.vercel.app/">Meteo</a></p>
+<hr>
+<p><em>Building tools for problems you actually have is the best kind of side project. Even if the UI looks like it was designed in 2005.</em></p>
+
+</content>
+<p>
+  
+    <a class="blog-tags" href="/tags/hobby_projects/">#hobby_projects</a>
+  
+</p>
+
+
+
+
+    </main>
+
+    <footer>
+        Made with <a href="https://github.com/clente/hugo-bearcub">Bear Cub</a>
+    </footer>
+
+    
+    <div class="status-line">
+        <span>-- TERMINAL -- 19:50:33 -- BLOG --</span>
+    </div>
+</body>
+
+</html>

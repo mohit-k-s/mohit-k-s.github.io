@@ -6,15 +6,21 @@
     <description>Recent content in Tags on Mohit&#39;s Page</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <managingEditor>mohit.bash@gmail.com (Mohit Kumar)</managingEditor>
-    <webMaster>mohit.bash@gmail.com (Mohit Kumar)</webMaster>
     <copyright>Mohit Kumar</copyright>
-    <lastBuildDate>Sun, 10 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 21 Aug 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://mohit-k-s.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hobby_projects</title>
+      <link>https://mohit-k-s.github.io/tags/hobby_projects/</link>
+      <pubDate>Thu, 21 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://mohit-k-s.github.io/tags/hobby_projects/</guid>
+      <description></description>
+      <content:encoded><![CDATA[]]></content:encoded>
+    </item>
     <item>
       <title>V8_internals</title>
       <link>https://mohit-k-s.github.io/tags/v8_internals/</link>
-      <pubDate>Sun, 10 Aug 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
+      <pubDate>Sun, 10 Aug 2025 00:00:00 +0000</pubDate>
       <guid>https://mohit-k-s.github.io/tags/v8_internals/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
@@ -22,7 +28,7 @@
     <item>
       <title>Proxy</title>
       <link>https://mohit-k-s.github.io/tags/proxy/</link>
-      <pubDate>Fri, 08 Aug 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
+      <pubDate>Fri, 08 Aug 2025 00:00:00 +0000</pubDate>
       <guid>https://mohit-k-s.github.io/tags/proxy/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
@@ -30,7 +36,7 @@
     <item>
       <title>Thoughts</title>
       <link>https://mohit-k-s.github.io/tags/thoughts/</link>
-      <pubDate>Fri, 01 Aug 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
+      <pubDate>Fri, 01 Aug 2025 00:00:00 +0000</pubDate>
       <guid>https://mohit-k-s.github.io/tags/thoughts/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
@@ -38,7 +44,7 @@
     <item>
       <title>Postgres</title>
       <link>https://mohit-k-s.github.io/tags/postgres/</link>
-      <pubDate>Wed, 30 Jul 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
+      <pubDate>Wed, 30 Jul 2025 00:00:00 +0000</pubDate>
       <guid>https://mohit-k-s.github.io/tags/postgres/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
@@ -46,7 +52,7 @@
     <item>
       <title>Testing</title>
       <link>https://mohit-k-s.github.io/tags/testing/</link>
-      <pubDate>Wed, 30 Jul 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
+      <pubDate>Wed, 30 Jul 2025 00:00:00 +0000</pubDate>
       <guid>https://mohit-k-s.github.io/tags/testing/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
@@ -54,7 +60,7 @@
     <item>
       <title>Distributed Systems</title>
       <link>https://mohit-k-s.github.io/tags/distributed-systems/</link>
-      <pubDate>Tue, 29 Jul 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
+      <pubDate>Tue, 29 Jul 2025 00:00:00 +0000</pubDate>
       <guid>https://mohit-k-s.github.io/tags/distributed-systems/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
@@ -62,31 +68,15 @@
     <item>
       <title>AI</title>
       <link>https://mohit-k-s.github.io/tags/ai/</link>
-      <pubDate>Mon, 28 Jul 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
+      <pubDate>Sun, 27 Jul 2025 00:00:00 +0000</pubDate>
       <guid>https://mohit-k-s.github.io/tags/ai/</guid>
-      <description></description>
-      <content:encoded><![CDATA[]]></content:encoded>
-    </item>
-    <item>
-      <title>Three.js</title>
-      <link>https://mohit-k-s.github.io/tags/three.js/</link>
-      <pubDate>Mon, 28 Jul 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
-      <guid>https://mohit-k-s.github.io/tags/three.js/</guid>
-      <description></description>
-      <content:encoded><![CDATA[]]></content:encoded>
-    </item>
-    <item>
-      <title>WebSpeech API</title>
-      <link>https://mohit-k-s.github.io/tags/webspeech-api/</link>
-      <pubDate>Mon, 28 Jul 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
-      <guid>https://mohit-k-s.github.io/tags/webspeech-api/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     <item>
       <title>CodeAnalysis</title>
       <link>https://mohit-k-s.github.io/tags/codeanalysis/</link>
-      <pubDate>Sun, 27 Jul 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
+      <pubDate>Sun, 27 Jul 2025 00:00:00 +0000</pubDate>
       <guid>https://mohit-k-s.github.io/tags/codeanalysis/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
@@ -94,7 +84,7 @@
     <item>
       <title>GitDiff</title>
       <link>https://mohit-k-s.github.io/tags/gitdiff/</link>
-      <pubDate>Sun, 27 Jul 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
+      <pubDate>Sun, 27 Jul 2025 00:00:00 +0000</pubDate>
       <guid>https://mohit-k-s.github.io/tags/gitdiff/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
@@ -102,7 +92,7 @@
     <item>
       <title>LLM</title>
       <link>https://mohit-k-s.github.io/tags/llm/</link>
-      <pubDate>Sun, 27 Jul 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
+      <pubDate>Sun, 27 Jul 2025 00:00:00 +0000</pubDate>
       <guid>https://mohit-k-s.github.io/tags/llm/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
@@ -110,7 +100,7 @@
     <item>
       <title>StaticAnalysis</title>
       <link>https://mohit-k-s.github.io/tags/staticanalysis/</link>
-      <pubDate>Sun, 27 Jul 2025 00:00:00 +0000</pubDate><author>mohit.bash@gmail.com (Mohit Kumar)</author>
+      <pubDate>Sun, 27 Jul 2025 00:00:00 +0000</pubDate>
       <guid>https://mohit-k-s.github.io/tags/staticanalysis/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
