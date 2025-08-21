@@ -14,12 +14,11 @@
       <link>https://mohit-k-s.github.io/blog/2025/meteo/</link>
       <pubDate>Thu, 21 Aug 2025 00:00:00 +0000</pubDate>
       <guid>https://mohit-k-s.github.io/blog/2025/meteo/</guid>
-      <description>&lt;p&gt;When you hear &amp;ldquo;Meteo,&amp;rdquo; you might think weather app. But no Meteo is my solution to a very specific problem: navigating Delhi&amp;rsquo;s metro system without constantly doing ..&lt;/p&gt;&#xA;&lt;img src=&#34;../images/i-cant-hear-you-yes.gif&#34; alt=&#34;Can&#39;t hear you over the metro noise&#34; width=&#34;200&#34; loading=&#39;lazy&#39; /&gt;&#xA;&lt;p&gt;Well use &lt;em&gt;&lt;strong&gt;google maps&lt;/strong&gt;&lt;/em&gt; ?&#xA;Yes of course i can. But for some reason that is not the goto for everyone.&lt;/p&gt;&#xA;&lt;p&gt;I built this metro navigation app for myself. The design isn&amp;rsquo;t perfect (yet), but it works. Here&amp;rsquo;s how I put it together.&#xA;One might ask , why ? To that i have no answer as i just thought that this can be cool !&lt;/p&gt;</description>
-      <content:encoded><![CDATA[<p>When you hear &ldquo;Meteo,&rdquo; you might think weather app. But no Meteo is my solution to a very specific problem: navigating Delhi&rsquo;s metro system without constantly doing ..</p>
+      <description>&lt;p&gt;Another weather app ?&lt;/p&gt;&#xA;&lt;img src=&#34;../images/i-cant-hear-you-yes.gif&#34; alt=&#34;Can&#39;t hear you over the metro noise&#34; width=&#34;200&#34; loading=&#39;lazy&#39; /&gt;&#xA;&lt;p&gt;No !&lt;/p&gt;&#xA;&lt;p&gt;I built this app for myself. The design isn&amp;rsquo;t perfect (yet), but it works. Here&amp;rsquo;s how I put it together.&#xA;One might ask , why ? To that i have no answer as i just thought that this can be cool !&lt;/p&gt;&#xA;&lt;div class=&#34;iframe-container&#34;&gt;&#xA;&lt;iframe src=&#34;https://meteo-v1.vercel.app/&#34; title=&#34;Meteo&#34; loading=&#34;lazy&#34; &gt;&lt;/iframe&gt;&#xA;&lt;/div&gt;&#xA;&lt;h2 id=&#34;the-data-challenge&#34;&gt;The Data Challenge&lt;/h2&gt;&#xA;&lt;p&gt;Building any transit app starts with data—lots of it. I needed:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;All metro stations with accurate coordinates&lt;/li&gt;&#xA;&lt;li&gt;Line connections and routes&lt;/li&gt;&#xA;&lt;li&gt;Station elevations (for that authentic metro map feel)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;station-data-collection&#34;&gt;Station Data Collection&lt;/h3&gt;&#xA;&lt;p&gt;I started with the official DMRC website, manually extracting all lines and stations. Getting coordinates was trickier. My first attempt used &lt;a href=&#34;https://operations.osmfoundation.org/policies/nominatim/&#34;&gt;Nominatim&lt;/a&gt;, OpenStreetMap&amp;rsquo;s geocoding service, but the results were disappointing—many stations were missing or had wildly inaccurate locations.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>Another weather app ?</p>
 <img src="../images/i-cant-hear-you-yes.gif" alt="Can't hear you over the metro noise" width="200" loading='lazy' />
-<p>Well use <em><strong>google maps</strong></em> ?
-Yes of course i can. But for some reason that is not the goto for everyone.</p>
-<p>I built this metro navigation app for myself. The design isn&rsquo;t perfect (yet), but it works. Here&rsquo;s how I put it together.
+<p>No !</p>
+<p>I built this app for myself. The design isn&rsquo;t perfect (yet), but it works. Here&rsquo;s how I put it together.
 One might ask , why ? To that i have no answer as i just thought that this can be cool !</p>
 <div class="iframe-container">
 <iframe src="https://meteo-v1.vercel.app/" title="Meteo" loading="lazy" ></iframe>
@@ -58,7 +57,7 @@ One might ask , why ? To that i have no answer as i just thought that this can b
 <p>The interface needs work. I know it&rsquo;s not intuitive, but hey:</p>
 <img src="../images/honest_works.jpg" alt="It ain't much, but it's honest work" width="300"/>
 <h2 id="deployment">Deployment</h2>
-<p>Vercel made deployment trivial. Push to GitHub, automatic builds, global CDN—done. The app loads fast and handles the interactive map without issues.</p>
+<p>Vercel made deployment trivial. Push to GitHub, automatic builds and done!</p>
 <h2 id="lessons-learned">Lessons Learned</h2>
 <ol>
 <li><strong>Start with data</strong>: Good data is harder to find than you think</li>
