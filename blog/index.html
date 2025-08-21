@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>blog | Mohit&#39;s Page</title>
     <meta name="description" content="Mohit&#39;s Page">
-    
+
     
     <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
@@ -187,8 +187,25 @@
 
     
     <div class="status-line">
-        <span>-- TERMINAL -- 20:03:26 -- BLOG --</span>
+        <span>-- TERMINAL -- <span id="local-time">00:00:00</span> -- BLOG --</span>
     </div>
+
+    <script>
+        function updateLocalTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', {
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            document.getElementById('local-time').textContent = timeString;
+        }
+
+        
+        updateLocalTime();
+        setInterval(updateLocalTime, 1000);
+    </script>
 </body>
 
 </html>
