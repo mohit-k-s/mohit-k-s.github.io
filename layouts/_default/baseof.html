@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+    <meta name="description" content="{{ .Site.Params.description }}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    {{ $style := resources.Get "custom.css" | resources.Minify }}
+    <link rel="stylesheet" href="{{ $style.Permalink }}">
+</head>
+
+<body>
+    <header>
+        <div class="terminal-prompt">
+            {{ if or (eq .Type "post") (eq .Section "blog") }}
+            <div class="prompt">mohit@localhost:~$ show {{ .RelPermalink }}</div>
+            {{ else }}
+            <div class="prompt">mohit@localhost:~$ ls</div>
+            {{ end }}
+        </div>
+        {{ if not (or (eq .Type "post") (eq .Section "blog")) }}
+        <nav>
+            {{ range .Site.Menus.main }}
+            <a href="{{ .URL }}">{{ .Name }}</a>
+            {{ end }}
+        </nav>
+        {{ else }}
+        <nav class="blog-nav">
+            <a href="/" class="nav-button">~</a>
+            <a href="/blog" class="nav-button">~/blog</a>
+        </nav>
+        {{ end }}
+    </header>
+
+    <main>
+        {{ block "main" . }}{{ end }}
+    </main>
+
+    <footer>
+        {{ .Site.Params.madeWith | markdownify }}
+    </footer>
+
+    <!-- Terminal Status Line -->
+    <div class="status-line">
+        <span>-- TERMINAL -- <span id="local-time">00:00:00</span> -- {{ .Type | upper }} --</span>
+    </div>
+
+    <script>
+        function updateLocalTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', {
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            document.getElementById('local-time').textContent = timeString;
+        }
+
+        // Update time immediately and then every second
+        updateLocalTime();
+        setInterval(updateLocalTime, 1000);
+    </script>
+</body>
+
+</html>

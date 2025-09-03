@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Distributed Systems on Mohit&#39;s Page</title>
+    <link>http://localhost:1313/tags/distributed-systems/</link>
+    <description>Recent content in Distributed Systems on Mohit&#39;s Page</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>Mohit Kumar</copyright>
+    <lastBuildDate>Tue, 29 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/distributed-systems/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Commmon Distributed Systems Lingo</title>
+      <link>http://localhost:1313/blog/2025/distributed_systems_lingo/</link>
+      <pubDate>Tue, 29 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/2025/distributed_systems_lingo/</guid>
+      <description>&lt;p&gt;There are a few terms that keep popping up when you work with distributed systems. They&amp;rsquo;re often thrown around casually, and it’s easy to nod along without fully understanding them. I’m collecting those here with simple definitions and examples. This list will evolve as I keep learning.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;fencing-token&#34;&gt;Fencing Token&lt;/h2&gt;&#xA;&lt;p&gt;I was reading &lt;a href=&#34;https://avi.im/blag/2024/s3-log/#:~:text=a%20concept%20of-,fencing%20tokens.,-I%E2%80%99ve%20left%20this&#34;&gt;V&amp;rsquo;s blog&lt;/a&gt; and he mentioned fencing token. This word was introduced in Martin&amp;rsquo;s blog &lt;a href=&#34;https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;A &lt;strong&gt;fencing token&lt;/strong&gt; is a number (usually monotonically increasing) that helps prevent &lt;strong&gt;split-brain writes&lt;/strong&gt; or &lt;strong&gt;duplicate actions&lt;/strong&gt; in distributed systems.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>There are a few terms that keep popping up when you work with distributed systems. They&rsquo;re often thrown around casually, and it’s easy to nod along without fully understanding them. I’m collecting those here with simple definitions and examples. This list will evolve as I keep learning.</p>
+<hr>
+<h2 id="fencing-token">Fencing Token</h2>
+<p>I was reading <a href="https://avi.im/blag/2024/s3-log/#:~:text=a%20concept%20of-,fencing%20tokens.,-I%E2%80%99ve%20left%20this">V&rsquo;s blog</a> and he mentioned fencing token. This word was introduced in Martin&rsquo;s blog <a href="https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html">here</a>.</p>
+<p>A <strong>fencing token</strong> is a number (usually monotonically increasing) that helps prevent <strong>split-brain writes</strong> or <strong>duplicate actions</strong> in distributed systems.</p>
+<p>It’s commonly used in <strong>distributed locks</strong>. Here&rsquo;s why:</p>
+<p>Let’s say two nodes both believe they hold a lock (due to clock drift or network delays). Without fencing, both might write to a shared resource. With fencing, each action is tagged with a <strong>token</strong> (say, 41 and 42). The system can reject the one with the lower token, assuming it’s stale.</p>
+<blockquote>
+<p><strong>Only the action with the highest fencing token is considered valid.</strong></p></blockquote>
+<p>This way, even if the lock coordination fails, the system can still reject outdated operations.</p>
+<hr>
+<h2 id="network-partition">Network Partition</h2>
+<p>A <strong>network partition</strong> is when a group of nodes in a distributed system can no longer talk to another group — not because the nodes have failed, but because something in the network is blocking communication between them.</p>
+<p>Think of it as the system getting split into isolated islands.</p>
+<blockquote>
+<p><strong>Note:</strong> A partition is about communication failure, not node failure.</p></blockquote>
+<h3 id="examples">Examples:</h3>
+<ul>
+<li>A node can talk to nodes A and B, but not to node C. That’s a network partition.</li>
+<li>Someone misconfigures firewall rules between two subnets. That’s a network partition.</li>
+<li>NACLs (Network Access Control Lists) are misconfigured to block traffic between nodes.</li>
+</ul>
+<hr>
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>
