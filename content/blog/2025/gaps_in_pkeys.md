@@ -5,7 +5,7 @@ description = "When Postgres sequences skip values"
 tags = ["postgres"]
 +++
 
-I ran into an odd issue recently — a service threw an error saying the **primary key max value had been reached**.  
+I ran into an odd issue recently, a service threw an error saying the **primary key max value had been reached**.  
 The column was `serial4`, so its max value was **2,147,483,647**, but the last inserted ID was only **2,146,602,558**.
 
 At first, I had no idea why.  
