@@ -121,7 +121,7 @@ The throughput is similar, but latency tells the real story. WalJet's P99 latenc
 
 Remember [*The Hummingbird Project*](https://letterboxd.com/film/the-hummingbird-project/)? The movie where they're trying to build a fiber optic cable in a straight line from Kansas to New Jersey just to shave off a few milliseconds for high-frequency trading. Every millisecond was worth millions.
 
-WalJet isn't for HFT, but the principle is the same: in systems where you need to react to changes immediately—cache invalidation, real-time webhooks, event-driven architectures—latency isn't just a nice-to-have. It's the whole point.
+WalJet isn't for HFT, but the principle is the same: in systems where you need to react to changes immediately like cache invalidation, real-time webhooks, event-driven architectures—latency isn't just a nice-to-have. It's the whole point.
 
 ## Why Not Open Source (Yet)?
 
