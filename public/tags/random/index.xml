@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Random on Mohit&#39;s Page</title>
+    <link>http://localhost:1313/tags/random/</link>
+    <description>Recent content in Random on Mohit&#39;s Page</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>Mohit Kumar</copyright>
+    <lastBuildDate>Fri, 02 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/random/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Creating custom notifications for reminders</title>
+      <link>http://localhost:1313/blog/2026/custom-notif/</link>
+      <pubDate>Fri, 02 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/2026/custom-notif/</guid>
+      <description>&lt;p&gt;Humans weren&amp;rsquo;t meant for sitting, and it has caused me a great deal of issues personally. I wanted to schedule reminders on Mac for standing up and drinking water, since I lose track of time pretty easily.&lt;/p&gt;&#xA;&lt;p&gt;Turns out this is very simple to do.&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Create a shell script (for example, &lt;code&gt;drink-water.sh&lt;/code&gt;):&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#!/bin/bash&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;osascript -e &lt;span class=&#34;s1&#34;&gt;&amp;#39;display notification &amp;#34;You need water&amp;#34; with title &amp;#34;Drink water&amp;#34;&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Make the script executable, then register it with &lt;code&gt;launchd&lt;/code&gt;.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>Humans weren&rsquo;t meant for sitting, and it has caused me a great deal of issues personally. I wanted to schedule reminders on Mac for standing up and drinking water, since I lose track of time pretty easily.</p>
+<p>Turns out this is very simple to do.</p>
+<ol>
+<li>Create a shell script (for example, <code>drink-water.sh</code>):</li>
+</ol>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>osascript -e <span class="s1">&#39;display notification &#34;You need water&#34; with title &#34;Drink water&#34;&#39;</span></span></span></code></pre></div><ol start="2">
+<li>
+<p>Make the script executable, then register it with <code>launchd</code>.</p>
+</li>
+<li>
+<p>If it doesn&rsquo;t already exist, create <code>~/Library/LaunchAgents</code>.</p>
+</li>
+<li>
+<p>Create <code>~/Library/LaunchAgents/com.my.drink-water.plist</code>:</p>
+</li>
+</ol>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cp">&lt;!DOCTYPE plist PUBLIC &#34;-//Apple//DTD PLIST 1.0//EN&#34;
+</span></span></span><span class="line"><span class="cl"><span class="cp"> &#34;http://www.apple.com/DTDs/PropertyList-1.0.dtd&#34;&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;plist</span> <span class="na">version=</span><span class="s">&#34;1.0&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;dict&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;key&gt;</span>Label<span class="nt">&lt;/key&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;string&gt;</span>drink.water.reminder<span class="nt">&lt;/string&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;key&gt;</span>ProgramArguments<span class="nt">&lt;/key&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;array&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;string&gt;</span>/full/path/to/drink-water.sh<span class="nt">&lt;/string&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/array&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;key&gt;</span>StartInterval<span class="nt">&lt;/key&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;integer&gt;</span>1800<span class="nt">&lt;/integer&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;key&gt;</span>StandardErrorPath<span class="nt">&lt;/key&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;string&gt;</span>/tmp/water.err<span class="nt">&lt;/string&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;key&gt;</span>StandardOutPath<span class="nt">&lt;/key&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;string&gt;</span>/tmp/water.out<span class="nt">&lt;/string&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dict&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/plist&gt;</span></span></span></code></pre></div><ol start="5">
+<li>Load it:</li>
+</ol>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">launchctl load /full/path/to/com.my.drink-water.plist</span></span></code></pre></div>]]></content:encoded>
+    </item>
+  </channel>
+</rss>

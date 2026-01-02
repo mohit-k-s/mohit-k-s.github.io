@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test what you write | Mohit&#39;s Page</title>
+    <meta name="description" content="Mohit&#39;s Page">
+
+    
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    
+    <link rel="stylesheet" href="http://localhost:1313/custom.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="terminal-prompt">
+            
+            <div class="prompt">mohit@localhost:~$ show /blog/2025/test_what_you_write/</div>
+            
+        </div>
+        
+        <nav class="blog-nav">
+            <a href="/" class="nav-button">~</a>
+            <a href="/blog" class="nav-button">~/blog</a>
+        </nav>
+        
+    </header>
+
+    <main>
+        
+
+<h1>Test what you write</h1>
+<p class="byline">
+  <time datetime='2025-07-30' pubdate>
+    2025-07-30
+  </time>
+  
+</p>
+
+<content>
+  <p>Yesterday , I noticed this weird error in logs.</p>
+
+
+
+
+
+<pre tabindex="0"><code>2025-07-30 10:00:00.000 UTC [1] LOG:  operator does not exist: uuid = record at character 50
+2025-07-30 10:00:00.000 UTC [1] LOG:  statement: SELECT (orders.id) FROM order WHERE orders = ($1, $2)</code></pre><p>It was immediately clear this was a bug the query attempts to compare a column to a record, which is not valid syntax in Postgres using the <code>=</code> operator.</p>
+<p>When I brought it up with the developers and QA responsible for the feature, they insisted it had been tested and was working as expected.</p>
+<p>This prompted me to take a closer look. My assumption was that the intent here was to check whether <code>orders</code> matched <em>any</em> of the values, which would require using the <code>IN</code> operator, like:</p>
+
+
+
+
+
+<pre tabindex="0"><code>SELECT orders.id FROM order WHERE orders IN ($1, $2)</code></pre><p>Turns out they didn&rsquo;t expect multiple values and the use case only expected one entry in array , which of course will work fine. But the language in code was something that did expect array.</p>
+<p>What was not clear to me is who is to blame?</p>
+<p>Lessons learned:</p>
+<ul>
+<li>If your query supports only one value, enforce it.</li>
+<li>If your query supports multiple values, use the right operator.</li>
+<li>And most importantly: test what you write, especially with different shapes of input.</li>
+</ul>
+
+</content>
+<p>
+  
+    <a class="blog-tags" href="/tags/postgres/">#postgres</a>
+  
+    <a class="blog-tags" href="/tags/testing/">#testing</a>
+  
+</p>
+
+
+
+
+    </main>
+
+    <footer>
+        Made with <a href="https://github.com/clente/hugo-bearcub">Bear Cub</a>
+    </footer>
+
+    
+    <div class="status-line">
+        <span>-- TERMINAL -- <span id="local-time">00:00:00</span> -- BLOG --</span>
+    </div>
+
+    <script>
+        function updateLocalTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', {
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            document.getElementById('local-time').textContent = timeString;
+        }
+
+        
+        updateLocalTime();
+        setInterval(updateLocalTime, 1000);
+    </script>
+</body>
+
+</html>

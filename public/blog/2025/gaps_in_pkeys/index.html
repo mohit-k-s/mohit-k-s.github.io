@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Missing Entries | Mohit&#39;s Page</title>
+    <meta name="description" content="Mohit&#39;s Page">
+
+    
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    
+    <link rel="stylesheet" href="http://localhost:1313/custom.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="terminal-prompt">
+            
+            <div class="prompt">mohit@localhost:~$ show /blog/2025/gaps_in_pkeys/</div>
+            
+        </div>
+        
+        <nav class="blog-nav">
+            <a href="/" class="nav-button">~</a>
+            <a href="/blog" class="nav-button">~/blog</a>
+        </nav>
+        
+    </header>
+
+    <main>
+        
+
+<h1>Missing Entries</h1>
+<p class="byline">
+  <time datetime='2025-11-13' pubdate>
+    2025-11-13
+  </time>
+  
+</p>
+
+<content>
+  <p>I ran into an odd issue recently, a service threw an error saying the <strong>primary key max value had been reached</strong>.<br>
+The column was <code>serial4</code>, so its max value was <strong>2,147,483,647</strong>, but the last inserted ID was only <strong>2,146,602,558</strong>.</p>
+<p>At first, I had no idea why.<br>
+As a quick fix, I changed the column to <code>bigserial</code>, which solved the immediate problem, but I wanted to know <strong>why IDs were missing</strong>.</p>
+<p>Listing rows in descending order showed <strong>gaps</strong> in the primary keys.<br>
+There were only about 16k entries in the table, so it clearly wasn’t full.</p>
+<p>Digging into the code confirmed my suspicion:<br>
+it used an <strong>INSERT &hellip; ON CONFLICT DO UPDATE</strong> pattern.</p>
+<p>Here’s a minimal reproduction:</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">seq_test</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">SERIAL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">device_id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">UNIQUE</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">status</span><span class="w"> </span><span class="nb">TEXT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">seq_test</span><span class="w"> </span><span class="p">(</span><span class="n">device_id</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;active&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">seq_test</span><span class="w"> </span><span class="p">(</span><span class="n">device_id</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;inactive&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ON</span><span class="w"> </span><span class="n">CONFLICT</span><span class="w"> </span><span class="p">(</span><span class="n">device_id</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">DO</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EXCLUDED</span><span class="p">.</span><span class="n">status</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">seq_test</span><span class="w"> </span><span class="p">(</span><span class="n">device_id</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;active&#39;</span><span class="p">);</span></span></span></code></pre></div><p>Now check what’s stored:</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">seq_test</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="s2">&#34;id&#34;</span><span class="p">,</span><span class="s2">&#34;device_id&#34;</span><span class="p">,</span><span class="s2">&#34;status&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">inactive</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">active</span></span></span></code></pre></div><p>Notice the jump — the id for the second device is 3, not 2.</p>
+<p>That’s because Postgres still calls nextval() for every insert, even if it hits a conflict and performs an update instead.</p>
+<p>A small detail, but a good one to remember.</p>
+
+</content>
+<p>
+  
+    <a class="blog-tags" href="/tags/postgres/">#postgres</a>
+  
+</p>
+
+
+
+
+    </main>
+
+    <footer>
+        Made with <a href="https://github.com/clente/hugo-bearcub">Bear Cub</a>
+    </footer>
+
+    
+    <div class="status-line">
+        <span>-- TERMINAL -- <span id="local-time">00:00:00</span> -- BLOG --</span>
+    </div>
+
+    <script>
+        function updateLocalTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', {
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            document.getElementById('local-time').textContent = timeString;
+        }
+
+        
+        updateLocalTime();
+        setInterval(updateLocalTime, 1000);
+    </script>
+</body>
+
+</html>

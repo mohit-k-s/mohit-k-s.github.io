@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>~/blog on Mohit&#39;s Page</title>
+    <link>http://localhost:1313/blog/</link>
+    <description>Recent content in ~/blog on Mohit&#39;s Page</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>Mohit Kumar</copyright>
+    <lastBuildDate>Fri, 02 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Creating custom notifications for reminders</title>
+      <link>http://localhost:1313/blog/2026/custom-notif/</link>
+      <pubDate>Fri, 02 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/2026/custom-notif/</guid>
+      <description>&lt;p&gt;Humans weren&amp;rsquo;t meant for sitting, and it has caused me a great deal of issues personally. I wanted to schedule reminders on Mac for standing up and drinking water, since I lose track of time pretty easily.&lt;/p&gt;&#xA;&lt;p&gt;Turns out this is very simple to do.&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Create a shell script (for example, &lt;code&gt;drink-water.sh&lt;/code&gt;):&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#!/bin/bash&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;osascript -e &lt;span class=&#34;s1&#34;&gt;&amp;#39;display notification &amp;#34;You need water&amp;#34; with title &amp;#34;Drink water&amp;#34;&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Make the script executable, then register it with &lt;code&gt;launchd&lt;/code&gt;.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>Humans weren&rsquo;t meant for sitting, and it has caused me a great deal of issues personally. I wanted to schedule reminders on Mac for standing up and drinking water, since I lose track of time pretty easily.</p>
+<p>Turns out this is very simple to do.</p>
+<ol>
+<li>Create a shell script (for example, <code>drink-water.sh</code>):</li>
+</ol>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>osascript -e <span class="s1">&#39;display notification &#34;You need water&#34; with title &#34;Drink water&#34;&#39;</span></span></span></code></pre></div><ol start="2">
+<li>
+<p>Make the script executable, then register it with <code>launchd</code>.</p>
+</li>
+<li>
+<p>If it doesn&rsquo;t already exist, create <code>~/Library/LaunchAgents</code>.</p>
+</li>
+<li>
+<p>Create <code>~/Library/LaunchAgents/com.my.drink-water.plist</code>:</p>
+</li>
+</ol>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cp">&lt;!DOCTYPE plist PUBLIC &#34;-//Apple//DTD PLIST 1.0//EN&#34;
+</span></span></span><span class="line"><span class="cl"><span class="cp"> &#34;http://www.apple.com/DTDs/PropertyList-1.0.dtd&#34;&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;plist</span> <span class="na">version=</span><span class="s">&#34;1.0&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;dict&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;key&gt;</span>Label<span class="nt">&lt;/key&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;string&gt;</span>drink.water.reminder<span class="nt">&lt;/string&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;key&gt;</span>ProgramArguments<span class="nt">&lt;/key&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;array&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;string&gt;</span>/full/path/to/drink-water.sh<span class="nt">&lt;/string&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/array&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;key&gt;</span>StartInterval<span class="nt">&lt;/key&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;integer&gt;</span>1800<span class="nt">&lt;/integer&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;key&gt;</span>StandardErrorPath<span class="nt">&lt;/key&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;string&gt;</span>/tmp/water.err<span class="nt">&lt;/string&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;key&gt;</span>StandardOutPath<span class="nt">&lt;/key&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;string&gt;</span>/tmp/water.out<span class="nt">&lt;/string&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dict&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/plist&gt;</span></span></span></code></pre></div><ol start="5">
+<li>Load it:</li>
+</ol>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">launchctl load /full/path/to/com.my.drink-water.plist</span></span></code></pre></div>]]></content:encoded>
+    </item>
+    <item>
+      <title>WalJet: Building a High-Performance CDC Pipeline</title>
+      <link>http://localhost:1313/blog/2025/waljet/</link>
+      <pubDate>Sun, 07 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/2025/waljet/</guid>
+      <description>&lt;p&gt;Change Data Capture (CDC) sounds simple on paper: take database changes, stream them somewhere else. How hard could it be?&lt;/p&gt;&#xA;&lt;p&gt;Very hard.&lt;/p&gt;&#xA;&lt;p&gt;Here&amp;rsquo;s what I hacked away when i was bored at work.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-problem&#34;&gt;The Problem&lt;/h2&gt;&#xA;&lt;p&gt;Modern applications often need to react to database changes in real-time. Whether it&amp;rsquo;s updating a cache, triggering workflows, or syncing data across services, you need a reliable way to capture and stream database changes.&lt;/p&gt;&#xA;&lt;p&gt;Postgres has a powerful feature called Write-Ahead Logging (WAL) that records every change before it&amp;rsquo;s applied. The challenge is turning that low-level stream into something useful.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>Change Data Capture (CDC) sounds simple on paper: take database changes, stream them somewhere else. How hard could it be?</p>
+<p>Very hard.</p>
+<p>Here&rsquo;s what I hacked away when i was bored at work.</p>
+<h2 id="the-problem">The Problem</h2>
+<p>Modern applications often need to react to database changes in real-time. Whether it&rsquo;s updating a cache, triggering workflows, or syncing data across services, you need a reliable way to capture and stream database changes.</p>
+<p>Postgres has a powerful feature called Write-Ahead Logging (WAL) that records every change before it&rsquo;s applied. The challenge is turning that low-level stream into something useful.</p>
+<h2 id="architecture">Architecture</h2>
+<p>WalJet&rsquo;s architecture is straightforward but carefully designed:</p>
+<img src="../images/waljet_arch.png" alt="Waljet architecture" width="600"/>
+<p><strong>Key components:</strong></p>
+<ol>
+<li><strong>WAL Listener</strong>: Connects to Postgres using logical replication protocol (<code>pgoutput</code>)</li>
+<li><strong>Decoder</strong>: Parses binary WAL messages into structured change events</li>
+<li><strong>Encoder Pool</strong>: Parallel workers that serialize events to Protobuf</li>
+<li><strong>Publisher Pool</strong>: Batches and publishes events to Redis Streams</li>
+<li><strong>Checkpoint Manager</strong>: Tracks replication progress with dual storage (Redis + file)</li>
+</ol>
+<h2 id="why-this-stack">Why This Stack?</h2>
+<p><strong>Postgres WAL + pglogrepl</strong>: Direct access to the write-ahead log using Go&rsquo;s <code>pglogrepl</code> library. No JVM overhead, no Kafka Connect complexity.</p>
+<p><strong>Protobuf encoding</strong>: Smaller payloads, type safety, and faster serialization than JSON. When you&rsquo;re processing thousands of events per second, this matters.</p>
+<p><strong>Redis Streams</strong>: Ordered delivery, consumer groups, and sub-millisecond latency. Perfect for real-time event streaming without the operational overhead of Kafka.</p>
+<p>The entire pipeline is designed around one goal: get database changes to downstream consumers as fast as possible, with minimal resource usage.</p>
+<p>At no point this is a debezium replacer , debezium is a much more complex system, waljet is just a simple hack to get things done.</p>
+<h2 id="the-tricky-parts">The Tricky Parts</h2>
+<h3 id="graceful-shutdown">Graceful Shutdown</h3>
+<p>This one caught me off guard. You can&rsquo;t just kill a CDC process—you&rsquo;ll leak replication slots and lose checkpoint data.</p>
+
+
+
+
+
+<pre tabindex="0"><code>1. Stop accepting new events
+2. Close event channels
+3. Wait for workers to finish (flush batches)
+4. Save final checkpoint (Redis + file)
+5. Close replication connection
+6. Open regular connection
+7. Drop replication slot
+8. Close regular connection
+9. Close Redis connection</code></pre><p>The gotcha? You can&rsquo;t drop a replication slot while you&rsquo;re still using the replication connection. You need to:</p>
+<ol>
+<li>Close the replication connection</li>
+<li>Open a regular Postgres connection</li>
+<li>Drop the slot</li>
+<li>Close the regular connection</li>
+</ol>
+<p>Miss this, and you leak storage in Postgres. The WAL files pile up, and eventually, you run out of disk space.</p>
+<h3 id="checkpoint-durability">Checkpoint Durability</h3>
+<p>When WalJet crashes (and it will), where do you resume? You need to track the last processed Log Sequence Number (LSN).</p>
+<p>I went with a dual checkpoint system:</p>
+<ul>
+<li><strong>Primary</strong>: Redis key (<code>waljet:checkpoint:waljet_slot</code>)</li>
+<li><strong>Backup</strong>: Local file (<code>.waljet_checkpoint_waljet_slot</code>)</li>
+</ul>
+<p>Why both? If Redis restarts, you still have the local file. If the container dies, Redis has the checkpoint. On startup, WalJet checks both and uses whichever is more recent.</p>
+<p>Simple, but it works.</p>
+<h2 id="why-build-this">Why Build This?</h2>
+<p>The idea was simple: what if you could react to database changes in real-time without the complexity of Debezium or Kafka?</p>
+<p>WalJet is designed for use cases where you need fast CDC with minimal infrastructure:</p>
+<ul>
+<li><strong>Cache invalidation</strong>: Update Redis/Memcached the moment data changes</li>
+<li><strong>Webhook triggers</strong>: Call external APIs when specific rows are modified</li>
+<li><strong>Event-driven architectures</strong>: Stream changes to downstream services</li>
+</ul>
+<p>It&rsquo;s not trying to replace Kafka or Debezium for large-scale data pipelines. It&rsquo;s for when you need something lightweight, fast, and easy to deploy.</p>
+<h2 id="benchmark">Benchmark</h2>
+<p>I ran a 5-minute benchmark comparing WalJet with Debezium under identical conditions:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Metric</th>
+          <th>Debezium</th>
+          <th>WalJet</th>
+          <th>Improvement</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Events/sec</strong></td>
+          <td>92.32</td>
+          <td>95.07</td>
+          <td>+3%</td>
+      </tr>
+      <tr>
+          <td><strong>P50 Latency</strong></td>
+          <td>541.44ms</td>
+          <td>23.44ms</td>
+          <td><strong>23x faster</strong></td>
+      </tr>
+      <tr>
+          <td><strong>P95 Latency</strong></td>
+          <td>871.11ms</td>
+          <td>50.16ms</td>
+          <td><strong>17x faster</strong></td>
+      </tr>
+      <tr>
+          <td><strong>P99 Latency</strong></td>
+          <td>952.98ms</td>
+          <td>53.15ms</td>
+          <td><strong>18x faster</strong></td>
+      </tr>
+      <tr>
+          <td><strong>Avg Latency</strong></td>
+          <td>541.08ms</td>
+          <td>25.17ms</td>
+          <td><strong>21x faster</strong></td>
+      </tr>
+      <tr>
+          <td><strong>Max Latency</strong></td>
+          <td>1131.87ms</td>
+          <td>171.33ms</td>
+          <td><strong>6.6x faster</strong></td>
+      </tr>
+      <tr>
+          <td><strong>Events Lost</strong></td>
+          <td>0</td>
+          <td>0</td>
+          <td>✓</td>
+      </tr>
+  </tbody>
+</table>
+<p>The throughput is similar, but latency tells the real story. WalJet&rsquo;s P99 latency is 53ms compared to Debezium&rsquo;s 953ms—nearly 20x faster.</p>
+<blockquote>
+<p>&ldquo;When you&rsquo;re invalidating a cache or triggering a webhook, waiting 950ms vs 50ms is the difference between a system that feels instant and one that feels sluggish.&rdquo;</p>
+<p>— Me, after running this benchmark</p></blockquote>
+<p>Remember <a href="https://letterboxd.com/film/the-hummingbird-project/"><em>The Hummingbird Project</em></a>? The movie where they&rsquo;re trying to build a fiber optic cable in a straight line from Kansas to New Jersey just to shave off a few milliseconds for high-frequency trading. Every millisecond was worth millions.</p>
+<p>WalJet isn&rsquo;t for HFT, but the principle is the same: in systems where you need to react to changes immediately like cache invalidation, real-time webhooks, event-driven architectures—latency isn&rsquo;t just a nice-to-have. It&rsquo;s the whole point.</p>
+<h2 id="why-not-open-source-yet">Why Not Open Source (Yet)?</h2>
+<p>WalJet started as a fun experiment—something I hacked for fun,  It works, the benchmarks are promising, but it&rsquo;s not production-ready in the way an OSS project should be.</p>
+<p>There&rsquo;s still work to do:</p>
+<ul>
+<li><strong>More performance testing</strong>: The benchmark above is just one scenario. Need to test under different loads, failure modes, and edge cases</li>
+<li><strong>Better error handling</strong>: Right now it works for the happy path, but production systems need to handle every unhappy path too</li>
+<li><strong>Documentation</strong>: The code needs better docs, examples, and a proper getting-started guide</li>
+<li><strong>Battle testing</strong>: It hasn&rsquo;t been run in production long enough to discover all the weird bugs</li>
+</ul>
+<p>Maybe it&rsquo;ll be open source someday. For now, it&rsquo;s a proof of concept that taught me a lot about Postgres internals and CDC pipelines. And honestly? That was the whole point.</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Missing Entries</title>
+      <link>http://localhost:1313/blog/2025/gaps_in_pkeys/</link>
+      <pubDate>Thu, 13 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/2025/gaps_in_pkeys/</guid>
+      <description>&lt;p&gt;I ran into an odd issue recently, a service threw an error saying the &lt;strong&gt;primary key max value had been reached&lt;/strong&gt;.&lt;br&gt;&#xA;The column was &lt;code&gt;serial4&lt;/code&gt;, so its max value was &lt;strong&gt;2,147,483,647&lt;/strong&gt;, but the last inserted ID was only &lt;strong&gt;2,146,602,558&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;At first, I had no idea why.&lt;br&gt;&#xA;As a quick fix, I changed the column to &lt;code&gt;bigserial&lt;/code&gt;, which solved the immediate problem, but I wanted to know &lt;strong&gt;why IDs were missing&lt;/strong&gt;.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>I ran into an odd issue recently, a service threw an error saying the <strong>primary key max value had been reached</strong>.<br>
+The column was <code>serial4</code>, so its max value was <strong>2,147,483,647</strong>, but the last inserted ID was only <strong>2,146,602,558</strong>.</p>
+<p>At first, I had no idea why.<br>
+As a quick fix, I changed the column to <code>bigserial</code>, which solved the immediate problem, but I wanted to know <strong>why IDs were missing</strong>.</p>
+<p>Listing rows in descending order showed <strong>gaps</strong> in the primary keys.<br>
+There were only about 16k entries in the table, so it clearly wasn’t full.</p>
+<p>Digging into the code confirmed my suspicion:<br>
+it used an <strong>INSERT &hellip; ON CONFLICT DO UPDATE</strong> pattern.</p>
+<p>Here’s a minimal reproduction:</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">seq_test</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">SERIAL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">device_id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">UNIQUE</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">status</span><span class="w"> </span><span class="nb">TEXT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">seq_test</span><span class="w"> </span><span class="p">(</span><span class="n">device_id</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;active&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">seq_test</span><span class="w"> </span><span class="p">(</span><span class="n">device_id</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;inactive&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ON</span><span class="w"> </span><span class="n">CONFLICT</span><span class="w"> </span><span class="p">(</span><span class="n">device_id</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">DO</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EXCLUDED</span><span class="p">.</span><span class="n">status</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">seq_test</span><span class="w"> </span><span class="p">(</span><span class="n">device_id</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;active&#39;</span><span class="p">);</span></span></span></code></pre></div><p>Now check what’s stored:</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">seq_test</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="s2">&#34;id&#34;</span><span class="p">,</span><span class="s2">&#34;device_id&#34;</span><span class="p">,</span><span class="s2">&#34;status&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">inactive</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">active</span></span></span></code></pre></div><p>Notice the jump — the id for the second device is 3, not 2.</p>
+<p>That’s because Postgres still calls nextval() for every insert, even if it hits a conflict and performs an update instead.</p>
+<p>A small detail, but a good one to remember.</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Building Meteo</title>
+      <link>http://localhost:1313/blog/2025/meteo/</link>
+      <pubDate>Thu, 21 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/2025/meteo/</guid>
+      <description>&lt;p&gt;Another weather app ?&lt;/p&gt;&#xA;&lt;img src=&#34;../images/i-cant-hear-you-yes.gif&#34; alt=&#34;Can&#39;t hear you over the metro noise&#34; width=&#34;200&#34; /&gt;&#xA;&lt;p&gt;No !&lt;/p&gt;&#xA;&lt;p&gt;I built this app for myself. The design isn&amp;rsquo;t perfect (yet), but it works. Here&amp;rsquo;s how I put it together.&#xA;One might ask , why ? To that i have no answer as i just thought that this can be cool !&lt;/p&gt;&#xA;&lt;div class=&#34;iframe-container&#34;&gt;&#xA;&lt;iframe src=&#34;https://meteo-v1.vercel.app/&#34; title=&#34;Meteo&#34; loading=&#34;lazy&#34; &gt;&lt;/iframe&gt;&#xA;&lt;/div&gt;&#xA;&lt;h2 id=&#34;the-data-challenge&#34;&gt;The Data Challenge&lt;/h2&gt;&#xA;&lt;p&gt;Building any transit app starts with data—lots of it. I needed:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;All metro stations with accurate coordinates&lt;/li&gt;&#xA;&lt;li&gt;Line connections and routes&lt;/li&gt;&#xA;&lt;li&gt;Station elevations (for that authentic metro map feel)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;station-data-collection&#34;&gt;Station Data Collection&lt;/h3&gt;&#xA;&lt;p&gt;I started with the official DMRC website, manually extracting all lines and stations. Getting coordinates was trickier. My first attempt used &lt;a href=&#34;https://operations.osmfoundation.org/policies/nominatim/&#34;&gt;Nominatim&lt;/a&gt;, OpenStreetMap&amp;rsquo;s geocoding service, but the results were disappointing—many stations were missing or had wildly inaccurate locations.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>Another weather app ?</p>
+<img src="../images/i-cant-hear-you-yes.gif" alt="Can't hear you over the metro noise" width="200" />
+<p>No !</p>
+<p>I built this app for myself. The design isn&rsquo;t perfect (yet), but it works. Here&rsquo;s how I put it together.
+One might ask , why ? To that i have no answer as i just thought that this can be cool !</p>
+<div class="iframe-container">
+<iframe src="https://meteo-v1.vercel.app/" title="Meteo" loading="lazy" ></iframe>
+</div>
+<h2 id="the-data-challenge">The Data Challenge</h2>
+<p>Building any transit app starts with data—lots of it. I needed:</p>
+<ul>
+<li>All metro stations with accurate coordinates</li>
+<li>Line connections and routes</li>
+<li>Station elevations (for that authentic metro map feel)</li>
+</ul>
+<h3 id="station-data-collection">Station Data Collection</h3>
+<p>I started with the official DMRC website, manually extracting all lines and stations. Getting coordinates was trickier. My first attempt used <a href="https://operations.osmfoundation.org/policies/nominatim/">Nominatim</a>, OpenStreetMap&rsquo;s geocoding service, but the results were disappointing—many stations were missing or had wildly inaccurate locations.</p>
+<p>Plan B: Google Maps API. More reliable, but required careful rate limiting and cost management.</p>
+<p>The final dataset lives in <a href="https://github.com/mohit-k-s/meteo/blob/main/public/dmrc.json">dmrc.json</a> on GitHub. It includes:</p>
+<ul>
+<li>250+ metro stations</li>
+<li>Coordinate data for each station</li>
+<li>Line connections and transfers</li>
+<li>(Mostly fictional) elevation data</li>
+</ul>
+<h3 id="the-elevation-problem">The Elevation Problem</h3>
+<p>Metro maps show elevation changes, but this data isn&rsquo;t publicly available. My current solution? I generated random elevations that look reasonable. Not ideal, but functional.</p>
+<p>Future plan: Use OCR on official metro elevation maps to extract real data.</p>
+<h2 id="route-planning-algorithm">Route Planning Algorithm</h2>
+<p>The core routing uses a simple depth-first search (DFS) to find paths between stations. Delhi Metro&rsquo;s network guarantees connectivity—you can get from any station to any other station, even if it requires multiple transfers.</p>
+<p>The algorithm could be optimized with Dijkstra&rsquo;s for shortest paths, but DFS works fine for this use case.</p>
+<h2 id="frontend-implementation">Frontend Implementation</h2>
+<p>I used Leaflet.js for the interactive map—it&rsquo;s lightweight and handles the station plotting beautifully. The UI is minimal by design:</p>
+<ul>
+<li>Search for start/end stations</li>
+<li>Visual route display on the map</li>
+<li>Step-by-step directions</li>
+<li>Transfer information</li>
+</ul>
+<p>The interface needs work. I know it&rsquo;s not intuitive, but hey:</p>
+<img src="../images/honest_works.jpg" alt="It ain't much, but it's honest work" width="300"/>
+<h2 id="deployment">Deployment</h2>
+<p>Vercel made deployment trivial. Push to GitHub, automatic builds and done!</p>
+<h2 id="lessons-learned">Lessons Learned</h2>
+<ol>
+<li><strong>Start with data</strong>: Good data is harder to find than you think</li>
+<li><strong>Simple algorithms work</strong>: DFS solved the routing problem perfectly</li>
+<li><strong>Open source everything</strong>: Someone else might find this useful</li>
+</ol>
+<p>The code is on <a href="https://github.com/mohit-k-s/meteo">GitHub</a> <br>
+The website is live, <a href="https://meteo-v1.vercel.app/">Meteo</a></p>
+<hr>
+<p><em>Building tools for problems you actually have is the best kind of side project. Even if the UI looks like it was designed in 2005.</em></p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>169220804: Yet Another Magic Number</title>
+      <link>http://localhost:1313/blog/2025/js/arrays/</link>
+      <pubDate>Sun, 10 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/2025/js/arrays/</guid>
+      <description>&lt;p&gt;I was poking around with Node.js arrays, trying to see how far I could push them&#xA;Here’s the simple code I ran:&lt;/p&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt; &#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;let&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;1e9&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;at&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;push&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This is just a standard array, and of course it fails — there’s no way my system has ~7.5 GB available just for this process.&#xA;But it fails with an interesting error:&lt;/p&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-log&#34; data-lang=&#34;log&#34;&gt;#&#xA;# Fatal error in , line 0&#xA;# Fatal JavaScript invalid size error 169220804 (see crbug.com/1201626)&#xA;#&#xA;#&#xA;#&#xA;#FailureMessage Object: 0x16bc59878&#xA;----- Native stack trace -----&#xA;&#xA; 1: 0x104301560 node::NodePlatform::GetStackTracePrinter()::$_0::__invoke() [/Users/mohit/.nvm/versions/node/v20.19.0/bin/node]&#xA;  ...&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;What’s that number &lt;em&gt;169220804&lt;/em&gt;?&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>I was poking around with Node.js arrays, trying to see how far I could push them
+Here’s the simple code I ran:</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">at</span> <span class="o">=</span> <span class="p">[]</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span><span class="mi">0</span> <span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mf">1e9</span> <span class="p">;</span> <span class="o">++</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">at</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div><p>This is just a standard array, and of course it fails — there’s no way my system has ~7.5 GB available just for this process.
+But it fails with an interesting error:</p>
+
+
+
+
+
+<pre tabindex="0"><code class="language-log" data-lang="log">#
+# Fatal error in , line 0
+# Fatal JavaScript invalid size error 169220804 (see crbug.com/1201626)
+#
+#
+#
+#FailureMessage Object: 0x16bc59878
+----- Native stack trace -----
+
+ 1: 0x104301560 node::NodePlatform::GetStackTracePrinter()::$_0::__invoke() [/Users/mohit/.nvm/versions/node/v20.19.0/bin/node]
+  ...</code></pre><p>What’s that number <em>169220804</em>?</p>
+<p>You might think: “Maybe if I just create an array of length <em>169220803</em>, it’ll work?” Nope !</p>
+<p>Each node version ships with a particular v8, here is my config</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">➜ node -p process.versions
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">  node: <span class="s1">&#39;20.19.0&#39;</span>,
+</span></span><span class="line"><span class="cl">  v8: <span class="s1">&#39;11.3.244.8-node.26&#39;</span>,
+</span></span><span class="line"><span class="cl">  ...
+</span></span><span class="line"><span class="cl"><span class="o">}</span></span></span></code></pre></div><p>So, I checked that branch of the V8 source.
+kMaxSize is defined <a href="https://chromium.googlesource.com/v8/v8/&#43;/refs/heads/11.3.244/src/objects/fixed-array.h#91">here</a>.</p>
+<p>That’s the max size in bytes, but the max number of elements comes from <a href="https://chromium.googlesource.com/v8/v8/&#43;/refs/heads/11.3.244/src/objects/fixed-array.h#207">kMaxLength</a> which works out to <em>134,217,728</em> elements.</p>
+<p>So in theory, creating an array of that length is fine.
+But my program is using .push().</p>
+<h2 id="the-growth-rule">The growth rule</h2>
+<p>When .push() needs more capacity, V8 allocates a new backing store at ~1.5× the old size and copies the elements over.</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">  <span class="c1">// file src/builtins/growable-fixed-array-gen.cc
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// Growth rate is analog to JSObject::NewElementsCapacity:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// new_capacity = (current_capacity + (current_capacity &gt;&gt; 1)) + 16.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">const</span> <span class="n">TNode</span><span class="o">&lt;</span><span class="n">IntPtrT</span><span class="o">&gt;</span> <span class="n">new_capacity</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">      <span class="n">IntPtrAdd</span><span class="p">(</span><span class="n">IntPtrAdd</span><span class="p">(</span><span class="n">current_capacity</span><span class="p">,</span> <span class="n">WordShr</span><span class="p">(</span><span class="n">current_capacity</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">                <span class="n">IntPtrConstant</span><span class="p">(</span><span class="mi">16</span><span class="p">));</span></span></span></code></pre></div><h2 id="finding-the-actual-limit">Finding the actual limit</h2>
+<p>At first , I didn&rsquo;t know the above formula and just wanted to find the point at which i start seeing these errors so , I wrote a quick binary search to find the exact point where the above error appears.</p>
+<p>The magic number turned out to be <em>112,813,859</em> elements.</p>
+<p>If we plug that into the growth formula:</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">new_capacity</span> <span class="o">=</span> <span class="mi">112_813_859</span> <span class="o">+</span> <span class="nx">floor</span><span class="p">(</span><span class="mi">112_813_859</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">16</span>
+</span></span><span class="line"><span class="cl">             <span class="o">=</span> <span class="mi">112_813_859</span> <span class="o">+</span> <span class="mi">56_406_929</span> <span class="o">+</span> <span class="mi">16</span>
+</span></span><span class="line"><span class="cl">             <span class="o">=</span> <span class="mi">169_220_804</span></span></span></code></pre></div><p>Ahh, that exact same number.
+It all makes sense now. <br>
+I tried running this in later node versions , the program always breaks at that limit.</p>
+<h2 id="takeaways">Takeaways</h2>
+<ol>
+<li>
+<p>While the theoritical limit is way higher for array length, their maximum size and growth behavior are constrained by V8’s internal constants like <code>kMaxSize</code> and <code>kMaxLength</code>.</p>
+</li>
+<li>
+<p>Understanding these engine-level limits is essential when working with extremely large arrays or developing performance-critical applications that rely on dynamic array growth.</p>
+</li>
+<li>
+<p>For predictable and efficient handling of large numeric datasets, consider using typed arrays (<code>Uint8Array</code>, <code>Float64Array</code>, etc.), which have fixed size and avoid the overhead and limits of dynamic arrays.</p>
+</li>
+</ol>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Python&#39;s Native Proxy Pattern</title>
+      <link>http://localhost:1313/blog/2025/method_interceptor/</link>
+      <pubDate>Fri, 08 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/2025/method_interceptor/</guid>
+      <description>&lt;p&gt;While making &lt;a href=&#34;https://github.com/mohit-k-s/cwgrep&#34;&gt;cwgrep&lt;/a&gt;, I wanted to log every AWS call the tool made without wrapping each method manually.&lt;/p&gt;&#xA;&lt;p&gt;Turns out, Python lets you do that cleanly.&lt;/p&gt;&#xA;&lt;h2 id=&#34;__getattr__&#34;&gt;__getattr__&lt;/h2&gt;&#xA;&lt;p&gt;This is a Python dunder method that’s only called when:&#xA;The attribute named name is not found in the usual places (&lt;strong&gt;__dict__&lt;/strong&gt;, class, etc.).&#xA;So if self.describe_log_groups doesn’t exist on the AWSInterceptor instance, Python calls &lt;strong&gt;__getattr__&lt;/strong&gt;(&amp;lsquo;describe_log_groups&amp;rsquo;).&#xA;This lets you act as a transparent proxy, forwarding unknown method accesses to the real client.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>While making <a href="https://github.com/mohit-k-s/cwgrep">cwgrep</a>, I wanted to log every AWS call the tool made without wrapping each method manually.</p>
+<p>Turns out, Python lets you do that cleanly.</p>
+<h2 id="__getattr__">__getattr__</h2>
+<p>This is a Python dunder method that’s only called when:
+The attribute named name is not found in the usual places (<strong>__dict__</strong>, class, etc.).
+So if self.describe_log_groups doesn’t exist on the AWSInterceptor instance, Python calls <strong>__getattr__</strong>(&lsquo;describe_log_groups&rsquo;).
+This lets you act as a transparent proxy, forwarding unknown method accesses to the real client.</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">time</span> 
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">functools</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">SENSITIVE_KEYS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;password&#34;</span><span class="p">,</span> <span class="s2">&#34;secret&#34;</span><span class="p">,</span> <span class="s2">&#34;token&#34;</span><span class="p">,</span> <span class="s2">&#34;key&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">sanitize</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">_sanitize</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="s2">&#34;***&#34;</span> <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">SENSITIVE_KEYS</span> <span class="k">else</span> <span class="n">_sanitize</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="sa">f</span><span class="s2">&#34;[</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="si">}</span><span class="s2"> items]&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">obj</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">_sanitize</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">AWSInterceptor</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">logger</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">method</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="ow">not</span> <span class="n">callable</span><span class="p">(</span><span class="n">method</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">method</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nd">@functools.wraps</span><span class="p">(</span><span class="n">method</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">def</span> <span class="nf">wrapped</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">result</span> <span class="o">=</span> <span class="n">method</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+</span></span><span class="line"><span class="cl">                <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">log_call</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">success</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">sanitize</span><span class="p">(</span><span class="n">kwargs</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="n">result</span>
+</span></span><span class="line"><span class="cl">            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+</span></span><span class="line"><span class="cl">                <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">log_call</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">success</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">params</span><span class="o">=</span><span class="n">sanitize</span><span class="p">(</span><span class="n">kwargs</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                <span class="k">raise</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">wrapped</span></span></span></code></pre></div><p>Notice the weird decorator ?</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">        <span class="nd">@functools.wraps</span><span class="p">(</span><span class="n">method</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">def</span> <span class="nf">wrapped</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span></span></span></code></pre></div><p>This is classic decorator technique, but applied dynamically.
+It preserves metadata like __name__, __doc__, and signature, so logs and debuggers still refer to the original method, not wrapped.</p>
+<p>Now i only had to do</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">real_client</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s2">&#34;logs&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">proxy</span> <span class="o">=</span> <span class="n">AWSInterceptor</span><span class="p">(</span><span class="n">real_client</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">proxy</span><span class="o">.</span><span class="n">describe_log_groups</span><span class="p">()</span></span></span></code></pre></div><p>That’s it.</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Tea Breaks are best</title>
+      <link>http://localhost:1313/blog/2025/work/tea_breaks/</link>
+      <pubDate>Fri, 01 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/2025/work/tea_breaks/</guid>
+      <description>&lt;p&gt;I haven’t worked a lot of jobs. Haven’t had too many coworkers either. Some were good, some forgettable, some… just there.&lt;/p&gt;&#xA;&lt;p&gt;But every now and then, someone stands out. Not because of their resume or technical chops (though that helps), but because of who they are, how they carry themselves, and how they make you want to be better.&lt;/p&gt;&#xA;&lt;p&gt;At my current job, I had someone like that. Yesterday was his last day in the company.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>I haven’t worked a lot of jobs. Haven’t had too many coworkers either. Some were good, some forgettable, some… just there.</p>
+<p>But every now and then, someone stands out. Not because of their resume or technical chops (though that helps), but because of who they are, how they carry themselves, and how they make you want to be better.</p>
+<p>At my current job, I had someone like that. Yesterday was his last day in the company.</p>
+<p>He joined as an IC from a pretty amazing org, and I connected with him almost instantly. Here’s what I learned from him:</p>
+<ul>
+<li>Be a great listener but don&rsquo;t be afraid to speak up</li>
+<li>Think in systems and not just in the immediate context</li>
+<li>Try to create a culture of learning and growth</li>
+<li>You can be a little weird</li>
+<li>Explore the unknown and don&rsquo;t be afraid to fail (You might be wrong, but that&rsquo;s okay)</li>
+</ul>
+<p>He believes that culture matters more than whatever metrics get flashed in monthly review calls. I second that.</p>
+<p>If you think about it , you’ll realize that what matters is the people and the vision. Not headcount. Not burn numbers. Great companies aren’t great because they’re big. They’re great because they have the right people doing meaningful work.</p>
+<p>Of course, office politics ruin everything. And they’re inevitable when non-technical folks run the show. But you can choose not to be part of it.</p>
+<hr>
+<h3 id="silicon-valley">Silicon Valley</h3>
+<p>We talked a lot about Silicon Valley(TV show). I’ve watched it countless times. It’s probably the best representation of this industry we work in.</p>
+<p>Everything starts with an idea. Then power, metrics, and VC expectations creep in. But it’s the journey that matters. Richard didn’t take that 10 mn dollars offer not because he’s an idiot (well, &ldquo;RIGBY&rdquo; but he does have serious issues) but because he believed in something.</p>
+<p>That still counts for something. I might nerd out about this show at length in some other post.</p>
+<hr>
+<h3 id="tea-breaks">Tea Breaks</h3>
+<p>One random day i got a text from him, just one word</p>
+<blockquote>
+<p>tea ?</p></blockquote>
+<p>I was like &ldquo;why ? I am not a tea person&rdquo; but then I thought about it and I was like &ldquo;why not ?&rdquo;</p>
+<p>So we went to the tea shop. It wasn’t fancy, but it was great. We talked about TV shows, philosophy, random tech, and even weirder things. I remember him asking me:<br>
+<em>“Do you know how a helicopter flies? What’s so special about the blades?”</em></p>
+<p>One of the recurring themes was how society makes us Indians to feel like we’re not good enough and how that feeds the rat race.
+It made me think things and finally come to realise that I’m part of that too. I didn’t choose this field because I loved it as a kid. I’m not the coder who started at 12.</p>
+<p>And always the conversation ended with this quote</p>
+<blockquote>
+<p>You can just do things.</p></blockquote>
+<p>Well it will be difficult though, but sure we can do it.</p>
+<p>Now he&rsquo;s off to explore the unknown and I&rsquo;m sure he&rsquo;ll be great at it.
+He sent me this in the teams chat , classic right ?</p>
+<p><img src="../see_you_again.gif" alt="See you again"></p>
+<p>I’ll miss those tea breaks and the conversations.</p>
+<h5 id="for-the-couch-mayor-">For the couch mayor 🛋️🛋️</h5>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Test what you write</title>
+      <link>http://localhost:1313/blog/2025/test_what_you_write/</link>
+      <pubDate>Wed, 30 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/2025/test_what_you_write/</guid>
+      <description>&lt;p&gt;Yesterday , I noticed this weird error in logs.&lt;/p&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;2025-07-30 10:00:00.000 UTC [1] LOG:  operator does not exist: uuid = record at character 50&#xA;2025-07-30 10:00:00.000 UTC [1] LOG:  statement: SELECT (orders.id) FROM order WHERE orders = ($1, $2)&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;It was immediately clear this was a bug the query attempts to compare a column to a record, which is not valid syntax in Postgres using the &lt;code&gt;=&lt;/code&gt; operator.&lt;/p&gt;&#xA;&lt;p&gt;When I brought it up with the developers and QA responsible for the feature, they insisted it had been tested and was working as expected.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>Yesterday , I noticed this weird error in logs.</p>
+
+
+
+
+
+<pre tabindex="0"><code>2025-07-30 10:00:00.000 UTC [1] LOG:  operator does not exist: uuid = record at character 50
+2025-07-30 10:00:00.000 UTC [1] LOG:  statement: SELECT (orders.id) FROM order WHERE orders = ($1, $2)</code></pre><p>It was immediately clear this was a bug the query attempts to compare a column to a record, which is not valid syntax in Postgres using the <code>=</code> operator.</p>
+<p>When I brought it up with the developers and QA responsible for the feature, they insisted it had been tested and was working as expected.</p>
+<p>This prompted me to take a closer look. My assumption was that the intent here was to check whether <code>orders</code> matched <em>any</em> of the values, which would require using the <code>IN</code> operator, like:</p>
+
+
+
+
+
+<pre tabindex="0"><code>SELECT orders.id FROM order WHERE orders IN ($1, $2)</code></pre><p>Turns out they didn&rsquo;t expect multiple values and the use case only expected one entry in array , which of course will work fine. But the language in code was something that did expect array.</p>
+<p>What was not clear to me is who is to blame?</p>
+<p>Lessons learned:</p>
+<ul>
+<li>If your query supports only one value, enforce it.</li>
+<li>If your query supports multiple values, use the right operator.</li>
+<li>And most importantly: test what you write, especially with different shapes of input.</li>
+</ul>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Commmon Distributed Systems Lingo</title>
+      <link>http://localhost:1313/blog/2025/distributed_systems_lingo/</link>
+      <pubDate>Tue, 29 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/2025/distributed_systems_lingo/</guid>
+      <description>&lt;p&gt;There are a few terms that keep popping up when you work with distributed systems. They&amp;rsquo;re often thrown around casually, and it’s easy to nod along without fully understanding them. I’m collecting those here with simple definitions and examples. This list will evolve as I keep learning.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;fencing-token&#34;&gt;Fencing Token&lt;/h2&gt;&#xA;&lt;p&gt;I was reading &lt;a href=&#34;https://avi.im/blag/2024/s3-log/#:~:text=a%20concept%20of-,fencing%20tokens.,-I%E2%80%99ve%20left%20this&#34;&gt;V&amp;rsquo;s blog&lt;/a&gt; and he mentioned fencing token. This word was introduced in Martin&amp;rsquo;s blog &lt;a href=&#34;https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;A &lt;strong&gt;fencing token&lt;/strong&gt; is a number (usually monotonically increasing) that helps prevent &lt;strong&gt;split-brain writes&lt;/strong&gt; or &lt;strong&gt;duplicate actions&lt;/strong&gt; in distributed systems.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>There are a few terms that keep popping up when you work with distributed systems. They&rsquo;re often thrown around casually, and it’s easy to nod along without fully understanding them. I’m collecting those here with simple definitions and examples. This list will evolve as I keep learning.</p>
+<hr>
+<h2 id="fencing-token">Fencing Token</h2>
+<p>I was reading <a href="https://avi.im/blag/2024/s3-log/#:~:text=a%20concept%20of-,fencing%20tokens.,-I%E2%80%99ve%20left%20this">V&rsquo;s blog</a> and he mentioned fencing token. This word was introduced in Martin&rsquo;s blog <a href="https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html">here</a>.</p>
+<p>A <strong>fencing token</strong> is a number (usually monotonically increasing) that helps prevent <strong>split-brain writes</strong> or <strong>duplicate actions</strong> in distributed systems.</p>
+<p>It’s commonly used in <strong>distributed locks</strong>. Here&rsquo;s why:</p>
+<p>Let’s say two nodes both believe they hold a lock (due to clock drift or network delays). Without fencing, both might write to a shared resource. With fencing, each action is tagged with a <strong>token</strong> (say, 41 and 42). The system can reject the one with the lower token, assuming it’s stale.</p>
+<blockquote>
+<p><strong>Only the action with the highest fencing token is considered valid.</strong></p></blockquote>
+<p>This way, even if the lock coordination fails, the system can still reject outdated operations.</p>
+<hr>
+<h2 id="network-partition">Network Partition</h2>
+<p>A <strong>network partition</strong> is when a group of nodes in a distributed system can no longer talk to another group — not because the nodes have failed, but because something in the network is blocking communication between them.</p>
+<p>Think of it as the system getting split into isolated islands.</p>
+<blockquote>
+<p><strong>Note:</strong> A partition is about communication failure, not node failure.</p></blockquote>
+<h3 id="examples">Examples:</h3>
+<ul>
+<li>A node can talk to nodes A and B, but not to node C. That’s a network partition.</li>
+<li>Someone misconfigures firewall rules between two subnets. That’s a network partition.</li>
+<li>NACLs (Network Access Control Lists) are misconfigured to block traffic between nodes.</li>
+</ul>
+<hr>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Creativity</title>
+      <link>http://localhost:1313/blog/2025/creativity/</link>
+      <pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/2025/creativity/</guid>
+      <description>&lt;p&gt;Yesterday, I made my first substack post and I promised myself I’d continue writing, just like I used to back in 10th grade. There’s something deeply fulfilling about writing. I’ve missed that feeling for a long time, and now I’m trying to find my way back to it. So here I am. We’d start with what starts things.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Creativity (noun): the use of imagination or original ideas to create something&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>Yesterday, I made my first substack post and I promised myself I’d continue writing, just like I used to back in 10th grade. There’s something deeply fulfilling about writing. I’ve missed that feeling for a long time, and now I’m trying to find my way back to it. So here I am. We’d start with what starts things.</p>
+<blockquote>
+<p>Creativity (noun): the use of imagination or original ideas to create something</p></blockquote>
+<p>Creativity, as we all know, is one of the fundamental pillars on which the entire arc of human evolution rests.
+If not for original ideas, we’d still be hunting for food and hiding from the cold.</p>
+<p>At its core, creativity is the act of combining our mental capacities and taking what’s already available and reshaping it into something new.
+This new “thing” doesn’t have to be grand. It can be a poem, a cooling machine, a ziplock bag, or a story whispered by firelight.</p>
+<p>Creativity is not limited to the arts. It lives in engineering, cooking, survival, protest, play. It’s how we’ve adapted, improved, and often just endured.
+It’s invention born not only from inspiration, but from constraint.</p>
+<p>When was the last time you created something ? When was the last time you sat down and just gave your best to do something by yourself , with just what you know. There’s something about that feeling, right?</p>
+<p>That quiet intensity. That sense of this is my work.</p>
+<p>Of course, people take help and that’s not wrong. We’re not meant to be experts at everything.
+But still there’s a certain joy, a deep satisfaction, in being completely immersed in the one thing you love.
+To create something original.</p>
+<p>I enjoy writing and you might enjoy knitting, that last piece in which you made a cool pattern surely is the word of mouth.</p>
+<p>Why ?
+Creating is often linked to immediate benefits for society, and for yourself.
+Make something useful, and the world might reward you with recognition, money, maybe even status.</p>
+<p>That’s fine. There’s no shame in it. But pause for a moment.
+Ask yourself: Do you create to live, or live to create?</p>
+<p>There’s something quietly romantic almost defiant about calling yourself an original.
+About making something not because it’s useful, but because it had to be made.
+Not for profit, not for praise. Just for the act. For the joy.</p>
+<p>No judgment, though. I respect all creators the practical, the poetic, the ones who ship, and the ones who scribble on napkins and never show a soul.</p>
+<p>But if you’re someone who feels that strange pull to make things that don’t quite have a reason yet, keep going.
+That’s the kind of creation that changes things.</p>
+<p>How ?
+The why is simple it’s the spark that gets you going. But it’s not enough. To actually create something, you have to put in the hours. The people you admire weren’t creators from the start they were learners. That’s the part people often skip. You have to be willing to learn, to fail, and to repeat the process over and over again. Obsess over it.</p>
+<p>Create with so much intensity that it borders on madness because the truth is, creativity isn’t a lightning strike.</p>
+<p>In this era of knowledge, everything is within reach. Imagine Newton the greatest of all time having access to the tools and information we have today. The possibilities would’ve been endless. But here’s the thing: you also live in this era. You, too, can do what you dream of. It’s just not going to happen overnight. Real creation takes time.</p>
+<p>And it will demand things from you that most people aren’t willing to give up comfort, distraction, certainty. I know that’s debatable, but it’s often the trade for creating something truly great. History is full of that proof. The people who changed things didn’t always live balanced lives but they lived driven ones. If you’re willing to pay that price, even in small doses, the doors are wide open.</p>
+<p>But does that mean you can’t call small wins a win? Not at all. That’s the best part. In the art of creation, everything new is new. Every small step forward counts. A sentence written, a sketch finished, a bug finally fixed they all matter. You don’t need to change the world to call yourself a creator. You just need to keep creating.</p>
+<p>What ?
+This one’s simple it can be anything. Anything that already exists and just needs a little polishing, or something that doesn’t exist yet at all. It could be a new music piece, a sketch, a blog post, an app , or even your next dish.</p>
+<p>The “what” of creation isn’t fixed. That’s the beauty of it. There are a thousand answers, and they’re all valid. What matters is that you decide to make something.
+</p>
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>
