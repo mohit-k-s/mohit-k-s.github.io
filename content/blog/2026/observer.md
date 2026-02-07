@@ -58,7 +58,7 @@ Talking helps.
 And then it returns.
 
 They say this too shall pass.\
-But some things don’t pass through you they stay.
+But some things don’t pass through you ; they stay.
 
 Like an appendage.\
 Useless.\
