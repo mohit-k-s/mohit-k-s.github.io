@@ -9,9 +9,9 @@
 
 :root {
   /* Parchment palette */
-  --parchment:      #f5f0e4;
-  --parchment-dark: #ede5cc;
-  --parchment-code: #eee8d5;
+  --parchment:      #f0e2c4;
+  --parchment-dark: #e8d5aa;
+  --parchment-code: #e9d9b8;
   --ink:            #2c2416;
   --ink-secondary:  #5a4e3a;
   --ink-muted:      #8a7a62;
@@ -84,8 +84,8 @@ body {
     0deg,
     transparent,
     transparent 31px,
-    rgba(160, 140, 90, 0.06) 31px,
-    rgba(160, 140, 90, 0.06) 32px
+    rgba(140, 100, 40, 0.07) 31px,
+    rgba(140, 100, 40, 0.07) 32px
   );
   color: var(--ink);
   font-family: var(--font-body);
