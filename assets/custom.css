@@ -745,7 +745,50 @@ mark {
 
 
 /* ============================================================
-   20. THEME TOGGLE BUTTON
+   20. DARK EXTENSION NOTICE
+   ============================================================ */
+
+.dark-ext-notice {
+  position: fixed;
+  bottom: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--parchment-dark);
+  border: 1px solid var(--border-medium);
+  color: var(--ink-secondary);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-style: italic;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  white-space: nowrap;
+  z-index: 200;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.dark-ext-notice[hidden] {
+  display: none;
+}
+
+.dark-ext-dismiss {
+  background: none;
+  border: none;
+  color: var(--ink-muted);
+  cursor: pointer;
+  font-size: 0.75rem;
+  padding: 0;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.dark-ext-dismiss:hover {
+  color: var(--ink);
+}
+
+/* ============================================================
+   21. THEME TOGGLE BUTTON
    ============================================================ */
 
 .theme-toggle {
