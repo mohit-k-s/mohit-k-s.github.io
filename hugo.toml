@@ -16,13 +16,10 @@ enableRobotsTXT = true
       unsafe = true
 
   [markup.highlight]
-    lineNos = false
+    lineNos = true
     lineNumbersInTable = false
-    # This allows Bear Cub to use a variation of Dracula that is more accessible
-    # to people with poor eyesight. For more information about color contrast
-    # and accessibility, see https://web.dev/color-and-contrast-accessibility/
     noClasses = false
-    style = "github-dark"
+    style = "friendly"
     tabWidth = 4
 
 # Multilingual mode config. More for information about how to setup translation,

@@ -2,6 +2,7 @@
 title = "Missing Entries"
 date = "2025-11-13"
 description = "When Postgres sequences skip values"
+category = "tech"
 tags = ["postgres"]
 +++
 

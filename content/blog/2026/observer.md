@@ -1,6 +1,7 @@
 +++
-title = "Observer"
+title = "An Observer"
 date = "2026-01-24"
+category = "personal"
 tags = [
     "thoughts",
 ]
@@ -49,8 +50,7 @@ The years you didn’t act begin to compound.
 So do the consequences.
 
 Comparison becomes a habit.
-Happiness feels \
-<mark><i>inaccessible</i></mark>.
+Happiness feels <mark><i>inaccessible</i></mark>.
 
 Walking helps.\
 Talking helps.

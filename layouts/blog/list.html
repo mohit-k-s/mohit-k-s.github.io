@@ -1,0 +1,35 @@
+{{ define "main" }}
+<content>
+  {{ $personal := where .Pages ".Params.category" "personal" }}
+  {{ $tech := where .Pages ".Params.category" "tech" }}
+
+  {{ if $personal }}
+  <h2 class="section-heading">Personal</h2>
+  <ul class="blog-posts">
+    {{ range $personal }}
+    <li>
+      <span><time datetime='{{ .Date.Format "2006-01-02" }}'>{{ .Date.Format "2 Jan 2006" }}</time></span>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </li>
+    {{ end }}
+  </ul>
+  {{ end }}
+
+  {{ if and $personal $tech }}
+  <div class="ornate-divider" role="presentation" aria-hidden="true"></div>
+  {{ end }}
+
+  {{ if $tech }}
+  <h2 class="section-heading">Technical</h2>
+  <ul class="blog-posts">
+    {{ range $tech }}
+    <li>
+      <span><time datetime='{{ .Date.Format "2006-01-02" }}'>{{ .Date.Format "2 Jan 2006" }}</time></span>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </li>
+    {{ end }}
+  </ul>
+  {{ end }}
+
+</content>
+{{ end }}

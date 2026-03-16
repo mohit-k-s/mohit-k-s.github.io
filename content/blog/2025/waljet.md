@@ -2,6 +2,7 @@
 title = "WalJet: Building a High-Performance CDC Pipeline"
 date = "2025-12-07"
 description = "A deep dive into building a Change Data Capture pipeline from Postgres WAL to Redis Streams using Go"
+category = "tech"
 tags = [
     "golang",
     "postgres",

@@ -2,6 +2,7 @@
 title = "Creativity"
 date = "2025-06-15"
 description = "Creativity as fundamental pillar"
+category = "personal"
 tags = [
     "thoughts",
 ]

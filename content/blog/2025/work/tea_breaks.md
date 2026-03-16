@@ -2,6 +2,7 @@
 title = "Tea Breaks are best"
 date = "2025-08-01"
 description = "Great discussions happen over tea"
+category = "personal"
 tags = [
     "thoughts",
 ]

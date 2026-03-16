@@ -2,6 +2,7 @@
 title = "Python's Native Proxy Pattern"
 date = "2025-08-08"
 description = "Pythonic way to make a proxy"
+category = "tech"
 tags = [
     "proxy"
 ]

@@ -2,6 +2,7 @@
 title = "Building Meteo"
 date = "2025-08-21"
 description = "How I built a metro navigation app for Delhi using web technologies and open data"
+category = "tech"
 tags = [
     "hobby_projects",
 ]

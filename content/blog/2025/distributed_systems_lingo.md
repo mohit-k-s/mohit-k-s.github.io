@@ -2,6 +2,7 @@
 title = "Commmon Distributed Systems Lingo"
 date = "2025-07-29"
 description = "Distributed Systems Lingo"
+category = "tech"
 tags = [
     "distributed systems",
 ]

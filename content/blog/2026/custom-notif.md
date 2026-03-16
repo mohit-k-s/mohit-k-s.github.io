@@ -1,6 +1,7 @@
 +++
 title = "Creating custom notifications for reminders"
 date = "2026-01-02"
+category = "tech"
 tags = [
     "random",
 ]

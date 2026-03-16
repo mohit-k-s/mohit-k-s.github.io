@@ -2,6 +2,7 @@
 title = "Test what you write"
 date = "2025-07-30"
 description = "Another day another bug"
+category = "tech"
 tags = [
     "Postgres",
     "Testing"

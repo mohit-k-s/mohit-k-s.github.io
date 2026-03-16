@@ -15,7 +15,7 @@ I write about tech and other stuff. It can be anything from system design to dis
 
 ## Writing
 
-Check out [./blog](/blog)
+Check out [writings](/blog)
 
 ## Awesome Blogs
 

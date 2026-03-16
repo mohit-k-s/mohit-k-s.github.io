@@ -15,34 +15,34 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=IM+Fell+English+SC&family=Inconsolata:wght@400;500&display=swap"
         rel="stylesheet">
 
     {{ $style := resources.Get "custom.css" | resources.Minify }}
     <link rel="stylesheet" href="{{ $style.Permalink }}">
+
+    <!-- Restore theme before paint to avoid flash -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
 </head>
 
 <body>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <span id="theme-icon">☽</span>
+    </button>
+
     <header>
-        <div class="terminal-prompt">
-            {{ if or (eq .Type "post") (eq .Section "blog") }}
-            <div class="prompt">mohit@localhost:~$ show {{ .RelPermalink }}</div>
-            {{ else }}
-            <div class="prompt">mohit@localhost:~$ ls</div>
-            {{ end }}
+        <div class="site-header">
+            <a href="/" class="site-title">{{ .Site.Title }}</a>
+            <nav class="site-nav">
+                {{ range .Site.Menus.main }}
+                <a href="{{ .URL }}">{{ .Name }}</a>
+                {{ end }}
+            </nav>
         </div>
-        {{ if not (or (eq .Type "post") (eq .Section "blog")) }}
-        <nav>
-            {{ range .Site.Menus.main }}
-            <a href="{{ .URL }}">{{ .Name }}</a>
-            {{ end }}
-        </nav>
-        {{ else }}
-        <nav class="blog-nav">
-            <a href="/" class="nav-button">~</a>
-            <a href="/blog" class="nav-button">~/blog</a>
-        </nav>
-        {{ end }}
     </header>
 
     <main>
@@ -53,26 +53,23 @@
         {{ .Site.Params.madeWith | markdownify }}
     </footer>
 
-    <!-- Terminal Status Line -->
-    <div class="status-line">
-        <span>-- TERMINAL -- <span id="local-time">00:00:00</span> -- {{ .Type | upper }} --</span>
-    </div>
-
     <script>
-        function updateLocalTime() {
-            const now = new Date();
-            const timeString = now.toLocaleTimeString('en-US', {
-                hour12: false,
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit'
-            });
-            document.getElementById('local-time').textContent = timeString;
+        const toggle = document.getElementById('theme-toggle');
+        const icon = document.getElementById('theme-icon');
+        const html = document.documentElement;
+
+        function applyTheme(dark) {
+            html.setAttribute('data-theme', dark ? 'dark' : 'light');
+            icon.textContent = dark ? '☀' : '☽';
+            localStorage.setItem('theme', dark ? 'dark' : 'light');
         }
 
-        // Update time immediately and then every second
-        updateLocalTime();
-        setInterval(updateLocalTime, 1000);
+        // Set correct icon on load
+        applyTheme(localStorage.getItem('theme') === 'dark');
+
+        toggle.addEventListener('click', () => {
+            applyTheme(html.getAttribute('data-theme') !== 'dark');
+        });
     </script>
 </body>
 

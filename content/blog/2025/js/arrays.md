@@ -2,6 +2,7 @@
 title = "169220804: Yet Another Magic Number"
 date = "2025-08-10"
 description = "Arrays in js"
+category = "tech"
 tags = [
     "v8_internals",
 ]
