@@ -1,5 +1,5 @@
 +++
-title = "Commmon Distributed Systems Lingo"
+title = "Common Distributed Systems Lingo"
 date = "2025-07-29"
 description = "Distributed Systems Lingo"
 category = "tech"
