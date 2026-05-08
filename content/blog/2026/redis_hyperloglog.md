@@ -1,6 +1,6 @@
 +++
 title = "How Redis Counts Without Counting"
-date = "2026-05-12"
+date = "2027-05-08"
 description = "Redis HyperLogLog internals"
 category = "tech"
 tags = [
