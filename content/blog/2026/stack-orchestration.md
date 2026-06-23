@@ -10,7 +10,7 @@ tags = [
 
 I was thinking about what happens when you double-click that "Create" button on AWS. Or when two teammates simultaneously try to spin up environments that share the same VPC.
 
-Seems simple — just check if the resource already exists. But it's one of those deceptively deep distributed systems problems.
+Seems simple - just check if the resource already exists. But it's one of those deceptively deep distributed systems problems.
 
 ## The Double-Click Problem
 
@@ -32,7 +32,7 @@ VPC -> Subnet -> Security Group -> EC2 Instance -> DNS Record
 
 Each depends on the one before it. Now the interesting failures show up:
 
-**Partial failure.** You create the VPC and Subnet, then crash while creating the Security Group. User retries. You need to *resume from where you left off* — not start over, not create a second VPC.
+**Partial failure.** You create the VPC and Subnet, then crash while creating the Security Group. User retries. You need to *resume from where you left off* - not start over, not create a second VPC.
 
 **Concurrent overlapping requests.** Two stacks want some of the same resources:
 
@@ -63,7 +63,7 @@ You're doing expensive, hard-to-reverse work before you even know if the operati
 
 ## Claim First, Build Later
 
-Here's the key insight: **the conflict detection problem and the resource creation problem are completely independent.** You don't need to create anything to know if there's a conflict — just check if any requested resource is already claimed by another stack.
+Here's the key insight: **the conflict detection problem and the resource creation problem are completely independent.** You don't need to create anything to know if there's a conflict - just check if any requested resource is already claimed by another stack.
 
 This gives you a three-phase architecture:
 
@@ -83,7 +83,7 @@ Request: Create Stack X with [VPC-1, Subnet-1, SG-1, EC2-A, DNS-A]
 
 If any insert fails (primary key violation), the resource is already claimed. Mark this stack as **INVALID**. No infrastructure was touched. No rollback needed.
 
-Worst case O(n) — one check per resource — and each check is a single atomic database write. Race conditions are impossible because the database constraint handles concurrency for you.
+Worst case O(n) - one check per resource - and each check is a single atomic database write. Race conditions are impossible because the database constraint handles concurrency for you.
 
 ### Phase 2: Creator Scheduler (Asynchronous)
 
@@ -102,7 +102,7 @@ Tick 3: EC2-A depends on Subnet-1 + SG-1 (done) → create it
 Tick 4: DNS-A depends on EC2-A (done) → create it
 ```
 
-The scheduler doesn't worry about conflicts — admission already handled that. It doesn't worry about ordering — the DAG tells it what's ready. It just picks up work and executes it.
+The scheduler doesn't worry about conflicts - admission already handled that. It doesn't worry about ordering - the DAG tells it what's ready. It just picks up work and executes it.
 
 If a creation fails, the resource stays `RESERVED`. Scheduler retries on the next tick. Too many retries? Mark the stack as `FAILED`.
 
@@ -151,7 +151,7 @@ Each phase only cares about one thing:
 | Creator | Building infrastructure | Conflicts, validation |
 | Cleanup | Tearing down failures | Conflicts, creation order |
 
-Admission is just database writes. Creator is just a DAG walker. Cleanup is just a list of things to delete. Compare this to the "build first" approach where a single code path handles creation, conflict detection, rollback, and orphan cleanup — all interleaved, all compounding on each other.
+Admission is just database writes. Creator is just a DAG walker. Cleanup is just a list of things to delete. Compare this to the "build first" approach where a single code path handles creation, conflict detection, rollback, and orphan cleanup - all interleaved, all compounding on each other.
 
 ## This Isn't New
 
@@ -159,7 +159,7 @@ This separation shows up everywhere:
 
 - **CloudFormation** separates change set creation from execution
 - **Kubernetes** has the API server (admission + etcd writes) and the kubelet (container creation) as separate processes
-- **Database engines** use write-ahead logs — decide what to do, write it down, then execute
+- **Database engines** use write-ahead logs - decide what to do, write it down, then execute
 - **Airline booking** reserves seats before issuing tickets
 
 The pattern is always the same: make the decision durable before you make it real. Undoing a row in a table is trivial. Undoing a half-provisioned EC2 instance with an attached EBS volume and a security group is not.

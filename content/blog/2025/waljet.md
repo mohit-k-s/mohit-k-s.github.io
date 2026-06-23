@@ -55,7 +55,7 @@ At no point this is a debezium replacer , debezium is a much more complex system
 
 ### Graceful Shutdown
 
-This one caught me off guard. You can't just kill a CDC process—you'll leak replication slots and lose checkpoint data. 
+This one caught me off guard. You can't just kill a CDC process - you'll leak replication slots and lose checkpoint data. 
 
 ```
 1. Stop accepting new events
@@ -114,19 +114,19 @@ I ran a 5-minute benchmark comparing WalJet with Debezium under identical condit
 | **Max Latency** | 1131.87ms | 171.33ms | **6.6x faster** |
 | **Events Lost** | 0 | 0 | ✓ |
 
-The throughput is similar, but latency tells the real story. WalJet's P99 latency is 53ms compared to Debezium's 953ms—nearly 20x faster. 
+The throughput is similar, but latency tells the real story. WalJet's P99 latency is 53ms compared to Debezium's 953ms - nearly 20x faster. 
 
 > "When you're invalidating a cache or triggering a webhook, waiting 950ms vs 50ms is the difference between a system that feels instant and one that feels sluggish."
 > 
-> — Me, after running this benchmark
+> - Me, after running this benchmark
 
 Remember [*The Hummingbird Project*](https://letterboxd.com/film/the-hummingbird-project/)? The movie where they're trying to build a fiber optic cable in a straight line from Kansas to New Jersey just to shave off a few milliseconds for high-frequency trading. Every millisecond was worth millions.
 
-WalJet isn't for HFT, but the principle is the same: in systems where you need to react to changes immediately like cache invalidation, real-time webhooks, event-driven architectures—latency isn't just a nice-to-have. It's the whole point.
+WalJet isn't for HFT, but the principle is the same: in systems where you need to react to changes immediately like cache invalidation, real-time webhooks, event-driven architectures - latency isn't just a nice-to-have. It's the whole point.
 
 ## Why Not Open Source (Yet)?
 
-WalJet started as a fun experiment—something I hacked for fun,  It works, the benchmarks are promising, but it's not production-ready in the way an OSS project should be.
+WalJet started as a fun experiment - something I hacked for fun,  It works, the benchmarks are promising, but it's not production-ready in the way an OSS project should be.
 
 There's still work to do:
 - **More performance testing**: The benchmark above is just one scenario. Need to test under different loads, failure modes, and edge cases

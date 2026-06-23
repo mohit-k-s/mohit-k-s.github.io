@@ -33,7 +33,7 @@ Redis keeps 16384 tiny registers (buckets). When you add a value:
 
 1. Hash it to 64 bits
 2. Top 14 bits pick which bucket
-3. Remaining bits — count leading zeros + 1. That's the "rarity score"
+3. Remaining bits - count leading zeros + 1. That's the "rarity score"
 4. Keep the max rarity per bucket
 
 ```text
@@ -60,7 +60,7 @@ The formula looks scary but reads simply:
 
 Each bucket contributes `2^(-M[j])`. Bigger rarity stored means smaller contribution, which pushes the estimate higher.
 
-After the raw estimate, Redis applies small-range and bias corrections. So `PFCOUNT` isn't one formula — it's a pipeline.
+After the raw estimate, Redis applies small-range and bias corrections. So `PFCOUNT` isn't one formula - it's a pipeline.
 
 ## Why PFMERGE is just max
 

@@ -48,7 +48,7 @@ select * from seq_test;
 3,2,active
 
 ```
-Notice the jump — the id for the second device is 3, not 2.
+Notice the jump - the id for the second device is 3, not 2.
 
 That’s because Postgres still calls nextval() for every insert, even if it hits a conflict and performs an update instead.
 

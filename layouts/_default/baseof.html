@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/fonts/fonts.css">
 
     {{ $style := resources.Get "custom.css" | resources.Minify }}
-    <link rel="stylesheet" href="{{ $style.Permalink }}">
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}">
 
     <!-- RSS autodiscovery -->
     <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="/index.xml">
@@ -61,7 +61,7 @@
 
     <!-- Dark extension notice -->
     <div id="dark-ext-notice" class="dark-ext-notice" hidden>
-        <span>A built-in dark mode is available — consider disabling your dark mode extension for the best experience.</span>
+        <span>A built-in dark mode is available - consider disabling your dark mode extension for the best experience.</span>
         <button class="dark-ext-dismiss" aria-label="Dismiss">✕</button>
     </div>
 

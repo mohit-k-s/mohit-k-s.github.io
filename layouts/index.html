@@ -1,13 +1,19 @@
 {{ define "main" }}
 <div class="home-content">
+  <section class="home-intro">
     {{ .Content }}
+  </section>
 
+    <div class="section-kicker">Recently published</div>
     <h2>Recent Writings</h2>
     <ul class="blog-posts">
     {{ range first 5 (where .Site.RegularPages "Section" "blog") }}
     <li>
       <span><time datetime='{{ .Date.Format "2006-01-02" }}'>{{ .Date.Format "2 Jan 2006" }}</time></span>
-      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      <div class="post-entry">
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        {{ with .Description }}<p class="post-description">{{ . }}</p>{{ end }}
+      </div>
     </li>
     {{ end }}
     </ul>

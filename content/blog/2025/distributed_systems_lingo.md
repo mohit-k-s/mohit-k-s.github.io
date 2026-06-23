@@ -29,7 +29,7 @@ This way, even if the lock coordination fails, the system can still reject outda
 
 ## Network Partition
 
-A **network partition** is when a group of nodes in a distributed system can no longer talk to another group — not because the nodes have failed, but because something in the network is blocking communication between them.
+A **network partition** is when a group of nodes in a distributed system can no longer talk to another group - not because the nodes have failed, but because something in the network is blocking communication between them.
 
 Think of it as the system getting split into isolated islands.
 

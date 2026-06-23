@@ -1,5 +1,11 @@
 {{ define "main" }}
 <content>
+  <header class="page-header">
+    <p class="section-kicker">Archive</p>
+    <h1>{{ .Title }}</h1>
+    <p>Essays and notes on systems, databases, performance, software engineering, and the occasional personal tangent.</p>
+  </header>
+
   {{ $personal := where .Pages ".Params.category" "personal" }}
   {{ $tech := where .Pages ".Params.category" "tech" }}
 

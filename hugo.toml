@@ -36,12 +36,12 @@ enableRobotsTXT = true
 [languages]
   [languages.en]
     title = "Mohit's Page"
-    languageName = "en-US"
-    LanguageCode = "en-US"
+    label = "en-US"
+    locale = "en-US"
     contentDir = "content"
 
 [params]
-  description = "Mohit's Page — a backend engineer writing about tech, systems, and life"
+  description = "Mohit's Page - a backend engineer writing about tech, systems, and life"
   favicon = "images/favicon.svg"
   images = ["images/share.webp"]
   title = "Mohit's Page"

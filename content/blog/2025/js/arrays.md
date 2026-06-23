@@ -17,7 +17,7 @@ for(let i =0 ; i < 1e9 ; ++i) {
 }
 
 ```
-This is just a standard array, and of course it fails — there’s no way my system has ~7.5 GB available just for this process.
+This is just a standard array, and of course it fails - there’s no way my system has ~7.5 GB available just for this process.
 But it fails with an interesting error:
 
 ```log
