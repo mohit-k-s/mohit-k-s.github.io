@@ -113,4 +113,4 @@ That would be unacceptable for a product. For a personal terminal hack, it is fi
 
 ## Why This Was Worth Building
 
-Because i wanted to make it ? Maybe that is enough , lol
+I had *fun* making it , Not everything needs to be a product. Sometimes you can just piece up small things to make something useful for yourself. Build for yourself first !
