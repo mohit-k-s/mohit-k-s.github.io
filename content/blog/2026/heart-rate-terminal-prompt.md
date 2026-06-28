@@ -1,7 +1,6 @@
 +++
 title = "Putting My ❤️ Rate in My Terminal Prompt"
 date = "2026-06-28"
-draft = true
 category = "tech"
 tags = [
     "apple-health",
