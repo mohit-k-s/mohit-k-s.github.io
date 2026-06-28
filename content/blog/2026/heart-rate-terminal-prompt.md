@@ -35,9 +35,7 @@ zsh prompt
 
 The iPhone reads the latest heart rate sample from Apple Health and posts it to a server running on my laptop. The server stores only the latest reading. The shell prompt does not call the server at all. It just reads the local cache file and prints a compact prompt segment.
 
-No database. No cloud. No account. No dashboard.
-
-Just this:
+THe phone POSTs below payload to my server
 
 ```json
 {
