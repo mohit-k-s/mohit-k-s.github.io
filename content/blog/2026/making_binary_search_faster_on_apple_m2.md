@@ -12,7 +12,7 @@ tags = [
 ]
 +++
 
-Binary search is one of the first algorithms every programmer learns. It is O(log N), elegant, and standard libraries like C++'s `std::lower_bound` have had decades to optimize it.
+Binary search is one of the first algorithms every programmer learns. It is `O(log N)`, elegant, and standard libraries like C++'s `std::lower_bound` have had decades to optimize it.
 
 If you have a sorted array and need to find an element, you call `std::lower_bound` and move on.
 
