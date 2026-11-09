@@ -12,7 +12,7 @@ tags = [
 ]
 +++
 
-Binary search is one of the first algorithms every programmer learns. It is $O(\log N)$, elegant, and standard libraries like C++'s `std::lower_bound` have had decades to optimize it.
+Binary search is one of the first algorithms every programmer learns. It is O(log N), elegant, and standard libraries like C++'s `std::lower_bound` have had decades to optimize it.
 
 If you have a sorted array and need to find an element, you call `std::lower_bound` and move on.
 
@@ -45,7 +45,7 @@ But binary search exposes two major weaknesses in modern CPU architectures:
 1. **The Branch Misprediction Penalty**:
    When you search for random keys, the comparison `arr[mid] < target` is true 50% of the time and false 50% of the time. It is mathematically the worst-case scenario for branch predictors. Every misprediction flushes the execution pipeline, costing 15 to 20 clock cycles.
 2. **The Cache-Locality Penalty**:
-   In a traditional sorted array, the first step checks index $N/2$. The next step jumps to $N/4$ or $3N/4$ (megabytes away). The next step jumps hundreds of kilobytes away. Every step jumps to an unpredictable cache line.
+   In a traditional sorted array, the first step checks index N/2. The next step jumps to N/4 or 3N/4 (megabytes away). The next step jumps hundreds of kilobytes away. Every step jumps to an unpredictable cache line.
 
 ---
 
@@ -73,7 +73,7 @@ int binary_search_branching(const T* arr, int n, T target) {
 
 On a 65,536-element array (256 KB), `std::lower_bound` takes **32.26 ns** per lookup.
 
-For an algorithm that only does ~16 iterations ($\log_2(65536) = 16$), 32 nanoseconds means every iteration is costing around 2 nanoseconds (~7 to 8 CPU clock cycles). The CPU is spending most of its time stalling on mispredicted branches.
+For an algorithm that only does ~16 iterations (log₂(65536) = 16), 32 nanoseconds means every iteration is costing around 2 nanoseconds (~7 to 8 CPU clock cycles). The CPU is spending most of its time stalling on mispredicted branches.
 
 ---
 
@@ -102,8 +102,8 @@ Notice what changed: there are no branches inside the `while` loop.
 When compiled with `clang++ -O3 -mcpu=apple-m2`, Clang emits ARM64's `CSEL` (Conditional Select) instruction. `CSEL` evaluates in **1 clock cycle** regardless of whether the condition was true or false. Zero pipeline flushes.
 
 ### The Result
-* At $N = 1,024$ (4 KB): drops from **19.33 ns → 7.71 ns (2.5x faster)**.
-* At $N = 65,536$ (256 KB): drops from **32.26 ns → 18.49 ns (1.7x faster)**.
+* At N = 1,024 (4 KB): drops from **19.33 ns → 7.71 ns (2.5x faster)**.
+* At N = 65,536 (256 KB): drops from **32.26 ns → 18.49 ns (1.7x faster)**.
 
 By simply removing the branch, we doubled the speed. But when the array grows larger than L2 cache, another bottleneck takes over: memory access patterns.
 
@@ -124,8 +124,8 @@ Each step jumps across huge memory strides.
 
 In the 1970s, Michael Eytzinger proposed a layout for binary trees that is identical to a binary heap:
 * The root is stored at **index 1**.
-* The left child of node $k$ is stored at **$2k$**.
-* The right child of node $k$ is stored at **$2k + 1$**.
+* The left child of node k is stored at **2k**.
+* The right child of node k is stored at **2k + 1**.
 
 ```
 Sorted Array:      [ 10,  20,  30,  40,  50,  60,  70 ]
@@ -140,7 +140,7 @@ Look at where the most frequently accessed nodes live:
 * Indices 2 and 3 (level 1) are visited on **every single search**.
 * Indices 4, 5, 6, 7 (level 2) are visited on **every single search**.
 
-Indices 1 through 15 take $15 \times 4 = 60$ bytes.
+Indices 1 through 15 take 15 × 4 = 60 bytes.
 
 On Apple Silicon, a single cache line is **128 bytes**.
 
@@ -224,8 +224,8 @@ Apple Silicon's Avalanche cores have an aggressive hardware prefetcher. When you
 2. **`CSEL` is your friend**: On ARM64, branchless conditional arithmetic executes in 1 cycle without pipeline flushes.
 3. **Data layout is an optimization**: Sorted order is human-friendly; Eytzinger breadth-first layout is cache-friendly.
 4. **Hardware boundaries dictate wins**:
-   * For arrays fitting in L1 cache ($N \le 1,024$), branchless sorted search is fastest (7.1 ns).
-   * For arrays exceeding L2 cache ($N \ge 1,000,000$), Eytzinger layout wins by almost 3x because the tree root and top layers never leave CPU cache.
+   * For arrays fitting in L1 cache (N ≤ 1,024), branchless sorted search is fastest (7.1 ns).
+   * For arrays exceeding L2 cache (N ≥ 1,000,000), Eytzinger layout wins by almost 3x because the tree root and top layers never leave CPU cache.
 
 ## Reproducing the Benchmark
 

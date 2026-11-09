@@ -90,8 +90,13 @@
             btn.textContent = 'copy';
             btn.setAttribute('aria-label', 'Copy code');
             btn.addEventListener('click', function() {
-                var code = block.querySelector('code');
-                var text = code ? code.textContent : block.textContent;
+                var target = block.querySelector('code') || block;
+                var clone = target.cloneNode(true);
+                // Strip line numbers and copy button artifacts from clipboard text
+                clone.querySelectorAll('.ln, .lnt, .copy-btn').forEach(function(el) {
+                    el.remove();
+                });
+                var text = clone.textContent.replace(/^\n+/, '');
                 navigator.clipboard.writeText(text).then(function() {
                     btn.textContent = 'copied!';
                     setTimeout(function() { btn.textContent = 'copy'; }, 1500);
