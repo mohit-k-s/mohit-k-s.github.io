@@ -227,4 +227,16 @@ Apple Silicon's Avalanche cores have an aggressive hardware prefetcher. When you
    * For arrays fitting in L1 cache ($N \le 1,024$), branchless sorted search is fastest (7.1 ns).
    * For arrays exceeding L2 cache ($N \ge 1,000,000$), Eytzinger layout wins by almost 3x because the tree root and top layers never leave CPU cache.
 
-The benchmark code used in this post is available [here](https://github.com/mohit-k-s/experiments/blob/master/memory-indexing-benchmarks/bs_bench.cpp).
+## Reproducing the Benchmark
+
+The full C++ benchmark source code and runner script are available directly on this site:
+* **Benchmark Source**: [`/scripts/binary_search_benchmark.cpp`](/scripts/binary_search_benchmark.cpp)
+* **Runner Script**: [`/scripts/run_binary_search_benchmark.sh`](/scripts/run_binary_search_benchmark.sh)
+
+You can reproduce the exact numbers on your Mac with:
+
+```sh
+curl -sO https://mohit-k-s.github.io/scripts/binary_search_benchmark.cpp
+clang++ -O3 -std=c++20 -mcpu=apple-m2 binary_search_benchmark.cpp -o bs_bench
+./bs_bench
+```
